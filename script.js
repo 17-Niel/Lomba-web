@@ -1,4 +1,6 @@
-// Fungsi umum yang digunakan di berbagai halaman
+// script.js - JavaScript untuk semua halaman SehatKu
+
+// Fungsi inisialisasi ketika DOM siap
 document.addEventListener('DOMContentLoaded', function() {
     // Highlight nav link aktif
     const currentPage = window.location.pathname.split('/').pop();
@@ -14,7 +16,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Jika di halaman beranda, highlight Beranda
     if (currentPage === 'index.html' || currentPage === '') {
-        document.querySelector('.nav-link[href="index.html"]').classList.add('active');
+        const homeLink = document.querySelector('.nav-link[href="index.html"]');
+        if (homeLink) {
+            homeLink.classList.add('active');
+        }
     }
     
     // Smooth scroll untuk link anchor
@@ -34,92 +39,93 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Navbar effect on scroll
+    // Inisialisasi fungsi pencarian
+    initializeSearch();
+    
+    // Inisialisasi form validation
+    initializeFormValidation();
+    
+    // Inisialisasi back to top button
+    initializeBackToTop();
+    
+    // Inisialisasi fade in animation
+    initializeFadeIn();
+});
+
+// Navbar scroll effect
+function initializeNavbarScroll() {
     const navbar = document.querySelector('.navbar');
-    window.addEventListener('scroll', () => {
+    if (!navbar) return;
+    
+    window.addEventListener('scroll', function() {
         if (window.scrollY > 50) {
             navbar.classList.add('scrolled');
         } else {
             navbar.classList.remove('scrolled');
         }
     });
-});
-
-// script.js - JavaScript untuk semua halaman SehatKu
-
-// Navbar scroll effect
-window.addEventListener('scroll', function() {
-    const navbar = document.querySelector('.navbar');
-    if (window.scrollY > 50) {
-        navbar.classList.add('scrolled');
-    } else {
-        navbar.classList.remove('scrolled');
-    }
-});
+}
 
 // Fade in animation on scroll
-const fadeElements = document.querySelectorAll('.fade-in');
+function initializeFadeIn() {
+    const fadeElements = document.querySelectorAll('.fade-in');
+    
+    const fadeInOnScroll = function() {
+        fadeElements.forEach(element => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementVisible = 150;
+            
+            if (elementTop < window.innerHeight - elementVisible) {
+                element.classList.add('visible');
+            }
+        });
+    };
+    
+    window.addEventListener('scroll', fadeInOnScroll);
+    // Initial check
+    fadeInOnScroll();
+}
 
-const fadeInOnScroll = function() {
-    fadeElements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        const elementVisible = 150;
-        
-        if (elementTop < window.innerHeight - elementVisible) {
-            element.classList.add('visible');
-        }
-    });
-};
+// Back to top button
+function initializeBackToTop() {
+    // Cek apakah button sudah ada
+    if (document.querySelector('.back-to-top')) return;
+    
+    const backToTopButton = document.createElement('button');
+    backToTopButton.innerHTML = '<i class="bi bi-chevron-up"></i>';
+    backToTopButton.className = 'btn btn-primary back-to-top';
+    backToTopButton.style.position = 'fixed';
+    backToTopButton.style.bottom = '20px';
+    backToTopButton.style.right = '20px';
+    backToTopButton.style.zIndex = '1000';
+    backToTopButton.style.display = 'none';
+    backToTopButton.style.borderRadius = '50%';
+    backToTopButton.style.width = '50px';
+    backToTopButton.style.height = '50px';
+    backToTopButton.style.display = 'flex';
+    backToTopButton.style.alignItems = 'center';
+    backToTopButton.style.justifyContent = 'center';
 
-window.addEventListener('scroll', fadeInOnScroll);
-// Initial check
-fadeInOnScroll();
-
-// Smooth scrolling for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
+    backToTopButton.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
             behavior: 'smooth'
         });
     });
-});
 
-// Back to top button
-const backToTopButton = document.createElement('button');
-backToTopButton.innerHTML = '<i class="fas fa-chevron-up"></i>';
-backToTopButton.className = 'btn btn-primary back-to-top';
-backToTopButton.style.position = 'fixed';
-backToTopButton.style.bottom = '20px';
-backToTopButton.style.right = '20px';
-backToTopButton.style.zIndex = '1000';
-backToTopButton.style.display = 'none';
-backToTopButton.style.borderRadius = '50%';
-backToTopButton.style.width = '50px';
-backToTopButton.style.height = '50px';
-backToTopButton.style.display = 'flex';
-backToTopButton.style.alignItems = 'center';
-backToTopButton.style.justifyContent = 'center';
-
-backToTopButton.addEventListener('click', () => {
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            backToTopButton.style.display = 'flex';
+        } else {
+            backToTopButton.style.display = 'none';
+        }
     });
-});
 
-window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 300) {
-        backToTopButton.style.display = 'flex';
-    } else {
-        backToTopButton.style.display = 'none';
-    }
-});
-
-document.body.appendChild(backToTopButton);
+    document.body.appendChild(backToTopButton);
+}
 
 // Form validation
-document.addEventListener('DOMContentLoaded', function() {
+function initializeFormValidation() {
     const forms = document.querySelectorAll('form');
     
     forms.forEach(form => {
@@ -150,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-});
+}
 
 // Search functionality
 function initializeSearch() {
@@ -173,8 +179,98 @@ function initializeSearch() {
     });
 }
 
-// Initialize when DOM is loaded
+// ===== FUNGSI KHUSUS HALAMAN EDUKASI =====
+
+// Category filtering untuk halaman edukasi
+function showCategory(category) {
+    const cards = document.querySelectorAll(".education-card");
+    const tabs = document.querySelectorAll(".tab-btn");
+
+    tabs.forEach((tab) => tab.classList.remove("active"));
+    event.target.classList.add("active");
+
+    cards.forEach((card) => {
+        const cardElement = card.closest("[data-category]");
+        if (
+            category === "all" ||
+            cardElement.getAttribute("data-category") === category
+        ) {
+            cardElement.style.display = "block";
+        } else {
+            cardElement.style.display = "none";
+        }
+    });
+}
+
+// Search functionality khusus halaman edukasi
+function initializeEdukasiSearch() {
+    const searchInput = document.getElementById('searchInput');
+    
+    if (searchInput) {
+        searchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const cards = document.querySelectorAll('.education-card');
+            
+            cards.forEach(card => {
+                const title = card.querySelector('h3').textContent.toLowerCase();
+                const description = card.querySelector('p').textContent.toLowerCase();
+                const topics = Array.from(card.querySelectorAll('.topic-list li')).map(li => li.textContent.toLowerCase());
+                
+                const matches = title.includes(searchTerm) || 
+                               description.includes(searchTerm) || 
+                               topics.some(topic => topic.includes(searchTerm));
+                
+                const cardElement = card.closest("[data-category]");
+                if (matches || searchTerm === '') {
+                    cardElement.style.display = 'block';
+                } else {
+                    cardElement.style.display = 'none';
+                }
+            });
+        });
+    }
+}
+
+// Module opening untuk halaman edukasi
+function openModule(moduleName) {
+    const moduleTitles = {
+        gizi: "Panduan Gizi Seimbang",
+        olahraga: "Program Olahraga Pemula",
+        stres: "Manajemen Stres",
+        pencegahan: "Pencegahan Penyakit",
+        diet: "Diet Sehat untuk Berat Badan Ideal",
+        yoga: "Yoga untuk Pemula",
+        "nutrisi-anak": "Nutrisi Optimal untuk Anak",
+        lansia: "Kesehatan di Usia Lanjut",
+        wanita: "Kesehatan Reproduksi Wanita",
+        pertolongan: "Pertolongan Pertama Dasar",
+        tidur: "Pola Tidur Sehat",
+        hidrasi: "Hidrasi yang Tepat"
+    };
+    
+    alert(
+        "Membuka modul: " +
+          moduleTitles[moduleName] +
+          "\n\nKonten pembelajaran interaktif akan segera tersedia!"
+    );
+}
+
+function playVideo(videoTitle) {
+    alert(
+        "Memutar video: " +
+          videoTitle +
+          "\n\nFitur pemutaran video akan segera tersedia!"
+    );
+}
+
+// Inisialisasi khusus untuk halaman edukasi
 document.addEventListener('DOMContentLoaded', function() {
-    initializeSearch();
+    // Jika di halaman edukasi, inisialisasi fungsi khusus
+    if (window.location.pathname.includes('edukasi.html') || document.querySelector('.education-grid')) {
+        initializeEdukasiSearch();
+        initializeNavbarScroll();
+    }
 });
 
+// Panggil inisialisasi navbar scroll secara global
+initializeNavbarScroll();

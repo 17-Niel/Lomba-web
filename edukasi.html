@@ -4,346 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edukasi Kesehatan - SehatKu</title>
-   <!-- Bootstrap CSS -->
-<link href="/assets/Vendor/bootstrap-5.3.8-dist/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Bootstrap JavaScript -->
-<script src="/assets/Vendor/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
-
-<!-- Bootstrap Icons -->
-<link href="/assets/Vendor/bootstrap-icons-1.13.1/font/bootstrap-icons.css" rel="stylesheet">
-    <style>
-      :root {
-        --primary-color: #4a90e2;
-        --secondary-color: #7ed321;
-        --accent-color: #50e3c2;
-        --neutral-light: #f8f9fa;
-        --neutral-medium: #e9ecef;
-        --neutral-dark: #343a40;
-        --text-primary: #212529;
-        --text-secondary: #6c757d;
-        --white: #ffffff;
-        --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.05);
-        --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.08);
-      }
-
-      body {
-        font-family: "Poppins", sans-serif;
-        color: var(--text-primary);
-        line-height: 1.6;
-        background-color: var(--neutral-light);
-      }
-
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        font-family: "Playfair Display", serif;
-        font-weight: 600;
-      }
-
-      /* Header */
-      .navbar {
-        padding: 1.5rem 0;
-        transition: all 0.3s ease;
-        background-color: rgba(255, 255, 255, 0.95) !important;
-        backdrop-filter: blur(10px);
-      }
-
-      .navbar.scrolled {
-        padding: 1rem 0;
-        box-shadow: var(--shadow-soft);
-      }
-
-      .navbar-brand {
-        font-family: "Playfair Display", serif;
-        font-size: 1.8rem;
-        font-weight: 700;
-        color: var(--primary-color) !important;
-      }
-
-      .nav-link {
-        font-weight: 500;
-        margin: 0 0.5rem;
-        position: relative;
-        color: var(--text-primary) !important;
-      }
-
-      .nav-link::after {
-        content: "";
-        position: absolute;
-        width: 0;
-        height: 2px;
-        bottom: 0;
-        left: 0;
-        background-color: var(--primary-color);
-        transition: width 0.3s ease;
-      }
-
-      .nav-link:hover::after,
-      .nav-link.active::after {
-        width: 100%;
-      }
-
-      /* Page Header */
-      .page-header {
-        padding: 8rem 0 4rem;
-        background: linear-gradient(
-            135deg,
-            rgba(74, 144, 226, 0.9) 0%,
-            rgba(58, 123, 200, 0.9) 100%
-          ),
-          url("https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80");
-        background-size: cover;
-        background-position: center;
-        margin-top: 76px;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .page-header h1 {
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      }
-
-      /* Education Cards */
-      .education-card {
-        background-color: var(--white);
-        border-radius: 16px;
-        padding: 2rem;
-        box-shadow: var(--shadow-soft);
-        height: 100%;
-        border: 1px solid var(--neutral-medium);
-        transition: all 0.3s ease;
-      }
-
-      .education-card:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-medium);
-      }
-
-      .card-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1.5rem;
-      }
-
-      .card-icon {
-        font-size: 3rem;
-      }
-
-      .card-badge {
-        background: var(--primary-color);
-        color: white;
-        padding: 0.5rem 1rem;
-        border-radius: 20px;
-        font-size: 0.8rem;
-        font-weight: 500;
-      }
-
-      .education-card h3 {
-        color: var(--text-primary);
-        margin-bottom: 1rem;
-        font-size: 1.5rem;
-      }
-
-      .education-card p {
-        color: var(--text-secondary);
-        margin-bottom: 1.5rem;
-      }
-
-      .topic-list {
-        list-style: none;
-        padding: 0;
-        margin-bottom: 2rem;
-      }
-
-      .topic-list li {
-        padding: 0.5rem 0;
-        color: var(--text-primary);
-        position: relative;
-        padding-left: 1.5rem;
-      }
-
-      .topic-list li:before {
-        content: "✓";
-        position: absolute;
-        left: 0;
-        color: var(--secondary-color);
-        font-weight: bold;
-      }
-
-      /* Buttons */
-      .btn {
-        border-radius: 50px;
-        padding: 0.75rem 1.5rem;
-        font-weight: 500;
-        transition: all 0.3s ease;
-      }
-
-      .btn-primary {
-        background-color: var(--primary-color);
-        border-color: var(--primary-color);
-      }
-
-      .btn-primary:hover {
-        background-color: #3a7bc8;
-        border-color: #3a7bc8;
-        transform: translateY(-2px);
-        box-shadow: var(--shadow-medium);
-      }
-
-      /* Tabs */
-      .category-tabs {
-        margin-bottom: 3rem;
-      }
-
-      .tab-btn {
-        padding: 0.75rem 1.5rem;
-        border: 2px solid var(--primary-color);
-        background: white;
-        color: var(--primary-color);
-        border-radius: 25px;
-        transition: all 0.3s ease;
-        font-weight: 500;
-        margin: 0 0.5rem 0.5rem 0;
-      }
-
-      .tab-btn.active,
-      .tab-btn:hover {
-        background: var(--primary-color);
-        color: white;
-      }
-
-      /* Video Section */
-      .video-section {
-        margin-top: 4rem;
-        padding-top: 3rem;
-        border-top: 1px solid var(--neutral-medium);
-      }
-
-      .video-card {
-        background-color: var(--white);
-        border-radius: 16px;
-        overflow: hidden;
-        box-shadow: var(--shadow-soft);
-        transition: all 0.3s ease;
-        border: 1px solid var(--neutral-medium);
-      }
-
-      .video-card:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-medium);
-      }
-
-      .video-thumbnail {
-        position: relative;
-        height: 200px;
-        background: #f8f9fa;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-      }
-
-      .placeholder-video {
-        font-size: 4rem;
-        color: #6c757d;
-      }
-
-      .play-icon {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        font-size: 3rem;
-        background: rgba(0, 0, 0, 0.7);
-        color: white;
-        padding: 1rem;
-        border-radius: 50%;
-        transition: all 0.3s ease;
-      }
-
-      .video-thumbnail:hover .play-icon {
-        background: rgba(0, 0, 0, 0.9);
-        transform: translate(-50%, -50%) scale(1.1);
-      }
-
-      .video-card h4 {
-        padding: 1.5rem 1.5rem 0.5rem;
-        margin: 0;
-        color: var(--text-primary);
-        font-size: 1.1rem;
-      }
-
-      .video-card p {
-        padding: 0 1.5rem 1.5rem;
-        margin: 0;
-        color: var(--text-secondary);
-        font-size: 0.9rem;
-      }
-
-      /* Section Title */
-      .section-title {
-        font-size: 2.5rem;
-        margin-bottom: 1rem;
-        position: relative;
-        display: inline-block;
-      }
-
-      .section-title::after {
-        content: "";
-        position: absolute;
-        width: 60px;
-        height: 3px;
-        background-color: var(--primary-color);
-        bottom: -10px;
-        left: 0;
-      }
-
-      /* Footer */
-      footer {
-        background-color: var(--neutral-dark);
-        color: var(--white);
-        padding: 2rem 0;
-        margin-top: 4rem;
-      }
-
-      /* Animations */
-      .fade-in {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.6s ease;
-      }
-
-      .fade-in.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      /* Responsive */
-      @media (max-width: 768px) {
-        .page-header h1 {
-          font-size: 2.5rem;
-        }
-
-        .section-title {
-          font-size: 2rem;
-        }
-
-        .education-card {
-          margin-bottom: 1.5rem;
-        }
-
-        .card-icon {
-          font-size: 2.5rem;
-        }
-      }
-    </style>
+    <!-- Bootstrap CSS -->
+    <link
+      href="/assets/Vendor/bootstrap-5.3.8-dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      href="/assets/Vendor/bootstrap-icons-1.13.1/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styless.css" />
   </head>
   <body>
     <!-- Header/Navigasi -->
@@ -405,6 +77,21 @@
     <!-- Content Section -->
     <section class="py-5">
       <div class="container">
+        <!-- Search Bar -->
+        <div class="row mb-4">
+          <div class="col-md-8 mx-auto">
+            <div class="search-container">
+              <input
+                type="text"
+                id="searchInput"
+                class="search-input"
+                placeholder="Cari topik edukasi kesehatan..."
+              />
+              <i class="bi bi-search search-icon"></i>
+            </div>
+          </div>
+        </div>
+
         <!-- Kategori Tabs -->
         <div class="category-tabs">
           <div class="d-flex flex-wrap justify-content-center">
@@ -423,13 +110,22 @@
             <button class="tab-btn" onclick="showCategory('pencegahan')">
               Pencegahan
             </button>
+            <button class="tab-btn" onclick="showCategory('anak')">
+              Kesehatan Anak
+            </button>
+            <button class="tab-btn" onclick="showCategory('lansia')">
+              Kesehatan Lansia
+            </button>
+            <button class="tab-btn" onclick="showCategory('wanita')">
+              Kesehatan Wanita
+            </button>
           </div>
         </div>
 
         <!-- Education Cards Grid -->
         <div class="education-grid">
           <div class="row g-4">
-            <!-- Card 1 -->
+            <!-- Card 1 - Nutrisi -->
             <div class="col-md-6 col-lg-3 fade-in" data-category="nutrisi">
               <div class="education-card">
                 <div class="card-header">
@@ -447,16 +143,16 @@
                   <li>Makro dan mikro nutrisi</li>
                   <li>Menu sehat sehari-hari</li>
                 </ul>
-                <button
-                  class="btn btn-primary w-100"
-                  onclick="openModule('gizi')"
-                >
-                  Mulai Belajar
-                </button>
+
+                <script>
+                  function openModule(moduleName) {
+                    // Langsung pindah ke halaman modul.html
+                    window.location.href = "gizi.html";
+                  }
+                </script>
               </div>
             </div>
-
-            <!-- Card 2 -->
+            <!-- Card 2 - Olahraga -->
             <div class="col-md-6 col-lg-3 fade-in" data-category="olahraga">
               <div class="education-card">
                 <div class="card-header">
@@ -474,16 +170,10 @@
                   <li>Latihan kekuatan</li>
                   <li>Jadwal latihan mingguan</li>
                 </ul>
-                <button
-                  class="btn btn-primary w-100"
-                  onclick="openModule('olahraga')"
-                >
-                  Mulai Belajar
-                </button>
               </div>
             </div>
 
-            <!-- Card 3 -->
+            <!-- Card 3 - Mental -->
             <div class="col-md-6 col-lg-3 fade-in" data-category="mental">
               <div class="education-card">
                 <div class="card-header">
@@ -501,16 +191,10 @@
                   <li>Work-life balance</li>
                   <li>Manajemen waktu</li>
                 </ul>
-                <button
-                  class="btn btn-primary w-100"
-                  onclick="openModule('stres')"
-                >
-                  Mulai Belajar
-                </button>
               </div>
             </div>
 
-            <!-- Card 4 -->
+            <!-- Card 4 - Pencegahan -->
             <div class="col-md-6 col-lg-3 fade-in" data-category="pencegahan">
               <div class="education-card">
                 <div class="card-header">
@@ -528,68 +212,332 @@
                   <li>Pola hidup sehat</li>
                   <li>Deteksi dini penyakit</li>
                 </ul>
-                <button
-                  class="btn btn-primary w-100"
-                  onclick="openModule('pencegahan')"
-                >
-                  Mulai Belajar
-                </button>
+              </div>
+            </div>
+
+            <!-- Card 5 - Nutrisi -->
+            <div class="col-md-6 col-lg-3 fade-in" data-category="nutrisi">
+              <div class="education-card">
+                <div class="card-header">
+                  <span class="card-icon">🥑</span>
+                  <span class="card-badge">Nutrisi</span>
+                </div>
+                <h3>Diet Sehat untuk Berat Badan Ideal</h3>
+                <p>
+                  Panduan diet sehat dan berkelanjutan untuk mencapai berat
+                  badan ideal tanpa efek yoyo.
+                </p>
+                <ul class="topic-list">
+                  <li>Prinsip defisit kalori</li>
+                  <li>Pilihan makanan rendah kalori</li>
+                  <li>Jadwal makan optimal</li>
+                  <li>Tips mengatasi lapar</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Card 6 - Olahraga -->
+            <div class="col-md-6 col-lg-3 fade-in" data-category="olahraga">
+              <div class="education-card">
+                <div class="card-header">
+                  <span class="card-icon">🏃‍♀️</span>
+                  <span class="card-badge">Olahraga</span>
+                </div>
+                <h3>Yoga untuk Pemula</h3>
+                <p>
+                  Pelajari pose-pose yoga dasar untuk meningkatkan fleksibilitas
+                  dan mengurangi stres.
+                </p>
+                <ul class="topic-list">
+                  <li>Pose dasar yoga</li>
+                  <li>Teknik pernapasan</li>
+                  <li>Rutinitas harian</li>
+                  <li>Manfaat untuk kesehatan</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Card 7 - Kesehatan Anak -->
+            <div class="col-md-6 col-lg-3 fade-in" data-category="anak">
+              <div class="education-card">
+                <div class="card-header">
+                  <span class="card-icon">👶</span>
+                  <span class="card-badge">Anak</span>
+                </div>
+                <h3>Nutrisi Optimal untuk Anak</h3>
+                <p>
+                  Panduan lengkap pemberian nutrisi yang tepat untuk tumbuh
+                  kembang anak optimal.
+                </p>
+                <ul class="topic-list">
+                  <li>MPASI yang tepat</li>
+                  <li>Vitamin dan mineral penting</li>
+                  <li>Mengatasi anak susah makan</li>
+                  <li>Jadwal makan anak</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Card 8 - Kesehatan Lansia -->
+            <div class="col-md-6 col-lg-3 fade-in" data-category="lansia">
+              <div class="education-card">
+                <div class="card-header">
+                  <span class="card-icon">👵</span>
+                  <span class="card-badge">Lansia</span>
+                </div>
+                <h3>Kesehatan di Usia Lanjut</h3>
+                <p>
+                  Tips menjaga kesehatan dan kualitas hidup di usia lanjut
+                  dengan pola hidup yang tepat.
+                </p>
+                <ul class="topic-list">
+                  <li>Olahraga untuk lansia</li>
+                  <li>Nutrisi khusus usia lanjut</li>
+                  <li>Pencegahan penyakit degeneratif</li>
+                  <li>Kesehatan mental lansia</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Card 9 - Kesehatan Wanita -->
+            <div class="col-md-6 col-lg-3 fade-in" data-category="wanita">
+              <div class="education-card">
+                <div class="card-header">
+                  <span class="card-icon">👩</span>
+                  <span class="card-badge">Wanita</span>
+                </div>
+                <h3>Kesehatan Reproduksi Wanita</h3>
+                <p>
+                  Edukasi lengkap tentang kesehatan reproduksi dan siklus
+                  menstruasi yang sehat.
+                </p>
+                <ul class="topic-list">
+                  <li>Pemahaman siklus menstruasi</li>
+                  <li>Gangguan hormonal umum</li>
+                  <li>Kesehatan payudara</li>
+                  <li>Pemeriksaan rutin yang diperlukan</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Card 10 - Pencegahan -->
+            <div class="col-md-6 col-lg-3 fade-in" data-category="pencegahan">
+              <div class="education-card">
+                <div class="card-header">
+                  <span class="card-icon">💊</span>
+                  <span class="card-badge">Pencegahan</span>
+                </div>
+                <h3>Pertolongan Pertama Dasar</h3>
+                <p>
+                  Pelajari teknik pertolongan pertama untuk situasi darurat
+                  medis yang umum terjadi.
+                </p>
+                <ul class="topic-list">
+                  <li>CPR dan resusitasi</li>
+                  <li>Menangani luka dan pendarahan</li>
+                  <li>Mengatasi tersedak</li>
+                  <li>P3K di rumah</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Card 11 - Mental -->
+            <div class="col-md-6 col-lg-3 fade-in" data-category="mental">
+              <div class="education-card">
+                <div class="card-header">
+                  <span class="card-icon">😴</span>
+                  <span class="card-badge">Mental</span>
+                </div>
+                <h3>Pola Tidur Sehat</h3>
+                <p>
+                  Teknik dan kebiasaan untuk meningkatkan kualitas tidur dan
+                  mengatasi insomnia.
+                </p>
+                <ul class="topic-list">
+                  <li>Ritual sebelum tidur</li>
+                  <li>Mengatur lingkungan tidur</li>
+                  <li>Mengatasi gangguan tidur</li>
+                  <li>Pengaruh tidur pada kesehatan</li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Card 12 - Nutrisi -->
+            <div class="col-md-6 col-lg-3 fade-in" data-category="nutrisi">
+              <div class="education-card">
+                <div class="card-header">
+                  <span class="card-icon">🥤</span>
+                  <span class="card-badge">Nutrisi</span>
+                </div>
+                <h3>Hidrasi yang Tepat</h3>
+                <p>
+                  Pentingnya hidrasi untuk kesehatan dan cara memenuhi kebutuhan
+                  cairan tubuh.
+                </p>
+                <ul class="topic-list">
+                  <li>Kebutuhan cairan harian</li>
+                  <li>Tanda dehidrasi</li>
+                  <li>Pilihan minuman sehat</li>
+                  <li>Hidrasi saat berolahraga</li>
+                </ul>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Video Section -->
-  <div class="video-section">
-  <h2 class="section-title text-center mb-5">Video Edukasi Pilihan</h2>
-  <div class="row g-4">
+        <div class="video-section">
+          <h2 class="section-title text-center mb-5">Video Edukasi Pilihan</h2>
+          <div class="row g-4">
+            <!-- CARD 1 -->
+            <div class="col-md-4 fade-in">
+              <div class="video-card">
+                <a
+                  href="https://youtu.be/2huH1hov5wo?si=EPyCilsyMk37sffB"
+                  target="_blank"
+                >
+                  <div class="video-thumbnail">
+                    <img
+                      src="/assets/gambar/image.png"
+                      alt="Thumbnail Video"
+                      class="thumbnail-img"
+                      width="300"
+                      height="200"
+                    />
+                    <span class="play-icon">▶</span>
+                  </div>
+                </a>
+                <h4>Cara Cuci Tangan yang Benar</h4>
+                <p>2 menit • 1.2Jt Views</p>
+              </div>
+            </div>
 
-    <!-- CARD 1 -->
-    <div class="col-md-4 fade-in">
-      <div class="video-card">
-        <a href="https://youtu.be/2huH1hov5wo?si=EPyCilsyMk37sffB" target="_blank">
-          <div class="video-thumbnail">
-            <img src="/assets/gambar/image.png" alt="Thumbnail Video" class="thumbnail-img" wight="300" height="200">
-            <span class="play-icon">▶</span>
+            <!-- CARD 2 -->
+            <div class="col-md-4 fade-in">
+              <div class="video-card">
+                <a
+                  href="https://youtu.be/0LqWXlBfBxE?si=x79HsZh1LwErofm8"
+                  target="_blank"
+                >
+                  <div class="video-thumbnail">
+                    <img
+                      src="/assets/gambar/rileks.png"
+                      alt="Thumbnail Video"
+                      class="thumbnail-img"
+                      width="300"
+                      height="200"
+                    />
+                    <span class="play-icon">▶</span>
+                  </div>
+                </a>
+                <h4>Teknik Pernapasan untuk Relaksasi</h4>
+                <p>2.18 menit • 203K views</p>
+              </div>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="col-md-4 fade-in">
+              <div class="video-card">
+                <a
+                  href="https://youtu.be/MTU4iCDntjs?si=6nWxt0m0S3Dfsb2S"
+                  target="_blank"
+                >
+                  <div class="video-thumbnail">
+                    <img
+                      src="/assets/gambar/regang.png"
+                      alt="Thumbnail Video"
+                      class="thumbnail-img"
+                      width="300"
+                      height="200"
+                    />
+                    <span class="play-icon">▶</span>
+                  </div>
+                </a>
+                <h4>Gerakan Peregangan untuk Pekerja Kantor</h4>
+                <p>4.44 menit • 532K views</p>
+              </div>
+            </div>
+
+            <!-- CARD 4 -->
+            <div class="col-md-4 fade-in">
+              <div class="video-card">
+                <a
+                  href="https://youtu.be/jprEa9rL4nY?si=oVJstPcMc2ZERQYk"
+                  target="_blank"
+                >
+                  <div class="video-thumbnail">
+                    <div class="placeholder-video">
+                      <i class="bi bi-play-circle"></i>
+                    </div>
+                    <img
+                      src="/assets/gambar/makanan.png"
+                      alt="Thumbnail Video"
+                      class="thumbnail-img"
+                      width="300"
+                      height="200"
+                    />
+                    <span class="play-icon">▶</span>
+                  </div>
+                </a>
+                <h4>Makanan Sehat dan Bergizi</h4>
+                <p>1 menit • 59K views</p>
+              </div>
+            </div>
+
+            <!-- CARD 5 -->
+            <div class="col-md-4 fade-in">
+              <div class="video-card">
+                <a
+                  href="https://youtu.be/vSThNlE1snE?si=6gBx3Kp6hvo7Ihje"
+                  target="_blank"
+                >
+                  <div class="video-thumbnail">
+                    <div class="placeholder-video">
+                      <i class="bi bi-play-circle"></i>
+                    </div>
+                    <img
+                      src="/assets/gambar/senam.png"
+                      alt="Thumbnail Video"
+                      class="thumbnail-img"
+                      width="300"
+                      height="200"
+                    />
+                    <span class="play-icon">▶</span>
+                  </div>
+                </a>
+                <h4>Senam Aerobik Membakar Lemak</h4>
+                <p>15 menit • 25K views</p>
+              </div>
+            </div>
+
+            <!-- CARD 6 -->
+            <div class="col-md-4 fade-in">
+              <div class="video-card">
+                <a
+                  href="https://youtu.be/bL48Wh7n1pk?si=3pqk06VkCx8JsisT"
+                  target="_blank"
+                >
+                  <div class="video-thumbnail">
+                    <div class="placeholder-video">
+                      <i class="bi bi-play-circle"></i>
+                    </div>
+                    <img
+                      src="/assets/gambar/meditasi.png"
+                      alt="Thumbnail Video"
+                      class="thumbnail-img"
+                      width="300"
+                      height="200"
+                    />
+                    <span class="play-icon">▶</span>
+                  </div>
+                </a>
+                <h4>Meditasi Ketenangan</h4>
+                <p>7 menit • 18K views</p>
+              </div>
+            </div>
           </div>
-        </a>
-        <h4>Cara Cuci Tangan yang Benar</h4>
-        <p>5 menit • 10K views</p>
+        </div>
       </div>
-    </div>
-    
-    <!-- CARD 2 -->
-    <div class="col-md-4 fade-in">
-      <div class="video-card">
-        <a href="https://youtu.be/0LqWXlBfBxE?si=x79HsZh1LwErofm8" target="_blank">
-          <div class="video-thumbnail">
-            <img src="/assets/gambar/rileks.png" alt="Thumbnail Video" class="thumbnail-img" wight="300" height="200"
-            >
-            <span class="play-icon">▶</span>
-          </div>
-        </a>
-        <h4>Teknik Pernapasan untuk Relaksasi</h4>
-        <p>8 menit • 15K views</p>
-      </div>
-    </div>
-
-    <!-- CARD 3 -->
-    <div class="col-md-4 fade-in">
-      <div class="video-card">
-        <a href="https://youtu.be/MTU4iCDntjs?si=6nWxt0m0S3Dfsb2S" target="_blank">
-          <div class="video-thumbnail">
-            <img src="/assets/gambar/regang.png" alt="Thumbnail Video" class="thumbnail-img" wight="300" height="200">
-            <span class="play-icon">▶</span>
-          </div>
-        </a>
-        <h4>Gerakan Peregangan untuk Pekerja Kantor</h4>
-        <p>10 menit • 20K views</p>
-      </div>
-    </div>
-
-  </div>
-</div>
-
     </section>
 
     <footer class="bg-dark text-white py-4">
@@ -598,76 +546,8 @@
       </div>
     </footer>
 
-    <script>
-      // Navbar scroll effect
-      window.addEventListener("scroll", function () {
-        const navbar = document.querySelector(".navbar");
-        if (window.scrollY > 50) {
-          navbar.classList.add("scrolled");
-        } else {
-          navbar.classList.remove("scrolled");
-        }
-      });
-
-      // Fade in animation on scroll
-      const fadeElements = document.querySelectorAll(".fade-in");
-
-      const fadeInOnScroll = function () {
-        fadeElements.forEach((element) => {
-          const elementTop = element.getBoundingClientRect().top;
-          const elementVisible = 150;
-
-          if (elementTop < window.innerHeight - elementVisible) {
-            element.classList.add("visible");
-          }
-        });
-      };
-
-      window.addEventListener("scroll", fadeInOnScroll);
-      // Initial check
-      fadeInOnScroll();
-
-      function showCategory(category) {
-        const cards = document.querySelectorAll(".education-card");
-        const tabs = document.querySelectorAll(".tab-btn");
-
-        tabs.forEach((tab) => tab.classList.remove("active"));
-        event.target.classList.add("active");
-
-        cards.forEach((card) => {
-          const cardElement = card.closest("[data-category]");
-          if (
-            category === "all" ||
-            cardElement.getAttribute("data-category") === category
-          ) {
-            cardElement.style.display = "block";
-          } else {
-            cardElement.style.display = "none";
-          }
-        });
-      }
-
-      function openModule(moduleName) {
-        const moduleTitles = {
-          gizi: "Panduan Gizi Seimbang",
-          olahraga: "Program Olahraga Pemula",
-          stres: "Manajemen Stres",
-          pencegahan: "Pencegahan Penyakit",
-        };
-        alert(
-          "Membuka modul: " +
-            moduleTitles[moduleName] +
-            "\n\nKonten pembelajaran interaktif akan segera tersedia!"
-        );
-      }
-
-      function playVideo(videoTitle) {
-        alert(
-          "Memutar video: " +
-            videoTitle +
-            "\n\nFitur pemutaran video akan segera tersedia!"
-        );
-      }
-    </script>
+    <!-- Bootstrap JavaScript -->
+    <script src="/assets/Vendor/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>
