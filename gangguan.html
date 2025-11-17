@@ -214,86 +214,6 @@
         font-weight: bold;
       }
 
-      /* Filter Section */
-      .filter-section {
-        background-color: var(--white);
-        border-radius: 16px;
-        padding: 2rem;
-        box-shadow: var(--shadow-soft);
-        margin-bottom: 2rem;
-        border: 1px solid var(--neutral-medium);
-      }
-
-      .filter-group {
-        margin-bottom: 1.5rem;
-      }
-
-      .filter-label {
-        font-weight: 600;
-        margin-bottom: 0.75rem;
-        color: var(--text-primary);
-      }
-
-      /* Advanced Filter Dropdown */
-      .advanced-filter {
-        position: relative;
-      }
-
-      .filter-dropdown-btn {
-        background-color: var(--white);
-        border: 2px solid var(--neutral-medium);
-        border-radius: 10px;
-        padding: 0.75rem 1rem;
-        width: 100%;
-        text-align: left;
-        font-weight: 500;
-        transition: all 0.3s ease;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .filter-dropdown-btn:hover {
-        border-color: var(--primary-color);
-      }
-
-      .filter-dropdown-content {
-        display: none;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background-color: var(--white);
-        border: 1px solid var(--neutral-medium);
-        border-radius: 10px;
-        box-shadow: var(--shadow-medium);
-        z-index: 1000;
-        margin-top: 0.5rem;
-        padding: 1rem;
-      }
-
-      .filter-dropdown-content.show {
-        display: block;
-      }
-
-      .filter-option {
-        padding: 0.75rem 1rem;
-        border-radius: 8px;
-        margin-bottom: 0.5rem;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        border: 1px solid transparent;
-      }
-
-      .filter-option:hover {
-        background-color: var(--neutral-light);
-      }
-
-      .filter-option.active {
-        background-color: var(--primary-color);
-        color: var(--white);
-      }
-
       /* Search and Category Filter */
       .search-filter-bar {
         background-color: var(--white);
@@ -493,10 +413,6 @@
         .severity-badge {
           margin-top: 0.5rem;
         }
-
-        .filter-section {
-          padding: 1.5rem;
-        }
       }
     </style>
   </head>
@@ -599,152 +515,6 @@
                 <option value="kanker">Penyakit Kanker</option>
               </select>
             </div>
-          </div>
-        </div>
-
-        <!-- Advanced Filter Section -->
-        <div class="filter-section fade-in">
-          <div class="row g-4">
-            <!-- Severity Filter -->
-            <div class="col-md-4">
-              <div class="filter-group">
-                <label class="filter-label">Tingkat Keparahan</label>
-                <div class="advanced-filter">
-                  <button
-                    class="filter-dropdown-btn"
-                    onclick="toggleDropdown('severityDropdown')"
-                  >
-                    <span id="severitySelected">Semua Tingkat</span>
-                    <i class="fas fa-chevron-down"></i>
-                  </button>
-                  <div class="filter-dropdown-content" id="severityDropdown">
-                    <div
-                      class="filter-option active"
-                      data-value="all"
-                      onclick="selectFilter('severity', 'all', 'Semua Tingkat')"
-                    >
-                      Semua Tingkat
-                    </div>
-                    <div
-                      class="filter-option"
-                      data-value="low"
-                      onclick="selectFilter('severity', 'low', 'Ringan-Sedang')"
-                    >
-                      Ringan-Sedang
-                    </div>
-                    <div
-                      class="filter-option"
-                      data-value="medium"
-                      onclick="selectFilter('severity', 'medium', 'Kronis')"
-                    >
-                      Kronis
-                    </div>
-                    <div
-                      class="filter-option"
-                      data-value="high"
-                      onclick="selectFilter('severity', 'high', 'Serius')"
-                    >
-                      Serius
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Alphabet Filter -->
-            <div class="col-md-4">
-              <div class="filter-group">
-                <label class="filter-label">Filter A-Z</label>
-                <div class="advanced-filter">
-                  <button
-                    class="filter-dropdown-btn"
-                    onclick="toggleDropdown('alphabetDropdown')"
-                  >
-                    <span id="alphabetSelected">Semua Huruf</span>
-                    <i class="fas fa-chevron-down"></i>
-                  </button>
-                  <div class="filter-dropdown-content" id="alphabetDropdown">
-                    <div
-                      class="filter-option active"
-                      data-value="all"
-                      onclick="selectFilter('alphabet', 'all', 'Semua Huruf')"
-                    >
-                      Semua Huruf
-                    </div>
-                    <div class="row g-1 p-2" id="alphabetOptions">
-                      <!-- Alphabet options will be generated by JavaScript -->
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Symptom Filter -->
-            <div class="col-md-4">
-              <div class="filter-group">
-                <label class="filter-label">Gejala Utama</label>
-                <div class="advanced-filter">
-                  <button
-                    class="filter-dropdown-btn"
-                    onclick="toggleDropdown('symptomDropdown')"
-                  >
-                    <span id="symptomSelected">Semua Gejala</span>
-                    <i class="fas fa-chevron-down"></i>
-                  </button>
-                  <div class="filter-dropdown-content" id="symptomDropdown">
-                    <div
-                      class="filter-option active"
-                      data-value="all"
-                      onclick="selectFilter('symptom', 'all', 'Semua Gejala')"
-                    >
-                      Semua Gejala
-                    </div>
-                    <div
-                      class="filter-option"
-                      data-value="demam"
-                      onclick="selectFilter('symptom', 'demam', 'Demam')"
-                    >
-                      Demam
-                    </div>
-                    <div
-                      class="filter-option"
-                      data-value="batuk"
-                      onclick="selectFilter('symptom', 'batuk', 'Batuk')"
-                    >
-                      Batuk
-                    </div>
-                    <div
-                      class="filter-option"
-                      data-value="sesak"
-                      onclick="selectFilter('symptom', 'sesak', 'Sesak Napas')"
-                    >
-                      Sesak Napas
-                    </div>
-                    <div
-                      class="filter-option"
-                      data-value="nyeri"
-                      onclick="selectFilter('symptom', 'nyeri', 'Nyeri')"
-                    >
-                      Nyeri
-                    </div>
-                    <div
-                      class="filter-option"
-                      data-value="mual"
-                      onclick="selectFilter('symptom', 'mual', 'Mual')"
-                    >
-                      Mual
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Clear Filters Button -->
-          <div class="text-center mt-3">
-            <button class="btn btn-outline-primary" onclick="clearAllFilters()">
-              <i class="fas fa-times me-2"></i>Hapus Semua Filter
-            </button>
           </div>
         </div>
 
@@ -1087,9 +857,6 @@
       const itemsPerPage = 12;
       let filteredDiseases = [...diseases];
       let currentFilters = {
-        severity: "all",
-        alphabet: "all",
-        symptom: "all",
         category: "all",
         search: "",
       };
@@ -1097,27 +864,9 @@
       // Initialize the page
       document.addEventListener("DOMContentLoaded", function () {
         updateDiseaseCount();
-        generateAlphabetOptions();
         renderDiseases();
         setupEventListeners();
       });
-
-      // Generate alphabet options
-      function generateAlphabetOptions() {
-        const container = document.getElementById("alphabetOptions");
-        const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split("");
-
-        alphabet.forEach((letter) => {
-          const col = document.createElement("div");
-          col.className = "col-3";
-          col.innerHTML = `
-                    <div class="filter-option" data-value="${letter}" onclick="selectFilter('alphabet', '${letter}', '${letter}')">
-                        ${letter}
-                    </div>
-                `;
-          container.appendChild(col);
-        });
-      }
 
       // Update disease count
       function updateDiseaseCount() {
@@ -1231,11 +980,6 @@
                                 </ul>
                             </div>
                         </div>
-                        <button class="btn btn-primary w-100" onclick="showDetail('${
-                          disease.name
-                        }')">
-                            <i class="fas fa-info-circle me-2"></i>Lihat Detail Lengkap
-                        </button>
                     </div>
                 `;
 
@@ -1273,83 +1017,6 @@
         document
           .getElementById("loadMoreBtn")
           .addEventListener("click", loadMoreDiseases);
-
-        // Close dropdowns when clicking outside
-        document.addEventListener("click", function (event) {
-          if (!event.target.closest(".advanced-filter")) {
-            closeAllDropdowns();
-          }
-        });
-      }
-
-      // Toggle dropdown
-      function toggleDropdown(dropdownId) {
-        const dropdown = document.getElementById(dropdownId);
-        const isOpen = dropdown.classList.contains("show");
-
-        closeAllDropdowns();
-
-        if (!isOpen) {
-          dropdown.classList.add("show");
-        }
-      }
-
-      // Close all dropdowns
-      function closeAllDropdowns() {
-        const dropdowns = document.querySelectorAll(".filter-dropdown-content");
-        dropdowns.forEach((dropdown) => {
-          dropdown.classList.remove("show");
-        });
-      }
-
-      // Select filter option
-      function selectFilter(type, value, displayText) {
-        currentFilters[type] = value;
-
-        // Update selected text
-        document.getElementById(`${type}Selected`).textContent = displayText;
-
-        // Update active state
-        const dropdown = document.getElementById(`${type}Dropdown`);
-        const options = dropdown.querySelectorAll(".filter-option");
-        options.forEach((option) => {
-          option.classList.remove("active");
-          if (option.getAttribute("data-value") === value) {
-            option.classList.add("active");
-          }
-        });
-
-        closeAllDropdowns();
-        filterDiseases();
-      }
-
-      // Clear all filters
-      function clearAllFilters() {
-        currentFilters = {
-          severity: "all",
-          alphabet: "all",
-          symptom: "all",
-          category: "all",
-          search: "",
-        };
-
-        // Reset UI
-        document.getElementById("severitySelected").textContent =
-          "Semua Tingkat";
-        document.getElementById("alphabetSelected").textContent = "Semua Huruf";
-        document.getElementById("symptomSelected").textContent = "Semua Gejala";
-        document.getElementById("categoryDisease").value = "all";
-        document.getElementById("searchDisease").value = "";
-
-        // Reset active states
-        document.querySelectorAll(".filter-option").forEach((option) => {
-          option.classList.remove("active");
-          if (option.getAttribute("data-value") === "all") {
-            option.classList.add("active");
-          }
-        });
-
-        filterDiseases();
       }
 
       // Filter diseases based on all criteria
@@ -1369,29 +1036,9 @@
             currentFilters.category === "all" ||
             disease.category === currentFilters.category;
 
-          // Severity filter
-          const matchesSeverity =
-            currentFilters.severity === "all" ||
-            disease.severity === currentFilters.severity;
-
-          // Alphabet filter
-          const matchesAlphabet =
-            currentFilters.alphabet === "all" ||
-            disease.name.charAt(0).toUpperCase() === currentFilters.alphabet;
-
-          // Symptom filter
-          const matchesSymptom =
-            currentFilters.symptom === "all" ||
-            disease.symptoms.some((symptom) =>
-              symptom.toLowerCase().includes(currentFilters.symptom)
-            );
-
           return (
             matchesSearch &&
-            matchesCategory &&
-            matchesSeverity &&
-            matchesAlphabet &&
-            matchesSymptom
+            matchesCategory
           );
         });
 
@@ -1403,13 +1050,6 @@
       function loadMoreDiseases() {
         currentPage++;
         renderDiseases();
-      }
-
-      // Show disease detail (placeholder)
-      function showDetail(disease) {
-        alert(
-          `Menampilkan detail lengkap untuk: ${disease}\n\nHalaman detail akan segera tersedia!`
-        );
       }
     </script>
   </body>
