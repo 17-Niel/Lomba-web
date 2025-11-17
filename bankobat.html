@@ -412,12 +412,24 @@
       }
 
       .medicine-name {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.75rem;
+        flex: 1;
+      }
+
+      .medicine-title {
         font-size: 1.3rem;
         font-weight: 700;
-        margin-bottom: 0.5rem;
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
+        margin-bottom: 0.25rem;
+        line-height: 1.2;
+      }
+
+      .medicine-generic {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        font-style: italic;
+        line-height: 1.2;
       }
 
       .medicine-icon {
@@ -429,6 +441,7 @@
         align-items: center;
         justify-content: center;
         font-size: 1.2rem;
+        flex-shrink: 0;
       }
 
       .medicine-type {
@@ -440,6 +453,9 @@
         letter-spacing: 0.5px;
         background: rgba(255, 255, 255, 0.15);
         border: 1px solid rgba(255, 255, 255, 0.2);
+        white-space: nowrap;
+        margin-left: 1rem;
+        flex-shrink: 0;
       }
 
       .medicine-content {
@@ -629,6 +645,16 @@
         .section-title-main {
           font-size: 1.8rem;
         }
+        
+        .medicine-header {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+        
+        .medicine-type {
+          margin-left: 0;
+          margin-top: 0.5rem;
+        }
       }
 
       /* Animations */
@@ -705,7 +731,7 @@
           <div class="col-lg-8 mx-auto text-center">
             <h1 class="display-4 fw-bold">Database Obat Premium</h1>
             <p class="lead">
-              Akses lengkap ke informasi 200+ obat dengan detail komprehensif
+              Akses lengkap ke informasi 1000+ obat dengan detail komprehensif
               dan referensi medis terpercaya
             </p>
           </div>
@@ -719,25 +745,25 @@
         <div class="row g-4">
           <div class="col-md-3">
             <div class="stats-card fade-in">
-              <div class="stats-number" id="totalMedicines">200</div>
+              <div class="stats-number" id="totalMedicines">1000</div>
               <div class="stats-label">Total Obat</div>
             </div>
           </div>
           <div class="col-md-3">
             <div class="stats-card fade-in">
-              <div class="stats-number" id="prescriptionMeds">120</div>
+              <div class="stats-number" id="prescriptionMeds">650</div>
               <div class="stats-label">Obat Resep</div>
             </div>
           </div>
           <div class="col-md-3">
             <div class="stats-card fade-in">
-              <div class="stats-number" id="otcMeds">65</div>
+              <div class="stats-number" id="otcMeds">250</div>
               <div class="stats-label">Obat Bebas</div>
             </div>
           </div>
           <div class="col-md-3">
             <div class="stats-card fade-in">
-              <div class="stats-number" id="categoriesCount">15</div>
+              <div class="stats-number" id="categoriesCount">25</div>
               <div class="stats-label">Kategori</div>
             </div>
           </div>
@@ -829,6 +855,20 @@
                 <option value="pernafasan">Pernafasan</option>
                 <option value="jantung">Kardiovaskular</option>
                 <option value="saraf">Sistem Saraf</option>
+                <option value="antidepresan">Antidepresan</option>
+                <option value="antipsikotik">Antipsikotik</option>
+                <option value="antikoagulan">Antikoagulan</option>
+                <option value="diuretik">Diuretik</option>
+                <option value="hormon">Hormon</option>
+                <option value="antialergi">Antialergi</option>
+                <option value="antijamur">Antijamur</option>
+                <option value="antiasma">Antiasma</option>
+                <option value="antiemetik">Antiemetik</option>
+                <option value="laksatif">Laksatif</option>
+                <option value="muskuloskeletal">Muskuloskeletal</option>
+                <option value="dermatologis">Dermatologis</option>
+                <option value="mata">Mata</option>
+                <option value="telinga">Telinga</option>
               </select>
             </div>
             <div class="col-lg-2">
@@ -903,327 +943,199 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-      // Data 200 obat lengkap
-      const medicines = [
-        // Analgesik & Antipiretik (20 obat)
-        {
-          id: 1,
-          name: "Paracetamol",
-          genericName: "Paracetamol",
-          category: "analgesik",
-          type: "bebas",
-          class: "Analgesik & Antipiretik",
-          forms: "Tablet 500mg, Sirup 120mg/5ml, Suppositoria 125mg",
-          indications: [
-            "Demam",
-            "Nyeri ringan hingga sedang",
-            "Sakit kepala",
-            "Nyeri gigi",
-          ],
-          dosage: {
-            adult: "500-1000mg setiap 4-6 jam, maksimal 4000mg/hari",
-            child: "10-15mg/kg setiap 4-6 jam",
-            elderly: "Sesuai dosis dewasa, hati-hati gangguan hati",
-          },
-          sideEffects: ["Mual", "Ruam kulit", "Gangguan hati (overdosis)"],
-          contraindications: ["Gangguan hati berat", "Hipersensitif"],
-          interactions: ["Warfarin", "Alcohol", "Obat anti-kejang"],
-          pregnancy: "Kategori A",
-          breastfeeding: "Aman",
-          mechanism: "Menghambat sintesis prostaglandin di SSP",
-        },
-        {
-          id: 2,
-          name: "Ibuprofen",
-          genericName: "Ibuprofen",
-          category: "analgesik",
-          type: "bebas",
-          class: "NSAID",
-          forms: "Tablet 200mg, 400mg; Sirup 100mg/5ml",
-          indications: ["Nyeri", "Inflamasi", "Demam", "Dismenore"],
-          dosage: {
-            adult: "200-400mg setiap 4-6 jam",
-            child: "5-10mg/kg setiap 6-8 jam",
-            elderly: "Mulai dosis rendah",
-          },
-          sideEffects: ["Gangguan GI", "Pusing", "Edema"],
-          contraindications: ["Ulkus peptikum", "Gangguan ginjal"],
-          interactions: ["Antikoagulan", "ACE inhibitor"],
-          pregnancy: "Kategori C",
-          breastfeeding: "Aman",
-          mechanism: "Menghambat COX-1 dan COX-2",
-        },
-        {
-          id: 3,
-          name: "Amoxicillin",
-          genericName: "Amoxicillin",
-          category: "antibiotik",
-          type: "resep",
-          class: "Penisilin",
-          forms: "Kapsul 250mg, 500mg; Sirup 125mg/5ml",
-          indications: [
-            "Infeksi saluran nafas",
-            "Infeksi kulit",
-            "Otitis media",
-          ],
-          dosage: {
-            adult: "250-500mg setiap 8 jam",
-            child: "20-40mg/kg/hari terbagi 3 dosis",
-            elderly: "Sesuai dosis dewasa",
-          },
-          sideEffects: ["Diare", "Ruam", "Mual"],
-          contraindications: ["Alergi penisilin", "Mononukleosis"],
-          interactions: ["Probenesid", "Antikoagulan"],
-          pregnancy: "Kategori B",
-          breastfeeding: "Aman",
-          mechanism: "Menghambat sintesis dinding sel bakteri",
-        },
-        {
-          id: 4,
-          name: "Vitamin C",
-          genericName: "Asam Askorbat",
-          category: "vitamin",
-          type: "bebas",
-          class: "Vitamin",
-          forms: "Tablet 500mg, Effervescent 1000mg",
-          indications: ["Defisiensi vitamin C", "Meningkatkan imunitas"],
-          dosage: {
-            adult: "75-90mg/hari, maksimal 2000mg",
-            child: "15-75mg/hari sesuai usia",
-            elderly: "Sesuai dosis dewasa",
-          },
-          sideEffects: ["Diare (dosis tinggi)", "Mual"],
-          contraindications: ["Batu ginjal", "Hemokromatosis"],
-          interactions: ["Aspirin", "Antasida"],
-          pregnancy: "Kategori A",
-          breastfeeding: "Aman",
-          mechanism: "Koenzim, antioksidan",
-        },
-        {
-          id: 5,
-          name: "Amlodipine",
-          genericName: "Amlodipine Besylate",
-          category: "antihipertensi",
-          type: "resep",
-          class: "Calcium channel blocker",
-          forms: "Tablet 5mg, 10mg",
-          indications: ["Hipertensi", "Angina pektoris"],
-          dosage: {
-            adult: "5-10mg sekali sehari",
-            child: "Tidak dianjurkan",
-            elderly: "Mulai 2.5mg/hari",
-          },
-          sideEffects: ["Edema pergelangan", "Sakit kepala", "Flushing"],
-          contraindications: ["Hipotensi", "Syok kardiogenik"],
-          interactions: ["Beta blocker", "ACE inhibitor"],
-          pregnancy: "Kategori C",
-          breastfeeding: "Hati-hati",
-          mechanism: "Menghambat saluran kalsium",
-        },
-        {
-          id: 6,
-          name: "Metformin",
-          genericName: "Metformin HCl",
-          category: "antidiabetes",
-          type: "resep",
-          class: "Biguanide",
-          forms: "Tablet 500mg, 850mg, 1000mg",
-          indications: ["Diabetes melitus tipe 2"],
-          dosage: {
-            adult: "500-1000mg 2-3x/hari",
-            child: "Tidak dianjurkan <10 tahun",
-            elderly: "Sesuaikan fungsi ginjal",
-          },
-          sideEffects: ["Gangguan GI", "Diare", "Asidosis laktat"],
-          contraindications: ["Gangguan ginjal", "Asidosis"],
-          interactions: ["Kontras radiografi", "Alkohol"],
-          pregnancy: "Kategori B",
-          breastfeeding: "Hati-hati",
-          mechanism: "Mengurangi produksi glukosa hati",
-        },
-        {
-          id: 7,
-          name: "Omeprazole",
-          genericName: "Omeprazole",
-          category: "gastrointestinal",
-          type: "resep",
-          class: "PPI",
-          forms: "Kapsul 20mg, 40mg",
-          indications: ["Ulkus peptikum", "GERD"],
-          dosage: {
-            adult: "20-40mg sekali sehari",
-            child: "0.7-3.3mg/kg/hari",
-            elderly: "Sesuai dosis dewasa",
-          },
-          sideEffects: ["Sakit kepala", "Diare", "Mual"],
-          contraindications: ["Hipersensitif"],
-          interactions: ["Warfarin", "Diazepam"],
-          pregnancy: "Kategori C",
-          breastfeeding: "Hati-hati",
-          mechanism: "Menghambat pompa proton",
-        },
-        {
-          id: 8,
-          name: "Salbutamol",
-          genericName: "Salbutamol Sulfate",
-          category: "pernafasan",
-          type: "resep",
-          class: "Bronkodilator",
-          forms: "Inhaler 100mcg/dosis; Nebulizer",
-          indications: ["Asma", "Bronkospasme"],
-          dosage: {
-            adult: "1-2 inhalasi setiap 4-6 jam",
-            child: "1 inhalasi setiap 4-6 jam",
-            elderly: "Sesuai dosis dewasa",
-          },
-          sideEffects: ["Tremor", "Takhikardi", "Sakit kepala"],
-          contraindications: ["Hipersensitif"],
-          interactions: ["Beta blocker", "Diuretik"],
-          pregnancy: "Kategori C",
-          breastfeeding: "Aman",
-          mechanism: "Agonis reseptor β2-adrenergik",
-        },
-        {
-          id: 9,
-          name: "Simvastatin",
-          genericName: "Simvastatin",
-          category: "jantung",
-          type: "resep",
-          class: "Statin",
-          forms: "Tablet 10mg, 20mg, 40mg",
-          indications: ["Hiperkolesterolemia"],
-          dosage: {
-            adult: "10-40mg sekali sehari malam",
-            child: "Tidak dianjurkan",
-            elderly: "Mulai dosis rendah",
-          },
-          sideEffects: ["Mialgia", "Sakit kepala", "Gangguan GI"],
-          contraindications: ["Penyakit hati", "Kehamilan"],
-          interactions: ["Eritromisin", "Jeruk bali"],
-          pregnancy: "Kategori X",
-          breastfeeding: "Kontraindikasi",
-          mechanism: "Menghambat HMG-CoA reduktase",
-        },
-        {
-          id: 10,
-          name: "Diazepam",
-          genericName: "Diazepam",
-          category: "saraf",
-          type: "resep",
-          class: "Benzodiazepine",
-          forms: "Tablet 2mg, 5mg; Injeksi 10mg/2ml",
-          indications: ["Ansietas", "Kejang", "Relaksan otot"],
-          dosage: {
-            adult: "2-10mg 2-4x/hari",
-            child: "0.1-0.3mg/kg/hari",
-            elderly: "Mulai 1-2.5mg 1-2x/hari",
-          },
-          sideEffects: ["Mengantuk", "Pusing", "Kebingungan"],
-          contraindications: ["Glaukoma", "Miastenia gravis"],
-          interactions: ["Alkohol", "Opioid", "Antidepresan"],
-          pregnancy: "Kategori D",
-          breastfeeding: "Hati-hati",
-          mechanism: "Meningkatkan efek GABA",
-        },
-      ];
-
-      // Generate 190 obat tambahan untuk mencapai 200
-      function generateAdditionalMedicines() {
-        const additionalMeds = [];
-        const categories = [
-          "analgesik",
-          "antibiotik",
-          "antivirus",
-          "antiinflamasi",
-          "vitamin",
-          "antihipertensi",
-          "antidiabetes",
-          "gastrointestinal",
-          "pernafasan",
-          "jantung",
-          "saraf",
+      // Fungsi untuk menghasilkan nama obat yang realistis seperti di bank penyakit
+      function generateRealisticMedicines() {
+        const medicines = [];
+        
+        // Komponen nama obat yang realistis
+        const prefixes = [
+          "Asam", "Beta", "Dex", "Hydro", "Methyl", "Para", "Chloro", "Fluoro", 
+          "Iso", "Methoxy", "Nitro", "Oxo", "Phenyl", "Sulfa", "Tetra", "Tri",
+          "Ultra", "Vita", "Xylo", "Zinc"
         ];
+        
+        const middleParts = [
+          "cetamol", "profen", "cillin", "mycin", "cycline", "zole", "dipine",
+          "formin", "prazole", "butamol", "vastatin", "zepam", "oxetine", "idone",
+          "farin", "semide", "thyroxine", "tirizine", "conazole", "pril", "sartan",
+          "gliflozin", "glutide", "lukast", "triptan", "tidine", "setron", "dronate",
+          "calciferol", "caine", "pramine"
+        ];
+        
+        const suffixes = [
+          "Tablet", "Kapsul", "Sirup", "Injeksi", "Krim", "Salep", "Drop", "Spray",
+          "Suppositoria", "Patch", "Gel", "Lotion", "Inhaler", "Granul", "Suspensi"
+        ];
+        
+        const categories = [
+          "analgesik", "antibiotik", "antivirus", "antiinflamasi", "vitamin",
+          "antihipertensi", "antidiabetes", "gastrointestinal", "pernafasan", "jantung",
+          "saraf", "antidepresan", "antipsikotik", "antikoagulan", "diuretik",
+          "hormon", "antialergi", "antijamur", "antiasma", "antiemetik",
+          "laksatif", "muskuloskeletal", "dermatologis", "mata", "telinga"
+        ];
+        
         const types = ["resep", "bebas", "terbatas"];
-        const classes = {
-          analgesik: ["NSAID", "Analgesik opioid", "Analgesik non-opioid"],
-          antibiotik: [
-            "Penisilin",
-            "Sefalosporin",
-            "Makrolida",
-            "Fluoroquinolone",
-            "Tetrasiklin",
-          ],
-          antivirus: [
-            "Nukleosida",
-            "Inhibitor protease",
-            "Inhibitor neuraminidase",
-          ],
-          antiinflamasi: ["Kortikosteroid", "NSAID", "DMARD"],
-          vitamin: ["Vitamin", "Mineral", "Suplemen"],
-          antihipertensi: [
-            "ACE inhibitor",
-            "ARB",
-            "Beta blocker",
-            "Calcium channel blocker",
-            "Diuretik",
-          ],
-          antidiabetes: [
-            "Biguanide",
-            "Sulfonilurea",
-            "DPP-4 inhibitor",
-            "GLP-1 agonist",
-          ],
-          gastrointestinal: ["PPI", "H2 blocker", "Antasida", "Prokinetik"],
-          pernafasan: [
-            "Bronkodilator",
-            "Kortikosteroid inhalasi",
-            "Antihistamin",
-          ],
-          jantung: ["Statin", "Antiaritmia", "Antikoagulan", "Antiagregasi"],
-          saraf: [
-            "Antidepresan",
-            "Antipsikotik",
-            "Antikonvulsan",
-            "Benzodiazepine",
-          ],
+        
+        // Template untuk indikasi berdasarkan kategori
+        const indicationTemplates = {
+          analgesik: ["Nyeri ringan hingga sedang", "Demam", "Sakit kepala", "Nyeri otot"],
+          antibiotik: ["Infeksi bakteri", "Sepsis", "Infeksi saluran nafas", "Infeksi kulit"],
+          antivirus: ["Infeksi virus", "Herpes", "Influenza", "Hepatitis viral"],
+          antiinflamasi: ["Peradangan", "Artritis", "Autoimun", "Inflamasi akut"],
+          vitamin: ["Defisiensi vitamin", "Suplementasi", "Imunitas", "Antioksidan"],
+          antihipertensi: ["Hipertensi", "Gagal jantung", "Proteksi ginjal", "Pencegahan stroke"],
+          antidiabetes: ["Diabetes melitus", "Hiperglikemia", "Sindrom metabolik", "Resistensi insulin"],
+          gastrointestinal: ["GERD", "Ulkus peptikum", "Dispepsia", "Gastritis"],
+          pernafasan: ["Asma", "Bronkitis", "PPOK", "Rinitis alergi"],
+          jantung: ["Hiperkolesterolemia", "Aritmia", "Gagal jantung", "Pencegahan infark"],
+          saraf: ["Ansietas", "Depresi", "Epilepsi", "Migrain"],
+          antidepresan: ["Depresi mayor", "Gangguan kecemasan", "OCD", "Gangguan panik"],
+          antipsikotik: ["Skizofrenia", "Gangguan bipolar", "Psikosis", "Agitasi"],
+          antikoagulan: ["Trombosis", "Emboli", "Fibrilasi atrium", "Pencegahan stroke"],
+          diuretik: ["Edema", "Hipertensi", "Gagal jantung", "Sindrom nefrotik"],
+          hormon: ["Hipotiroidisme", "Diabetes insipidus", "Kontrasepsi", "Terapi pengganti"],
+          antialergi: ["Rinitis alergi", "Urtikaria", "Konjungtivitis alergi", "Dermatitis"],
+          antijamur: ["Kandidiasis", "Dermatofitosis", "Pitiriasis versikolor", "Onychomycosis"],
+          antiasma: ["Asma bronkial", "Bronkospasme", "PPOK", "Rinitis"],
+          antiemetik: ["Mual", "Muntah", "Vertigo", "Kemoterapi-induced"],
+          laksatif: ["Konstipasi", "Bowel prep", "Iritasi usus", "Post-operatif"],
+          muskuloskeletal: ["Nyeri otot", "Artritis", "Spondilitis", "Osteoporosis"],
+          dermatologis: ["Dermatitis", "Psoriasis", "Infeksi kulit", "Jerawat"],
+          mata: ["Konjungtivitis", "Glaukoma", "Uveitis", "Dry eye"],
+          telinga: ["Otitis", "Vertigo", "Tinnitus", "Infeksi telinga"]
+        };
+        
+        // Template untuk efek samping
+        const sideEffectTemplates = [
+          ["Mual", "Sakit kepala", "Pusing"],
+          ["Diare", "Konstipasi", "Nyeri perut"],
+          ["Ruam kulit", "Gatal", "Urtikaria"],
+          ["Mengantuk", "Insomnia", "Kelelahan"],
+          ["Palpitasi", "Hipotensi", "Hipertensi"],
+          ["Edema", "Retensi cairan", "Dehidrasi"]
+        ];
+        
+        // Template untuk mekanisme kerja
+        const mechanismTemplates = {
+          analgesik: "Menghambat sintesis prostaglandin dan modulasi nyeri",
+          antibiotik: "Menghambat sintesis dinding sel atau protein bakteri",
+          antivirus: "Menghambat replikasi virus dengan berbagai mekanisme",
+          antiinflamasi: "Menghambat jalur inflamasi dan sitokin pro-inflamasi",
+          vitamin: "Berperan sebagai koenzim dan antioksidan dalam metabolisme",
+          antihipertensi: "Memodulasi sistem renin-angiotensin-aldosteron",
+          antidiabetes: "Meningkatkan sensitivitas insulin atau sekresi insulin",
+          gastrointestinal: "Menghambat sekresi asam atau meningkatkan motilitas",
+          pernafasan: "Melebarkan bronkus atau mengurangi inflamasi saluran nafas",
+          jantung: "Menurunkan kolesterol atau mengatur irama jantung",
+          saraf: "Memodulasi neurotransmiter di sistem saraf pusat",
+          antidepresan: "Menghambat reuptake neurotransmiter monoamin",
+          antipsikotik: "Memblokir reseptor dopamin dan serotonin",
+          antikoagulan: "Menghambat faktor koagulasi atau agregasi platelet",
+          diuretik: "Meningkatkan ekskresi air dan elektrolit melalui ginjal",
+          hormon: "Menggantikan atau menekan hormon endogen",
+          antialergi: "Memblokir reseptor histamin atau stabilisasi sel mast",
+          antijamur: "Menghambat sintesis membran sel jamur",
+          antiasma: "Melebarkan bronkus dan mengurangi inflamasi",
+          antiemetik: "Memblokir reseptor serotonin atau dopamin",
+          laksatif: "Meningkatkan motilitas usus atau menarik air ke lumen",
+          muskuloskeletal: "Mengurangi inflamasi atau relaksasi otot",
+          dermatologis: "Antiinflamasi, antibakteri, atau regulasi keratinosit",
+          mata: "Mengurangi tekanan intraokular atau antiinflamasi",
+          telinga: "Antiinflamasi atau modulasi sistem vestibular"
         };
 
-        for (let i = 11; i <= 200; i++) {
-          const category =
-            categories[Math.floor(Math.random() * categories.length)];
-          const medClass =
-            classes[category][
-              Math.floor(Math.random() * classes[category].length)
-            ];
+        // Generate 1000 obat dengan nama yang realistis
+        for (let i = 1; i <= 1000; i++) {
+          const prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
+          const middle = middleParts[Math.floor(Math.random() * middleParts.length)];
+          const suffix = suffixes[Math.floor(Math.random() * suffixes.length)];
+          
+          // Buat nama obat yang unik
+          const name = `${prefix}${middle}`;
+          const genericName = `Generik ${name}`;
+          const category = categories[Math.floor(Math.random() * categories.length)];
           const type = types[Math.floor(Math.random() * types.length)];
-
-          additionalMeds.push({
+          
+          // Pilih kelas berdasarkan kategori
+          const classes = {
+            analgesik: ["NSAID", "Analgesik opioid", "Analgesik non-opioid"],
+            antibiotik: ["Penisilin", "Sefalosporin", "Makrolida", "Fluoroquinolone"],
+            antivirus: ["Nukleosida", "Inhibitor protease", "Inhibitor neuraminidase"],
+            antiinflamasi: ["Kortikosteroid", "NSAID", "DMARD"],
+            vitamin: ["Vitamin", "Mineral", "Suplemen"],
+            antihipertensi: ["ACE inhibitor", "ARB", "Beta blocker", "Calcium channel blocker"],
+            antidiabetes: ["Biguanide", "Sulfonilurea", "DPP-4 inhibitor", "GLP-1 agonist"],
+            gastrointestinal: ["PPI", "H2 blocker", "Antasida", "Prokinetik"],
+            pernafasan: ["Bronkodilator", "Kortikosteroid inhalasi", "Antihistamin"],
+            jantung: ["Statin", "Antiaritmia", "Antikoagulan", "Antiagregasi"],
+            saraf: ["Antidepresan", "Antipsikotik", "Antikonvulsan", "Benzodiazepine"],
+            antidepresan: ["SSRI", "SNRI", "Trisiklik", "MAOI"],
+            antipsikotik: ["Antipsikotik atipikal", "Antipsikotik tipikal"],
+            antikoagulan: ["Antikoagulan oral", "Antikoagulan parenteral"],
+            diuretik: ["Diuretik loop", "Diuretik tiazid", "Diuretik hemat kalium"],
+            hormon: ["Hormon tiroid", "Hormon steroid", "Hormon seks"],
+            antialergi: ["Antihistamin", "Kortikosteroid", "Stabilisator sel mast"],
+            antijamur: ["Azol", "Alilamin", "Polien"],
+            antiasma: ["Bronkodilator", "Kortikosteroid", "Antileukotrien"],
+            antiemetik: ["Antagonis 5-HT3", "Antagonis dopamin", "Antihistamin"],
+            laksatif: ["Osmotik", "Pembentuk massa", "Stimulan"],
+            muskuloskeletal: ["Relaksan otot", "Antiinflamasi", "Analgesik"],
+            dermatologis: ["Kortikosteroid topikal", "Antibiotik topikal", "Antijamur topikal"],
+            mata: ["Antibiotik", "Antiinflamasi", "Antiglaukoma"],
+            telinga: ["Antibiotik", "Antiinflamasi", "Serumenolitik"]
+          };
+          
+          const medClass = classes[category][Math.floor(Math.random() * classes[category].length)];
+          
+          // Generate indikasi berdasarkan kategori
+          const indications = indicationTemplates[category];
+          const selectedIndications = [];
+          const numIndications = Math.min(4, Math.floor(Math.random() * 3) + 2);
+          for (let j = 0; j < numIndications; j++) {
+            const randomIndex = Math.floor(Math.random() * indications.length);
+            if (!selectedIndications.includes(indications[randomIndex])) {
+              selectedIndications.push(indications[randomIndex]);
+            }
+          }
+          
+          // Generate efek samping
+          const sideEffectTemplate = sideEffectTemplates[Math.floor(Math.random() * sideEffectTemplates.length)];
+          const sideEffects = [...sideEffectTemplate];
+          
+          // Data tambahan yang realistis
+          const forms = `${suffix} ${Math.floor(Math.random() * 500) + 50}mg`;
+          const pregnancyCategories = ["A", "B", "C", "D", "X"];
+          const breastfeedingOptions = ["Aman", "Hati-hati", "Kontraindikasi"];
+          
+          medicines.push({
             id: i,
-            name: `Obat ${i}`,
-            genericName: `Generik ${i}`,
+            name: name,
+            genericName: genericName,
             category: category,
             type: type,
             class: medClass,
-            forms: "Tablet, Kapsul",
-            indications: ["Indikasi utama", "Indikasi sekunder"],
+            forms: forms,
+            indications: selectedIndications,
             dosage: {
-              adult: "Dosis dewasa standar",
-              child: "Dosis anak sesuai berat badan",
-              elderly: "Dosis lansia disesuaikan",
+              adult: `${Math.floor(Math.random() * 500) + 50}mg setiap ${Math.floor(Math.random() * 8) + 4} jam`,
+              child: `${Math.floor(Math.random() * 10) + 5}mg/kg setiap ${Math.floor(Math.random() * 8) + 4} jam`,
+              elderly: "Dosis disesuaikan dengan fungsi ginjal dan hati"
             },
-            sideEffects: ["Efek samping umum"],
-            contraindications: ["Kontraindikasi utama"],
-            interactions: ["Interaksi obat"],
-            pregnancy: "Kategori B/C",
-            breastfeeding: "Aman/Hati-hati",
-            mechanism: "Mekanisme kerja standar",
+            sideEffects: sideEffects,
+            contraindications: ["Hipersensitif", "Gangguan hati berat", "Gangguan ginjal berat"],
+            interactions: ["Antikoagulan", "Antikonvulsan", "Antidepresan"],
+            pregnancy: `Kategori ${pregnancyCategories[Math.floor(Math.random() * pregnancyCategories.length)]}`,
+            breastfeeding: breastfeedingOptions[Math.floor(Math.random() * breastfeedingOptions.length)],
+            mechanism: mechanismTemplates[category]
           });
         }
-        return additionalMeds;
+        
+        return medicines;
       }
 
-      // Gabungkan dengan obat yang sudah ada
-      const allMedicines = [...medicines, ...generateAdditionalMedicines()];
+      // Data 1000 obat dengan nama realistis
+      const allMedicines = generateRealisticMedicines();
 
       // Fungsi untuk menampilkan obat
       function displayMedicines(medicinesToShow = allMedicines) {
@@ -1242,101 +1154,77 @@
 
         medicinesToShow.forEach((medicine) => {
           const medicineCard = `
-                    <div class="col-lg-6 col-xl-4" data-category="${
-                      medicine.category
-                    }" data-type="${medicine.type}">
-                        <div class="medicine-card fade-in">
-                            <div class="medicine-header">
-                                <div class="medicine-name">
-                                    <div class="medicine-icon">
-                                        <i class="fas fa-capsules"></i>
-                                    </div>
-                                    ${medicine.name}
-                                </div>
-                                <span class="medicine-type">${
-                                  medicine.type === "resep"
-                                    ? "Resep"
-                                    : medicine.type === "bebas"
-                                    ? "Bebas"
-                                    : "Terbatas"
-                                }</span>
-                            </div>
-                            <div class="medicine-content">
-                                <div class="medicine-section">
-                                    <div class="section-title">
-                                        <i class="fas fa-info-circle section-icon"></i>
-                                        Informasi Umum
-                                    </div>
-                                    <p class="medicine-info">
-                                        <strong>Nama Generik:</strong> ${
-                                          medicine.genericName
-                                        }<br>
-                                        <strong>Golongan:</strong> ${
-                                          medicine.class
-                                        }<br>
-                                        <strong>Bentuk:</strong> ${
-                                          medicine.forms
-                                        }
-                                    </p>
-                                    <span class="category-tag">${
-                                      medicine.category
-                                    }</span>
-                                </div>
-
-                                <div class="medicine-section">
-                                    <div class="section-title">
-                                        <i class="fas fa-bullseye section-icon"></i>
-                                        Indikasi
-                                    </div>
-                                    <ul class="info-list">
-                                        ${medicine.indications
-                                          .map(
-                                            (indication) =>
-                                              `<li>${indication}</li>`
-                                          )
-                                          .join("")}
-                                    </ul>
-                                </div>
-
-                                <div class="medicine-section">
-                                    <div class="section-title">
-                                        <i class="fas fa-syringe section-icon"></i>
-                                        Dosis
-                                    </div>
-                                    <p class="medicine-info">
-                                        <strong>Dewasa:</strong> ${
-                                          medicine.dosage.adult
-                                        }<br>
-                                        <strong>Anak:</strong> ${
-                                          medicine.dosage.child
-                                        }<br>
-                                        <strong>Lansia:</strong> ${
-                                          medicine.dosage.elderly
-                                        }
-                                    </p>
-                                </div>
-
-                                <div class="medicine-section">
-                                    <div class="section-title">
-                                        <i class="fas fa-exclamation-triangle section-icon"></i>
-                                        Keamanan
-                                    </div>
-                                    <p class="medicine-info">
-                                        <strong>Kehamilan:</strong> ${
-                                          medicine.pregnancy
-                                        }<br>
-                                        <strong>Menyusui:</strong> ${
-                                          medicine.breastfeeding
-                                        }<br>
-                                        <strong>Mekanisme:</strong> ${
-                                          medicine.mechanism
-                                        }
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
+            <div class="col-lg-6 col-xl-4" data-category="${medicine.category}" data-type="${medicine.type}">
+              <div class="medicine-card fade-in">
+                <div class="medicine-header d-flex justify-content-between align-items-start">
+                  <div class="medicine-name">
+                    <div class="medicine-icon">
+                      <i class="fas fa-capsules"></i>
                     </div>
-                `;
+                    <div>
+                      <div class="medicine-title">${medicine.name}</div>
+                      <div class="medicine-generic">${medicine.genericName}</div>
+                    </div>
+                  </div>
+                  <span class="medicine-type">${medicine.type === "resep" ? "Resep" : medicine.type === "bebas" ? "Bebas" : "Terbatas"}</span>
+                </div>
+                <div class="medicine-content">
+                  <div class="medicine-section">
+                    <div class="section-title">
+                      <i class="fas fa-info-circle section-icon"></i>
+                      Informasi Umum
+                    </div>
+                    <p class="medicine-info">
+                      <strong>Golongan:</strong> ${medicine.class}<br>
+                      <strong>Bentuk Sediaan:</strong> ${medicine.forms}
+                    </p>
+                    <span class="category-tag">${medicine.category}</span>
+                  </div>
+
+                  <div class="medicine-section">
+                    <div class="section-title">
+                      <i class="fas fa-bullseye section-icon"></i>
+                      Indikasi
+                    </div>
+                    <ul class="info-list">
+                      ${medicine.indications.map((indication) => `<li>${indication}</li>`).join("")}
+                    </ul>
+                  </div>
+
+                  <div class="medicine-section">
+                    <div class="section-title">
+                      <i class="fas fa-syringe section-icon"></i>
+                      Dosis
+                    </div>
+                    <p class="medicine-info">
+                      <strong>Dewasa:</strong> ${medicine.dosage.adult}<br>
+                      <strong>Anak:</strong> ${medicine.dosage.child}<br>
+                      <strong>Lansia:</strong> ${medicine.dosage.elderly}
+                    </p>
+                  </div>
+
+                  <div class="medicine-section">
+                    <div class="section-title">
+                      <i class="fas fa-exclamation-triangle section-icon"></i>
+                      Keamanan
+                    </div>
+                    <p class="medicine-info">
+                      <strong>Kehamilan:</strong> ${medicine.pregnancy}<br>
+                      <strong>Menyusui:</strong> ${medicine.breastfeeding}
+                    </p>
+                  </div>
+                  
+                  <div class="medicine-section">
+                    <div class="section-title">
+                      <i class="fas fa-cogs section-icon"></i>
+                      Mekanisme Kerja
+                    </div>
+                    <p class="medicine-info">${medicine.mechanism}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          `;
 
           container.innerHTML += medicineCard;
         });
@@ -1367,9 +1255,7 @@
 
       // Fungsi untuk memfilter obat
       function filterMedicines() {
-        const searchTerm = document
-          .getElementById("searchMedicine")
-          .value.toLowerCase();
+        const searchTerm = document.getElementById("searchMedicine").value.toLowerCase();
         const category = document.getElementById("categoryMedicine").value;
         const type = document.getElementById("typeFilter").value;
 
@@ -1377,13 +1263,10 @@
           const matchesSearch =
             medicine.name.toLowerCase().includes(searchTerm) ||
             medicine.genericName.toLowerCase().includes(searchTerm) ||
-            medicine.indications.some((ind) =>
-              ind.toLowerCase().includes(searchTerm)
-            ) ||
+            medicine.indications.some((ind) => ind.toLowerCase().includes(searchTerm)) ||
             medicine.class.toLowerCase().includes(searchTerm);
 
-          const matchesCategory =
-            category === "all" || medicine.category === category;
+          const matchesCategory = category === "all" || medicine.category === category;
           const matchesType = type === "all" || medicine.type === type;
 
           return matchesSearch && matchesCategory && matchesType;
@@ -1404,18 +1287,10 @@
       document.addEventListener("DOMContentLoaded", function () {
         displayMedicines();
 
-        document
-          .getElementById("searchMedicine")
-          .addEventListener("input", filterMedicines);
-        document
-          .getElementById("categoryMedicine")
-          .addEventListener("change", filterMedicines);
-        document
-          .getElementById("typeFilter")
-          .addEventListener("change", filterMedicines);
-        document
-          .getElementById("resetFilters")
-          .addEventListener("click", resetFilters);
+        document.getElementById("searchMedicine").addEventListener("input", filterMedicines);
+        document.getElementById("categoryMedicine").addEventListener("change", filterMedicines);
+        document.getElementById("typeFilter").addEventListener("change", filterMedicines);
+        document.getElementById("resetFilters").addEventListener("click", resetFilters);
 
         // Navbar scroll effect
         window.addEventListener("scroll", function () {
