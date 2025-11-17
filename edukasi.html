@@ -4,25 +4,23 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Edukasi Kesehatan - SehatKu</title>
-    <!-- Bootstrap CSS -->
+
     <link
       href="/assets/Vendor/bootstrap-5.3.8-dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <!-- Bootstrap Icons -->
     <link
       href="/assets/Vendor/bootstrap-icons-1.13.1/font/bootstrap-icons.css"
       rel="stylesheet"
     />
-    <!-- Custom CSS -->
     <link rel="stylesheet" href="styless.css" />
   </head>
-  <body>
-    <!-- Header/Navigasi -->
-    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+  <body class="bg-light">
+    <nav class="navbar navbar-expand-lg bg-white shadow-sm fixed-top">
       <div class="container">
         <a class="navbar-brand" href="index.html">
-          <i class="fas fa-heartbeat me-2"></i>SehatKu
+          <i class="bi bi-heart-pulse-fill me-2 text-danger"></i>
+          <strong>SehatKu</strong>
         </a>
         <button
           class="navbar-toggler"
@@ -60,479 +58,1594 @@
       </div>
     </nav>
 
-    <!-- Page Header -->
-    <section class="page-header text-white">
-      <div class="container">
+    <section class="page-header bg-primary text-white text-center py-5">
+      <div class="container" style="padding-top: 56px">
         <div class="row">
-          <div class="col-lg-8 mx-auto text-center">
-            <h1 class="display-4 fw-bold">🥦 Edukasi Kesehatan</h1>
-            <p class="lead">
-              Pelajari tips dan panduan untuk hidup lebih sehat dan berkualitas
+          <div class="col-lg-8 mx-auto">
+            <h1 class="display-3 fw-bold">
+              <i class="bi bi-journal-plus me-2"></i>Edukasi Kesehatan
+            </h1>
+            <p class="fs-5 opacity-75">
+              Pelajari tips dan panduan untuk hidup lebih sehat dan berkualitas.
             </p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Content Section -->
     <section class="py-5">
       <div class="container">
-        <!-- Search Bar -->
         <div class="row mb-4">
           <div class="col-md-8 mx-auto">
-            <div class="search-container">
+            <div class="input-group input-group-lg shadow-sm">
               <input
                 type="text"
                 id="searchInput"
-                class="search-input"
+                class="form-control border-0"
                 placeholder="Cari topik edukasi kesehatan..."
               />
-              <i class="bi bi-search search-icon"></i>
+              <span class="input-group-text bg-white border-0">
+                <i class="bi bi-search"></i>
+              </span>
             </div>
           </div>
         </div>
 
-        <!-- Kategori Tabs -->
-        <div class="category-tabs">
-          <div class="d-flex flex-wrap justify-content-center">
-            <button class="tab-btn active" onclick="showCategory('all')">
-              Semua
-            </button>
-            <button class="tab-btn" onclick="showCategory('nutrisi')">
-              Nutrisi
-            </button>
-            <button class="tab-btn" onclick="showCategory('olahraga')">
-              Olahraga
-            </button>
-            <button class="tab-btn" onclick="showCategory('mental')">
-              Kesehatan Mental
-            </button>
-            <button class="tab-btn" onclick="showCategory('pencegahan')">
-              Pencegahan
-            </button>
-            <button class="tab-btn" onclick="showCategory('anak')">
-              Kesehatan Anak
-            </button>
-            <button class="tab-btn" onclick="showCategory('lansia')">
-              Kesehatan Lansia
-            </button>
-            <button class="tab-btn" onclick="showCategory('wanita')">
-              Kesehatan Wanita
-            </button>
-          </div>
+        <div class="category-tabs mt-4 mb-5">
+          <ul class="nav nav-pills justify-content-center flex-wrap">
+            <li class="nav-item m-1">
+              <button
+                class="nav-link active"
+                onclick="showCategory('all')"
+                data-bs-toggle="pill"
+              >
+                Semua
+              </button>
+            </li>
+            <li class="nav-item m-1">
+              <button
+                class="nav-link"
+                onclick="showCategory('nutrisi')"
+                data-bs-toggle="pill"
+              >
+                Nutrisi
+              </button>
+            </li>
+            <li class="nav-item m-1">
+              <button
+                class="nav-link"
+                onclick="showCategory('olahraga')"
+                data-bs-toggle="pill"
+              >
+                Olahraga
+              </button>
+            </li>
+            <li class="nav-item m-1">
+              <button
+                class="nav-link"
+                onclick="showCategory('mental')"
+                data-bs-toggle="pill"
+              >
+                Kesehatan Mental
+              </button>
+            </li>
+            <li class="nav-item m-1">
+              <button
+                class="nav-link"
+                onclick="showCategory('pencegahan')"
+                data-bs-toggle="pill"
+              >
+                Pencegahan
+              </button>
+            </li>
+            <li class="nav-item m-1">
+              <button
+                class="nav-link"
+                onclick="showCategory('anak')"
+                data-bs-toggle="pill"
+              >
+                Kesehatan Anak
+              </button>
+            </li>
+            <li class="nav-item m-1">
+              <button
+                class="nav-link"
+                onclick="showCategory('lansia')"
+                data-bs-toggle="pill"
+              >
+                Kesehatan Lansia
+              </button>
+            </li>
+            <li class="nav-item m-1">
+              <button
+                class="nav-link"
+                onclick="showCategory('wanita')"
+                data-bs-toggle="pill"
+              >
+                Kesehatan Wanita
+              </button>
+            </li>
+          </ul>
         </div>
 
-        <!-- Education Cards Grid -->
         <div class="education-grid">
           <div class="row g-4">
-            <!-- Card 1 - Nutrisi -->
             <div class="col-md-6 col-lg-3 fade-in" data-category="nutrisi">
-              <div class="education-card">
-                <div class="card-header">
-                  <span class="card-icon">🥗</span>
-                  <span class="card-badge">Nutrisi</span>
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-primary">
+                      <i class="bi bi-card-checklist display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-primary-subtle text-primary-emphasis"
+                      >Nutrisi</span
+                    >
+                  </div>
+                  <h3 class="h5">Panduan Gizi Seimbang</h3>
+                  <p class="small text-muted">
+                    Pelajari komposisi makanan sehat dengan porsi yang tepat
+                    untuk kebutuhan harian Anda.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Piramida makanan sehat
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Kebutuhan kalori harian
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Makro dan mikro nutrisi
+                    </li>
+                  </ul>
                 </div>
-                <h3>Panduan Gizi Seimbang</h3>
-                <p>
-                  Pelajari komposisi makanan sehat dengan porsi yang tepat untuk
-                  kebutuhan harian Anda.
-                </p>
-                <ul class="topic-list">
-                  <li>Piramida makanan sehat</li>
-                  <li>Kebutuhan kalori harian</li>
-                  <li>Makro dan mikro nutrisi</li>
-                  <li>Menu sehat sehari-hari</li>
-                </ul>
-
-                <script>
-                  function openModule(moduleName) {
-                    // Langsung pindah ke halaman modul.html
-                    window.location.href = "gizi.html";
-                  }
-                </script>
               </div>
             </div>
-            <!-- Card 2 - Olahraga -->
+
             <div class="col-md-6 col-lg-3 fade-in" data-category="olahraga">
-              <div class="education-card">
-                <div class="card-header">
-                  <span class="card-icon">💪</span>
-                  <span class="card-badge">Olahraga</span>
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-success">
+                      <i class="bi bi-heart-pulse display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-success-subtle text-success-emphasis"
+                      >Olahraga</span
+                    >
+                  </div>
+                  <h3 class="h5">Program Olahraga Pemula</h3>
+                  <p class="small text-muted">
+                    Panduan lengkap memulai rutinitas olahraga yang aman dan
+                    efektif untuk pemula.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Pemanasan yang benar
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Latihan kardio dasar
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Jadwal latihan mingguan
+                    </li>
+                  </ul>
                 </div>
-                <h3>Program Olahraga Pemula</h3>
-                <p>
-                  Panduan lengkap memulai rutinitas olahraga yang aman dan
-                  efektif untuk pemula.
-                </p>
-                <ul class="topic-list">
-                  <li>Pemanasan yang benar</li>
-                  <li>Latihan kardio dasar</li>
-                  <li>Latihan kekuatan</li>
-                  <li>Jadwal latihan mingguan</li>
-                </ul>
               </div>
             </div>
 
-            <!-- Card 3 - Mental -->
             <div class="col-md-6 col-lg-3 fade-in" data-category="mental">
-              <div class="education-card">
-                <div class="card-header">
-                  <span class="card-icon">🧘</span>
-                  <span class="card-badge">Mental</span>
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-info">
+                      <i class="bi bi-peace display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-info-subtle text-info-emphasis"
+                      >Mental</span
+                    >
+                  </div>
+                  <h3 class="h5">Manajemen Stres</h3>
+                  <p class="small text-muted">
+                    Teknik dan strategi praktis untuk mengelola stres dan
+                    menjaga kesehatan mental.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Teknik pernapasan
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Meditasi mindfulness
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Work-life balance
+                    </li>
+                  </ul>
                 </div>
-                <h3>Manajemen Stres</h3>
-                <p>
-                  Teknik dan strategi praktis untuk mengelola stres dan menjaga
-                  kesehatan mental.
-                </p>
-                <ul class="topic-list">
-                  <li>Teknik pernapasan</li>
-                  <li>Meditasi mindfulness</li>
-                  <li>Work-life balance</li>
-                  <li>Manajemen waktu</li>
-                </ul>
               </div>
             </div>
 
-            <!-- Card 4 - Pencegahan -->
             <div class="col-md-6 col-lg-3 fade-in" data-category="pencegahan">
-              <div class="education-card">
-                <div class="card-header">
-                  <span class="card-icon">🛡️</span>
-                  <span class="card-badge">Pencegahan</span>
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-warning">
+                      <i class="bi bi-shield-check display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-warning-subtle text-warning-emphasis"
+                      >Pencegahan</span
+                    >
+                  </div>
+                  <h3 class="h5">Pencegahan Penyakit</h3>
+                  <p class="small text-muted">
+                    Langkah-langkah preventif untuk mencegah penyakit umum dan
+                    menjaga kesehatan.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Vaksinasi penting
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Kebersihan pribadi
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Deteksi dini penyakit
+                    </li>
+                  </ul>
                 </div>
-                <h3>Pencegahan Penyakit</h3>
-                <p>
-                  Langkah-langkah preventif untuk mencegah penyakit umum dan
-                  menjaga kesehatan.
-                </p>
-                <ul class="topic-list">
-                  <li>Vaksinasi penting</li>
-                  <li>Kebersihan pribadi</li>
-                  <li>Pola hidup sehat</li>
-                  <li>Deteksi dini penyakit</li>
-                </ul>
               </div>
             </div>
 
-            <!-- Card 5 - Nutrisi -->
             <div class="col-md-6 col-lg-3 fade-in" data-category="nutrisi">
-              <div class="education-card">
-                <div class="card-header">
-                  <span class="card-icon">🥑</span>
-                  <span class="card-badge">Nutrisi</span>
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-primary">
+                      <i class="bi bi-graph-up-arrow display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-primary-subtle text-primary-emphasis"
+                      >Nutrisi</span
+                    >
+                  </div>
+                  <h3 class="h5">Diet Sehat & Berat Badan Ideal</h3>
+                  <p class="small text-muted">
+                    Panduan diet sehat dan berkelanjutan untuk mencapai berat
+                    badan ideal tanpa efek yoyo.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Prinsip defisit kalori
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Pilihan makanan rendah kalori
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Tips mengatasi lapar
+                    </li>
+                  </ul>
                 </div>
-                <h3>Diet Sehat untuk Berat Badan Ideal</h3>
-                <p>
-                  Panduan diet sehat dan berkelanjutan untuk mencapai berat
-                  badan ideal tanpa efek yoyo.
-                </p>
-                <ul class="topic-list">
-                  <li>Prinsip defisit kalori</li>
-                  <li>Pilihan makanan rendah kalori</li>
-                  <li>Jadwal makan optimal</li>
-                  <li>Tips mengatasi lapar</li>
-                </ul>
               </div>
             </div>
 
-            <!-- Card 6 - Olahraga -->
             <div class="col-md-6 col-lg-3 fade-in" data-category="olahraga">
-              <div class="education-card">
-                <div class="card-header">
-                  <span class="card-icon">🏃‍♀️</span>
-                  <span class="card-badge">Olahraga</span>
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-success">
+                      <i class="bi bi-yin-yang display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-success-subtle text-success-emphasis"
+                      >Olahraga</span
+                    >
+                  </div>
+                  <h3 class="h5">Yoga untuk Pemula</h3>
+                  <p class="small text-muted">
+                    Pelajari pose-pose yoga dasar untuk meningkatkan
+                    fleksibilitas dan mengurangi stres.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Pose dasar yoga
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Teknik pernapasan
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Rutinitas harian
+                    </li>
+                  </ul>
                 </div>
-                <h3>Yoga untuk Pemula</h3>
-                <p>
-                  Pelajari pose-pose yoga dasar untuk meningkatkan fleksibilitas
-                  dan mengurangi stres.
-                </p>
-                <ul class="topic-list">
-                  <li>Pose dasar yoga</li>
-                  <li>Teknik pernapasan</li>
-                  <li>Rutinitas harian</li>
-                  <li>Manfaat untuk kesehatan</li>
-                </ul>
               </div>
             </div>
 
-            <!-- Card 7 - Kesehatan Anak -->
             <div class="col-md-6 col-lg-3 fade-in" data-category="anak">
-              <div class="education-card">
-                <div class="card-header">
-                  <span class="card-icon">👶</span>
-                  <span class="card-badge">Anak</span>
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-danger">
+                      <i class="bi bi-person-arms-up display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-danger-subtle text-danger-emphasis"
+                      >Anak</span
+                    >
+                  </div>
+                  <h3 class="h5">Nutrisi Optimal untuk Anak</h3>
+                  <p class="small text-muted">
+                    Panduan lengkap pemberian nutrisi yang tepat untuk tumbuh
+                    kembang anak optimal.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >MPASI yang tepat
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Vitamin dan mineral penting
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Mengatasi anak susah makan
+                    </li>
+                  </ul>
                 </div>
-                <h3>Nutrisi Optimal untuk Anak</h3>
-                <p>
-                  Panduan lengkap pemberian nutrisi yang tepat untuk tumbuh
-                  kembang anak optimal.
-                </p>
-                <ul class="topic-list">
-                  <li>MPASI yang tepat</li>
-                  <li>Vitamin dan mineral penting</li>
-                  <li>Mengatasi anak susah makan</li>
-                  <li>Jadwal makan anak</li>
-                </ul>
               </div>
             </div>
 
-            <!-- Card 8 - Kesehatan Lansia -->
             <div class="col-md-6 col-lg-3 fade-in" data-category="lansia">
-              <div class="education-card">
-                <div class="card-header">
-                  <span class="card-icon">👵</span>
-                  <span class="card-badge">Lansia</span>
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-secondary">
+                      <i class="bi bi-person-heart display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-secondary-subtle text-secondary-emphasis"
+                      >Lansia</span
+                    >
+                  </div>
+                  <h3 class="h5">Kesehatan di Usia Lanjut</h3>
+                  <p class="small text-muted">
+                    Tips menjaga kesehatan dan kualitas hidup di usia lanjut
+                    dengan pola hidup yang tepat.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Olahraga untuk lansia
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Nutrisi khusus usia lanjut
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Pencegahan penyakit degeneratif
+                    </li>
+                  </ul>
                 </div>
-                <h3>Kesehatan di Usia Lanjut</h3>
-                <p>
-                  Tips menjaga kesehatan dan kualitas hidup di usia lanjut
-                  dengan pola hidup yang tepat.
-                </p>
-                <ul class="topic-list">
-                  <li>Olahraga untuk lansia</li>
-                  <li>Nutrisi khusus usia lanjut</li>
-                  <li>Pencegahan penyakit degeneratif</li>
-                  <li>Kesehatan mental lansia</li>
-                </ul>
               </div>
             </div>
 
-            <!-- Card 9 - Kesehatan Wanita -->
             <div class="col-md-6 col-lg-3 fade-in" data-category="wanita">
-              <div class="education-card">
-                <div class="card-header">
-                  <span class="card-icon">👩</span>
-                  <span class="card-badge">Wanita</span>
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-danger">
+                      <i class="bi bi-gender-female display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-danger-subtle text-danger-emphasis"
+                      >Wanita</span
+                    >
+                  </div>
+                  <h3 class="h5">Kesehatan Reproduksi Wanita</h3>
+                  <p class="small text-muted">
+                    Edukasi lengkap tentang kesehatan reproduksi dan siklus
+                    menstruasi yang sehat.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Pemahaman siklus menstruasi
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Gangguan hormonal umum
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Kesehatan payudara
+                    </li>
+                  </ul>
                 </div>
-                <h3>Kesehatan Reproduksi Wanita</h3>
-                <p>
-                  Edukasi lengkap tentang kesehatan reproduksi dan siklus
-                  menstruasi yang sehat.
-                </p>
-                <ul class="topic-list">
-                  <li>Pemahaman siklus menstruasi</li>
-                  <li>Gangguan hormonal umum</li>
-                  <li>Kesehatan payudara</li>
-                  <li>Pemeriksaan rutin yang diperlukan</li>
-                </ul>
               </div>
             </div>
 
-            <!-- Card 10 - Pencegahan -->
             <div class="col-md-6 col-lg-3 fade-in" data-category="pencegahan">
-              <div class="education-card">
-                <div class="card-header">
-                  <span class="card-icon">💊</span>
-                  <span class="card-badge">Pencegahan</span>
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-warning">
+                      <i class="bi bi-capsule display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-warning-subtle text-warning-emphasis"
+                      >Pencegahan</span
+                    >
+                  </div>
+                  <h3 class="h5">Pertolongan Pertama Dasar</h3>
+                  <p class="small text-muted">
+                    Pelajari teknik pertolongan pertama untuk situasi darurat
+                    medis yang umum terjadi.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >CPR dan resusitasi
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Menangani luka
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Mengatasi tersedak
+                    </li>
+                  </ul>
                 </div>
-                <h3>Pertolongan Pertama Dasar</h3>
-                <p>
-                  Pelajari teknik pertolongan pertama untuk situasi darurat
-                  medis yang umum terjadi.
-                </p>
-                <ul class="topic-list">
-                  <li>CPR dan resusitasi</li>
-                  <li>Menangani luka dan pendarahan</li>
-                  <li>Mengatasi tersedak</li>
-                  <li>P3K di rumah</li>
-                </ul>
               </div>
             </div>
 
-            <!-- Card 11 - Mental -->
             <div class="col-md-6 col-lg-3 fade-in" data-category="mental">
-              <div class="education-card">
-                <div class="card-header">
-                  <span class="card-icon">😴</span>
-                  <span class="card-badge">Mental</span>
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-info">
+                      <i class="bi bi-moon-stars display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-info-subtle text-info-emphasis"
+                      >Mental</span
+                    >
+                  </div>
+                  <h3 class="h5">Pola Tidur Sehat</h3>
+                  <p class="small text-muted">
+                    Teknik dan kebiasaan untuk meningkatkan kualitas tidur dan
+                    mengatasi insomnia.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Ritual sebelum tidur
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Mengatur lingkungan tidur
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Mengatasi gangguan tidur
+                    </li>
+                  </ul>
                 </div>
-                <h3>Pola Tidur Sehat</h3>
-                <p>
-                  Teknik dan kebiasaan untuk meningkatkan kualitas tidur dan
-                  mengatasi insomnia.
-                </p>
-                <ul class="topic-list">
-                  <li>Ritual sebelum tidur</li>
-                  <li>Mengatur lingkungan tidur</li>
-                  <li>Mengatasi gangguan tidur</li>
-                  <li>Pengaruh tidur pada kesehatan</li>
-                </ul>
               </div>
             </div>
 
-            <!-- Card 12 - Nutrisi -->
             <div class="col-md-6 col-lg-3 fade-in" data-category="nutrisi">
-              <div class="education-card">
-                <div class="card-header">
-                  <span class="card-icon">🥤</span>
-                  <span class="card-badge">Nutrisi</span>
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-primary">
+                      <i class="bi bi-cup-straw display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-primary-subtle text-primary-emphasis"
+                      >Nutrisi</span
+                    >
+                  </div>
+                  <h3 class="h5">Hidrasi yang Tepat</h3>
+                  <p class="small text-muted">
+                    Pentingnya hidrasi untuk kesehatan dan cara memenuhi
+                    kebutuhan cairan tubuh.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Kebutuhan cairan harian
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Tanda dehidrasi
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Pilihan minuman sehat
+                    </li>
+                  </ul>
                 </div>
-                <h3>Hidrasi yang Tepat</h3>
-                <p>
-                  Pentingnya hidrasi untuk kesehatan dan cara memenuhi kebutuhan
-                  cairan tubuh.
-                </p>
-                <ul class="topic-list">
-                  <li>Kebutuhan cairan harian</li>
-                  <li>Tanda dehidrasi</li>
-                  <li>Pilihan minuman sehat</li>
-                  <li>Hidrasi saat berolahraga</li>
-                </ul>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 fade-in" data-category="olahraga">
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-success">
+                      <i class="bi bi-bicycle display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-success-subtle text-success-emphasis"
+                      >Olahraga</span
+                    >
+                  </div>
+                  <h3 class="h5">Bersepeda untuk Kesehatan</h3>
+                  <p class="small text-muted">
+                    Manfaat bersepeda untuk kesehatan jantung, paru-paru, dan
+                    kebugaran tubuh.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Teknik bersepeda yang benar
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Rute dan jarak
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Keamanan saat bersepeda
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 fade-in" data-category="mental">
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-info">
+                      <i class="bi bi-brain display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-info-subtle text-info-emphasis"
+                      >Mental</span
+                    >
+                  </div>
+                  <h3 class="h5">Kesehatan Otak dan Memori</h3>
+                  <p class="small text-muted">
+                    Cara menjaga kesehatan otak dan meningkatkan daya ingat
+                    melalui latihan dan nutrisi.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Latihan kognitif
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Nutrisi untuk otak
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Mencegah penurunan kognitif
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 fade-in" data-category="pencegahan">
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-warning">
+                      <i class="bi bi-virus display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-warning-subtle text-warning-emphasis"
+                      >Pencegahan</span
+                    >
+                  </div>
+                  <h3 class="h5">Pencegahan Infeksi</h3>
+                  <p class="small text-muted">
+                    Langkah-langkah efektif untuk mencegah penyebaran infeksi
+                    dan penyakit menular.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Kebersihan tangan
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Penggunaan masker
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Ventilasi ruangan
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 fade-in" data-category="anak">
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-danger">
+                      <i class="bi bi-clipboard-pulse display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-danger-subtle text-danger-emphasis"
+                      >Anak</span
+                    >
+                  </div>
+                  <h3 class="h5">Kesehatan Gigi Anak</h3>
+                  <p class="small text-muted">
+                    Panduan merawat kesehatan gigi dan mulut anak sejak dini
+                    untuk mencegah masalah gigi.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Teknik menyikat gigi
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Pilihan sikat gigi
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Kunjungan ke dokter gigi
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 fade-in" data-category="lansia">
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-secondary">
+                      <i class="bi bi-bandaid display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-secondary-subtle text-secondary-emphasis"
+                      >Lansia</span
+                    >
+                  </div>
+                  <h3 class="h5">Kesehatan Tulang Lansia</h3>
+                  <p class="small text-muted">
+                    Cara menjaga kesehatan tulang dan sendi di usia lanjut untuk
+                    mencegah osteoporosis.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Nutrisi untuk tulang kuat
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Pencegahan osteoporosis
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Mengatasi nyeri sendi
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 fade-in" data-category="wanita">
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-danger">
+                      <i class="bi bi-person-plus display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-danger-subtle text-danger-emphasis"
+                      >Wanita</span
+                    >
+                  </div>
+                  <h3 class="h5">Kesehatan Ibu Hamil</h3>
+                  <p class="small text-muted">
+                    Panduan lengkap untuk menjaga kesehatan selama kehamilan dan
+                    persiapan melahirkan.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Nutrisi selama kehamilan
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Latihan aman
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Persiapan persalinan
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 fade-in" data-category="nutrisi">
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-primary">
+                      <i class="bi bi-basket display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-primary-subtle text-primary-emphasis"
+                      >Nutrisi</span
+                    >
+                  </div>
+                  <h3 class="h5">Makanan Super untuk Kesehatan</h3>
+                  <p class="small text-muted">
+                    Kenali makanan super yang kaya nutrisi dan manfaatnya untuk
+                    meningkatkan kesehatan.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Sayuran hijau
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Buah beri dan antioksidan
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Ikan dan omega-3
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 fade-in" data-category="olahraga">
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-success">
+                      <i class="bi bi-water display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-success-subtle text-success-emphasis"
+                      >Olahraga</span
+                    >
+                  </div>
+                  <h3 class="h5">Berenang untuk Kebugaran</h3>
+                  <p class="small text-muted">
+                    Manfaat berenang sebagai olahraga lengkap yang aman untuk
+                    semua usia dan kondisi.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Teknik renang
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Manfaat untuk jantung
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Berenang untuk rehabilitasi
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 fade-in" data-category="mental">
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-info">
+                      <i class="bi bi-people display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-info-subtle text-info-emphasis"
+                      >Mental</span
+                    >
+                  </div>
+                  <h3 class="h5">Keterampilan Sosial</h3>
+                  <p class="small text-muted">
+                    Pentingnya hubungan sosial untuk kesehatan mental dan cara
+                    membangun koneksi sehat.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Manfaat hubungan sosial
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Membangun empati
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Mengatasi kesepian
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 fade-in" data-category="pencegahan">
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-warning">
+                      <i class="bi bi-thermometer-half display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-warning-subtle text-warning-emphasis"
+                      >Pencegahan</span
+                    >
+                  </div>
+                  <h3 class="h5">Pemeriksaan Rutin</h3>
+                  <p class="small text-muted">
+                    Panduan pemeriksaan kesehatan yang diperlukan berdasarkan
+                    usia dan faktor risiko.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Pemeriksaan tekanan darah
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Kolesterol dan gula darah
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Skrining kanker
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 fade-in" data-category="anak">
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-danger">
+                      <i class="bi bi-clock-history display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-danger-subtle text-danger-emphasis"
+                      >Anak</span
+                    >
+                  </div>
+                  <h3 class="h5">Tidur yang Cukup untuk Anak</h3>
+                  <p class="small text-muted">
+                    Pentingnya tidur untuk tumbuh kembang anak dan cara
+                    membentuk kebiasaan tidur sehat.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Kebutuhan tidur
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Rutinitas sebelum tidur
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Mengatasi sulit tidur
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 fade-in" data-category="lansia">
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-secondary">
+                      <i class="bi bi-heart-pulse-fill display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-secondary-subtle text-secondary-emphasis"
+                      >Lansia</span
+                    >
+                  </div>
+                  <h3 class="h5">Kesehatan Jantung Lansia</h3>
+                  <p class="small text-muted">
+                    Cara menjaga kesehatan jantung di usia lanjut dan mencegah
+                    penyakit kardiovaskular.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Diet jantung sehat
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Olahraga untuk jantung
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Gejala masalah jantung
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 fade-in" data-category="wanita">
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-danger">
+                      <i class="bi bi-flower1 display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-danger-subtle text-danger-emphasis"
+                      >Wanita</span
+                    >
+                  </div>
+                  <h3 class="h5">Kesehatan Tiroid pada Wanita</h3>
+                  <p class="small text-muted">
+                    Memahami gangguan tiroid yang lebih umum pada wanita dan
+                    cara mengelolanya.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Gejala gangguan tiroid
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Pemeriksaan
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Pengobatan dan manajemen
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 fade-in" data-category="nutrisi">
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-primary">
+                      <i class="bi bi-pie-chart display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-primary-subtle text-primary-emphasis"
+                      >Nutrisi</span
+                    >
+                  </div>
+                  <h3 class="h5">Diet untuk Diabetes</h3>
+                  <p class="small text-muted">
+                    Panduan pola makan sehat untuk penderita diabetes untuk
+                    mengontrol gula darah.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Indeks glikemik
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Porsi karbohidrat
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Perencanaan makan
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 fade-in" data-category="olahraga">
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-success">
+                      <i class="bi bi-house-heart display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-success-subtle text-success-emphasis"
+                      >Olahraga</span
+                    >
+                  </div>
+                  <h3 class="h5">Latihan Kekuatan di Rumah</h3>
+                  <p class="small text-muted">
+                    Program latihan kekuatan sederhana yang dapat dilakukan di
+                    rumah tanpa peralatan mahal.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Latihan bodyweight
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Penggunaan resistance band
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Jadwal latihan
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 fade-in" data-category="mental">
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-info">
+                      <i class="bi bi-palette display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-info-subtle text-info-emphasis"
+                      >Mental</span
+                    >
+                  </div>
+                  <h3 class="h5">Terapi Seni</h3>
+                  <p class="small text-muted">
+                    Manfaat seni dan kreativitas untuk kesehatan mental dan cara
+                    mempraktikkannya.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Seni sebagai ekspresi
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Meditasi dengan seni
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Mengurangi stres
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 fade-in" data-category="pencegahan">
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-warning">
+                      <i class="bi bi-sun display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-warning-subtle text-warning-emphasis"
+                      >Pencegahan</span
+                    >
+                  </div>
+                  <h3 class="h5">Perlindungan dari Sinar UV</h3>
+                  <p class="small text-muted">
+                    Cara melindungi kulit dari bahaya sinar UV untuk mencegah
+                    kanker kulit dan penuaan dini.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Pemilihan tabir surya
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Waktu paparan
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Pakaian pelindung
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 fade-in" data-category="anak">
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-danger">
+                      <i class="bi bi-person-check display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-danger-subtle text-danger-emphasis"
+                      >Anak</span
+                    >
+                  </div>
+                  <h3 class="h5">Imunisasi untuk Anak</h3>
+                  <p class="small text-muted">
+                    Pentingnya imunisasi untuk melindungi anak dari penyakit
+                    berbahaya dan jadwal yang tepat.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Jadwal imunisasi dasar
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Efek samping
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Mitos dan fakta vaksin
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 fade-in" data-category="lansia">
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-secondary">
+                      <i class="bi bi-eye display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-secondary-subtle text-secondary-emphasis"
+                      >Lansia</span
+                    >
+                  </div>
+                  <h3 class="h5">Kesehatan Mata Lansia</h3>
+                  <p class="small text-muted">
+                    Cara menjaga kesehatan mata di usia lanjut dan mencegah
+                    penyakit mata terkait usia.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Pemeriksaan mata rutin
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Nutrisi untuk mata
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Pencegahan katarak
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 fade-in" data-category="wanita">
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-danger">
+                      <i class="bi bi-person-standing display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-danger-subtle text-danger-emphasis"
+                      >Wanita</span
+                    >
+                  </div>
+                  <h3 class="h5">Kesehatan Menopause</h3>
+                  <p class="small text-muted">
+                    Panduan menghadapi masa menopause dengan sehat dan mengelola
+                    gejala yang muncul.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Gejala menopause
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Terapi hormon
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Kesehatan tulang
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 fade-in" data-category="nutrisi">
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-primary">
+                      <i class="bi bi-cup-fill display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-primary-subtle text-primary-emphasis"
+                      >Nutrisi</span
+                    >
+                  </div>
+                  <h3 class="h5">Nutrisi untuk Vegetarian</h3>
+                  <p class="small text-muted">
+                    Panduan memenuhi kebutuhan nutrisi lengkap bagi mereka yang
+                    menjalani diet vegetarian.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Sumber protein nabati
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Zat besi dan B12
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Suplemen
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 fade-in" data-category="olahraga">
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-success">
+                      <i class="bi bi-person-walking display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-success-subtle text-success-emphasis"
+                      >Olahraga</span
+                    >
+                  </div>
+                  <h3 class="h5">Manfaat Jalan Kaki</h3>
+                  <p class="small text-muted">
+                    Manfaat jalan kaki untuk kesehatan dan cara memaksimalkan
+                    manfaatnya dengan teknik yang benar.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Teknik berjalan
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Kecepatan dan jarak ideal
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Penurunan berat badan
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-lg-3 fade-in" data-category="mental">
+              <div class="card h-100 shadow-sm border-0 education-card">
+                <div class="card-body">
+                  <div
+                    class="d-flex justify-content-between align-items-start mb-3"
+                  >
+                    <span class="card-icon-elegant text-info">
+                      <i class="bi bi-phone-off display-5"></i>
+                    </span>
+                    <span
+                      class="badge rounded-pill bg-info-subtle text-info-emphasis"
+                      >Mental</span
+                    >
+                  </div>
+                  <h3 class="h5">Detoks Digital</h3>
+                  <p class="small text-muted">
+                    Cara mengurangi ketergantungan pada perangkat digital untuk
+                    meningkatkan kesehatan mental.
+                  </p>
+                  <ul class="list-unstyled small topic-list">
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Membatasi waktu layar
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Aktivitas pengganti
+                    </li>
+                    <li>
+                      <i class="bi bi-check-circle-fill text-success me-2"></i
+                      >Manfaat detoks digital
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>
         </div>
-
-        <!-- Video Section -->
-        <div class="video-section">
-          <h2 class="section-title text-center mb-5">Video Edukasi Pilihan</h2>
+        <div class="video-section mt-5 pt-5 border-top">
+          <h2 class="text-center mb-5 fw-bold">Video Edukasi Pilihan</h2>
           <div class="row g-4">
-            <!-- CARD 1 -->
             <div class="col-md-4 fade-in">
-              <div class="video-card">
+              <div class="card shadow-sm border-0 h-100">
                 <a
                   href="https://youtu.be/2huH1hov5wo?si=EPyCilsyMk37sffB"
                   target="_blank"
                 >
-                  <div class="video-thumbnail">
-                    <img
-                      src="/assets/gambar/image.png"
-                      alt="Thumbnail Video"
-                      class="thumbnail-img"
-                      width="300"
-                      height="200"
-                    />
-                    <span class="play-icon">▶</span>
-                  </div>
+                  <img
+                    src="/assets/gambar/image.png"
+                    alt="Thumbnail Video"
+                    class="card-img-top"
+                    width="300"
+                    height="200"
+                    style="object-fit: cover"
+                  />
                 </a>
-                <h4>Cara Cuci Tangan yang Benar</h4>
-                <p>2 menit • 1.2Jt Views</p>
+                <div class="card-body">
+                  <h4 class="h6">
+                    <a
+                      href="https://youtu.be/2huH1hov5wo?si=EPyCilsyMk37sffB"
+                      target="_blank"
+                      class="text-decoration-none text-dark stretched-link"
+                    >
+                      Cara Cuci Tangan yang Benar
+                    </a>
+                  </h4>
+                  <p class="small text-muted mb-0">2 menit • 1.2Jt Views</p>
+                </div>
               </div>
             </div>
 
-            <!-- CARD 2 -->
             <div class="col-md-4 fade-in">
-              <div class="video-card">
+              <div class="card shadow-sm border-0 h-100">
                 <a
                   href="https://youtu.be/0LqWXlBfBxE?si=x79HsZh1LwErofm8"
                   target="_blank"
                 >
-                  <div class="video-thumbnail">
-                    <img
-                      src="/assets/gambar/rileks.png"
-                      alt="Thumbnail Video"
-                      class="thumbnail-img"
-                      width="300"
-                      height="200"
-                    />
-                    <span class="play-icon">▶</span>
-                  </div>
+                  <img
+                    src="/assets/gambar/rileks.png"
+                    alt="Thumbnail Video"
+                    class="card-img-top"
+                    width="300"
+                    height="200"
+                    style="object-fit: cover"
+                  />
                 </a>
-                <h4>Teknik Pernapasan untuk Relaksasi</h4>
-                <p>2.18 menit • 203K views</p>
+                <div class="card-body">
+                  <h4 class="h6">
+                    <a
+                      href="https://youtu.be/0LqWXlBfBxE?si=x79HsZh1LwErofm8"
+                      target="_blank"
+                      class="text-decoration-none text-dark stretched-link"
+                    >
+                      Teknik Pernapasan untuk Relaksasi
+                    </a>
+                  </h4>
+                  <p class="small text-muted mb-0">2.18 menit • 203K views</p>
+                </div>
               </div>
             </div>
 
-            <!-- CARD 3 -->
             <div class="col-md-4 fade-in">
-              <div class="video-card">
+              <div class="card shadow-sm border-0 h-100">
                 <a
                   href="https://youtu.be/MTU4iCDntjs?si=6nWxt0m0S3Dfsb2S"
                   target="_blank"
                 >
-                  <div class="video-thumbnail">
-                    <img
-                      src="/assets/gambar/regang.png"
-                      alt="Thumbnail Video"
-                      class="thumbnail-img"
-                      width="300"
-                      height="200"
-                    />
-                    <span class="play-icon">▶</span>
-                  </div>
+                  <img
+                    src="/assets/gambar/regang.png"
+                    alt="Thumbnail Video"
+                    class="card-img-top"
+                    width="300"
+                    height="200"
+                    style="object-fit: cover"
+                  />
                 </a>
-                <h4>Gerakan Peregangan untuk Pekerja Kantor</h4>
-                <p>4.44 menit • 532K views</p>
+                <div class="card-body">
+                  <h4 class="h6">
+                    <a
+                      href="https://youtu.be/MTU4iCDntjs?si=6nWxt0m0S3Dfsb2S"
+                      target="_blank"
+                      class="text-decoration-none text-dark stretched-link"
+                    >
+                      Gerakan Peregangan untuk Pekerja Kantor
+                    </a>
+                  </h4>
+                  <p class="small text-muted mb-0">4.44 menit • 532K views</p>
+                </div>
               </div>
             </div>
 
-            <!-- CARD 4 -->
             <div class="col-md-4 fade-in">
-              <div class="video-card">
+              <div class="card shadow-sm border-0 h-100">
                 <a
                   href="https://youtu.be/jprEa9rL4nY?si=oVJstPcMc2ZERQYk"
                   target="_blank"
                 >
-                  <div class="video-thumbnail">
-                    <div class="placeholder-video">
-                      <i class="bi bi-play-circle"></i>
-                    </div>
-                    <img
-                      src="/assets/gambar/makanan.png"
-                      alt="Thumbnail Video"
-                      class="thumbnail-img"
-                      width="300"
-                      height="200"
-                    />
-                    <span class="play-icon">▶</span>
-                  </div>
+                  <img
+                    src="/assets/gambar/makanan.png"
+                    alt="Thumbnail Video"
+                    class="card-img-top"
+                    width="300"
+                    height="200"
+                    style="object-fit: cover"
+                  />
                 </a>
-                <h4>Makanan Sehat dan Bergizi</h4>
-                <p>1 menit • 59K views</p>
+                <div class="card-body">
+                  <h4 class="h6">
+                    <a
+                      href="https://youtu.be/jprEa9rL4nY?si=oVJstPcMc2ZERQYk"
+                      target="_blank"
+                      class="text-decoration-none text-dark stretched-link"
+                    >
+                      Makanan Sehat dan Bergizi
+                    </a>
+                  </h4>
+                  <p class="small text-muted mb-0">1 menit • 59K views</p>
+                </div>
               </div>
             </div>
 
-            <!-- CARD 5 -->
             <div class="col-md-4 fade-in">
-              <div class="video-card">
+              <div class="card shadow-sm border-0 h-100">
                 <a
                   href="https://youtu.be/vSThNlE1snE?si=6gBx3Kp6hvo7Ihje"
                   target="_blank"
                 >
-                  <div class="video-thumbnail">
-                    <div class="placeholder-video">
-                      <i class="bi bi-play-circle"></i>
-                    </div>
-                    <img
-                      src="/assets/gambar/senam.png"
-                      alt="Thumbnail Video"
-                      class="thumbnail-img"
-                      width="300"
-                      height="200"
-                    />
-                    <span class="play-icon">▶</span>
-                  </div>
+                  <img
+                    src="/assets/gambar/senam.png"
+                    alt="Thumbnail Video"
+                    class="card-img-top"
+                    width="300"
+                    height="200"
+                    style="object-fit: cover"
+                  />
                 </a>
-                <h4>Senam Aerobik Membakar Lemak</h4>
-                <p>15 menit • 25K views</p>
+                <div class="card-body">
+                  <h4 class="h6">
+                    <a
+                      href="https://youtu.be/vSThNlE1snE?si=6gBx3Kp6hvo7Ihje"
+                      target="_blank"
+                      class="text-decoration-none text-dark stretched-link"
+                    >
+                      Senam Aerobik Membakar Lemak
+                    </a>
+                  </h4>
+                  <p class="small text-muted mb-0">15 menit • 25K views</p>
+                </div>
               </div>
             </div>
 
-            <!-- CARD 6 -->
             <div class="col-md-4 fade-in">
-              <div class="video-card">
+              <div class="card shadow-sm border-0 h-100">
                 <a
                   href="https://youtu.be/bL48Wh7n1pk?si=3pqk06VkCx8JsisT"
                   target="_blank"
                 >
-                  <div class="video-thumbnail">
-                    <div class="placeholder-video">
-                      <i class="bi bi-play-circle"></i>
-                    </div>
-                    <img
-                      src="/assets/gambar/meditasi.png"
-                      alt="Thumbnail Video"
-                      class="thumbnail-img"
-                      width="300"
-                      height="200"
-                    />
-                    <span class="play-icon">▶</span>
-                  </div>
+                  <img
+                    src="/assets/gambar/meditasi.png"
+                    alt="Thumbnail Video"
+                    class="card-img-top"
+                    width="300"
+                    height="200"
+                    style="object-fit: cover"
+                  />
                 </a>
-                <h4>Meditasi Ketenangan</h4>
-                <p>7 menit • 18K views</p>
+                <div class="card-body">
+                  <h4 class="h6">
+                    <a
+                      href="https://youtu.be/bL48Wh7n1pk?si=3pqk06VkCx8JsisT"
+                      target="_blank"
+                      class="text-decoration-none text-dark stretched-link"
+                    >
+                      Meditasi Ketenangan
+                    </a>
+                  </h4>
+                  <p class="small text-muted mb-0">7 menit • 18K views</p>
+                </div>
               </div>
             </div>
           </div>
@@ -540,13 +1653,12 @@
       </div>
     </section>
 
-    <footer class="bg-dark text-white py-4">
-      <div class="container text-center">
-        <p>&copy; 2025 SehatKu. All rights reserved.</p>
+    <footer class="bg-white text-center text-muted py-4 mt-5 border-top">
+      <div class="container">
+        <p class="mb-0">&copy; 2025 SehatKu. All rights reserved.</p>
       </div>
     </footer>
 
-    <!-- Bootstrap JavaScript -->
     <script src="/assets/Vendor/bootstrap-5.3.8-dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
   </body>
