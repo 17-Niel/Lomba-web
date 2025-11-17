@@ -694,37 +694,8 @@
         });
       }
 
-      // Pagination function
-      let currentPage = 1;
-      const totalPages = 5;
 
-      function changePage(direction) {
-        const dots = document.querySelectorAll(".page-dot");
-        const pageInfo = document.querySelector(".page-info");
-
-        if (direction === "next" && currentPage < totalPages) {
-          currentPage++;
-        } else if (direction === "prev" && currentPage > 1) {
-          currentPage--;
-        } else if (typeof direction === "number") {
-          currentPage = direction;
-        }
-
-        // Update active dot
-        dots.forEach((dot, index) => {
-          if (index + 1 === currentPage) {
-            dot.classList.add("active");
-          } else {
-            dot.classList.remove("active");
-          }
-        });
-
-        // Update page info
-        pageInfo.textContent = `Halaman ${currentPage} dari ${totalPages}`;
-
-        // Simulate page change (in real implementation, this would load new content)
-        alert(`Berpindah ke halaman ${currentPage}`);
-      }
+      
     </script>
   </body>
 </html>
