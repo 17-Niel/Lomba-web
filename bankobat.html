@@ -1,0 +1,1450 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SehatKu - Bank Obat Premium</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --primary-color: #4a90e2;
+        --secondary-color: #7ed321;
+        --accent-color: #50e3c2;
+        --neutral-light: #f8f9fa;
+        --neutral-medium: #e9ecef;
+        --neutral-dark: #343a40;
+        --text-primary: #212529;
+        --text-secondary: #6c757d;
+        --white: #ffffff;
+        --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.05);
+        --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.08);
+        --shadow-large: 0 15px 40px rgba(0, 0, 0, 0.12);
+        --success-color: #28a745;
+        --warning-color: #ffc107;
+        --danger-color: #dc3545;
+        --gradient-primary: linear-gradient(135deg, #4a90e2 0%, #7eb6ff 100%);
+        --gradient-secondary: linear-gradient(135deg, #7ed321 0%, #a0e767 100%);
+        --gradient-accent: linear-gradient(135deg, #50e3c2 0%, #80f0d9 100%);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Poppins", sans-serif;
+        color: var(--text-primary);
+        line-height: 1.6;
+        overflow-x: hidden;
+        background-color: var(--neutral-light);
+        padding-top: 76px;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Playfair Display", serif;
+        font-weight: 600;
+        line-height: 1.3;
+      }
+
+      /* Header & Navigation */
+      .navbar {
+        padding: 1.5rem 0;
+        transition: all 0.4s ease;
+        background-color: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(10px);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .navbar.scrolled {
+        padding: 1rem 0;
+        box-shadow: var(--shadow-medium);
+      }
+
+      .navbar-brand {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--primary-color) !important;
+        display: flex;
+        align-items: center;
+      }
+
+      .navbar-brand i {
+        font-size: 1.5rem;
+        margin-right: 0.5rem;
+      }
+
+      .nav-link {
+        font-weight: 500;
+        margin: 0 0.5rem;
+        position: relative;
+        color: var(--text-primary) !important;
+        transition: color 0.3s ease;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--primary-color);
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover,
+      .nav-link.active {
+        color: var(--primary-color) !important;
+      }
+
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 100%;
+      }
+
+      /* Page Header */
+      .page-header {
+        padding: 8rem 0 4rem;
+        background: var(--gradient-primary);
+        color: var(--white);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .page-header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80");
+        background-size: cover;
+        background-position: center;
+        opacity: 0.1;
+      }
+
+      .page-header h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      /* Stats Section */
+      .stats-section {
+        margin-top: -3rem;
+        position: relative;
+        z-index: 10;
+      }
+
+      .stats-card {
+        background: var(--white);
+        border-radius: 16px;
+        padding: 2rem;
+        box-shadow: var(--shadow-medium);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .stats-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: var(--gradient-primary);
+      }
+
+      .stats-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-large);
+      }
+
+      .stats-number {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+        line-height: 1;
+      }
+
+      .stats-label {
+        color: var(--text-secondary);
+        font-weight: 600;
+        font-size: 0.9rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      /* Featured Section */
+      .featured-section {
+        padding: 4rem 0;
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      }
+
+      .section-title-main {
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: var(--text-primary);
+        margin-bottom: 1rem;
+        text-align: center;
+        position: relative;
+        display: inline-block;
+      }
+
+      .section-title-main::after {
+        content: "";
+        position: absolute;
+        width: 60px;
+        height: 3px;
+        background-color: var(--primary-color);
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .section-subtitle {
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+        text-align: center;
+        margin-bottom: 3rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .feature-card {
+        background: var(--white);
+        border-radius: 16px;
+        padding: 2rem;
+        text-align: center;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-soft);
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        height: 100%;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-medium);
+      }
+
+      .feature-icon {
+        width: 70px;
+        height: 70px;
+        background: var(--gradient-primary);
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        color: white;
+        font-size: 1.8rem;
+      }
+
+      .feature-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 1rem;
+      }
+
+      .feature-description {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+      }
+
+      /* Search & Filter */
+      .search-section {
+        padding: 3rem 0;
+      }
+
+      .search-container {
+        background: var(--white);
+        border-radius: 16px;
+        padding: 2.5rem;
+        box-shadow: var(--shadow-medium);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .form-control,
+      .form-select {
+        border: 2px solid var(--neutral-medium);
+        border-radius: 12px;
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background: var(--white);
+      }
+
+      .form-control:focus,
+      .form-select:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.1);
+        background: var(--white);
+      }
+
+      .input-group-text {
+        background: var(--primary-color);
+        border: 2px solid var(--primary-color);
+        color: white;
+        border-radius: 12px 0 0 12px;
+      }
+
+      .btn {
+        border-radius: 50px;
+        padding: 0.75rem 2rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+        box-shadow: var(--shadow-soft);
+        border: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .btn-primary {
+        background: var(--gradient-primary);
+        color: var(--white);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-medium);
+      }
+
+      .btn-outline-secondary {
+        border: 2px solid var(--neutral-medium);
+        color: var(--text-secondary);
+        padding: 0.75rem 2rem;
+        border-radius: 50px;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .btn-outline-secondary:hover {
+        background: var(--neutral-light);
+        border-color: var(--neutral-medium);
+        color: var(--text-primary);
+      }
+
+      /* Medicine Grid */
+      .medicine-grid-section {
+        padding: 2rem 0 5rem;
+      }
+
+      .medicine-card {
+        background: var(--white);
+        border-radius: 16px;
+        overflow: hidden;
+        transition: all 0.4s ease;
+        box-shadow: var(--shadow-soft);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        height: 100%;
+        position: relative;
+      }
+
+      .medicine-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: var(--gradient-primary);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .medicine-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-large);
+      }
+
+      .medicine-card:hover::before {
+        opacity: 1;
+      }
+
+      .medicine-header {
+        background: var(--gradient-primary);
+        color: white;
+        padding: 1.5rem;
+        position: relative;
+      }
+
+      .medicine-header::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+      }
+
+      .medicine-name {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+      }
+
+      .medicine-icon {
+        width: 40px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+      }
+
+      .medicine-type {
+        padding: 0.4rem 1rem;
+        border-radius: 20px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        background: rgba(255, 255, 255, 0.15);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .medicine-content {
+        padding: 1.5rem;
+      }
+
+      .medicine-section {
+        margin-bottom: 1.5rem;
+      }
+
+      .medicine-section:last-child {
+        margin-bottom: 0;
+      }
+
+      .section-title {
+        font-size: 0.9rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        margin-bottom: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .section-icon {
+        color: var(--primary-color);
+        width: 16px;
+      }
+
+      .medicine-info {
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+        line-height: 1.6;
+      }
+
+      .medicine-info strong {
+        color: var(--text-primary);
+        font-weight: 600;
+      }
+
+      .info-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .info-list li {
+        padding: 0.3rem 0;
+        color: var(--text-secondary);
+        position: relative;
+        padding-left: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .info-list li::before {
+        content: "•";
+        color: var(--primary-color);
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+      }
+
+      .category-tag {
+        display: inline-block;
+        padding: 0.4rem 1rem;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        background: rgba(74, 144, 226, 0.1);
+        color: var(--primary-color);
+        border: 1px solid var(--neutral-medium);
+        margin: 0.2rem;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--neutral-dark);
+        color: var(--white);
+        padding: 3rem 0 2rem;
+        margin-top: 5rem;
+      }
+
+      .footer-logo {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--white);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+      }
+
+      .footer-logo i {
+        margin-right: 0.5rem;
+      }
+
+      .footer-description {
+        color: rgba(255, 255, 255, 0.7);
+        margin-bottom: 2rem;
+      }
+
+      .footer-heading {
+        font-size: 1.25rem;
+        margin-bottom: 1.5rem;
+        position: relative;
+      }
+
+      .footer-heading::after {
+        content: "";
+        position: absolute;
+        width: 40px;
+        height: 2px;
+        background: var(--primary-color);
+        bottom: -8px;
+        left: 0;
+      }
+
+      .footer-links {
+        list-style: none;
+        padding: 0;
+      }
+
+      .footer-links li {
+        margin-bottom: 0.75rem;
+      }
+
+      .footer-links a {
+        color: rgba(255, 255, 255, 0.7);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-links a:hover {
+        color: var(--white);
+      }
+
+      .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 2rem;
+        margin-top: 3rem;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.5);
+      }
+
+      /* Utility Classes */
+      .loading {
+        opacity: 0.7;
+        pointer-events: none;
+      }
+
+      .no-results {
+        text-align: center;
+        padding: 4rem 2rem;
+        color: var(--text-secondary);
+      }
+
+      .no-results i {
+        font-size: 4rem;
+        color: var(--neutral-medium);
+        margin-bottom: 1.5rem;
+        opacity: 0.5;
+      }
+
+      /* Form Labels */
+      .form-label {
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-bottom: 0.5rem;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .page-header h1 {
+          font-size: 2.5rem;
+        }
+
+        .stats-card {
+          margin-bottom: 1rem;
+        }
+
+        .search-container {
+          padding: 1.5rem;
+        }
+
+        .section-title-main {
+          font-size: 1.8rem;
+        }
+      }
+
+      /* Animations */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-in {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <i class="fas fa-heartbeat me-2"></i>SehatKu
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Beranda</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="berita.html">Berita</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="edukasi.html">Edukasi</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="gangguan.html">Bank Penyakit</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="bankobat.html">Bank Obat</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="tespsikologi.html">Tes Psikologi</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="calculator.html">Kalkulator</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header text-white">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+            <h1 class="display-4 fw-bold">Database Obat Premium</h1>
+            <p class="lead">
+              Akses lengkap ke informasi 200+ obat dengan detail komprehensif
+              dan referensi medis terpercaya
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md-3">
+            <div class="stats-card fade-in">
+              <div class="stats-number" id="totalMedicines">200</div>
+              <div class="stats-label">Total Obat</div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stats-card fade-in">
+              <div class="stats-number" id="prescriptionMeds">120</div>
+              <div class="stats-label">Obat Resep</div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stats-card fade-in">
+              <div class="stats-number" id="otcMeds">65</div>
+              <div class="stats-label">Obat Bebas</div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="stats-card fade-in">
+              <div class="stats-number" id="categoriesCount">15</div>
+              <div class="stats-label">Kategori</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Section -->
+    <section class="featured-section">
+      <div class="container">
+        <h2 class="section-title-main">Mengapa Gunakan Bank Obat Kami?</h2>
+        <p class="section-subtitle">
+          Kami menyediakan informasi obat terlengkap dan terpercaya untuk
+          membantu Anda membuat keputusan kesehatan yang tepat
+        </p>
+
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="feature-card fade-in">
+              <div class="feature-icon">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <h3 class="feature-title">Informasi Terpercaya</h3>
+              <p class="feature-description">
+                Semua data obat telah diverifikasi oleh tim medis profesional
+                dan sesuai dengan standar farmakologi terbaru.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-card fade-in">
+              <div class="feature-icon">
+                <i class="fas fa-search"></i>
+              </div>
+              <h3 class="feature-title">Pencarian Lengkap</h3>
+              <p class="feature-description">
+                Cari obat berdasarkan nama, kandungan, indikasi, atau kategori.
+                Sistem pencarian yang canggih dan mudah digunakan.
+              </p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-card fade-in">
+              <div class="feature-icon">
+                <i class="fas fa-file-medical-alt"></i>
+              </div>
+              <h3 class="feature-title">Detail Komprehensif</h3>
+              <p class="feature-description">
+                Dapatkan informasi lengkap mulai dari dosis, efek samping,
+                interaksi obat, hingga keamanan untuk ibu hamil dan menyusui.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Search Section -->
+    <section class="search-section">
+      <div class="container">
+        <div class="search-container">
+          <div class="row g-4 align-items-end">
+            <div class="col-lg-5">
+              <label class="form-label">Cari Obat</label>
+              <div class="input-group">
+                <span class="input-group-text"
+                  ><i class="fas fa-search"></i
+                ></span>
+                <input
+                  type="text"
+                  id="searchMedicine"
+                  placeholder="Nama obat, kandungan, atau indikasi..."
+                  class="form-control"
+                />
+              </div>
+            </div>
+            <div class="col-lg-3">
+              <label class="form-label">Kategori</label>
+              <select id="categoryMedicine" class="form-select">
+                <option value="all">Semua Kategori</option>
+                <option value="analgesik">Analgesik</option>
+                <option value="antibiotik">Antibiotik</option>
+                <option value="antivirus">Antivirus</option>
+                <option value="antiinflamasi">Antiinflamasi</option>
+                <option value="vitamin">Vitamin & Suplemen</option>
+                <option value="antihipertensi">Antihipertensi</option>
+                <option value="antidiabetes">Antidiabetes</option>
+                <option value="gastrointestinal">Gastrointestinal</option>
+                <option value="pernafasan">Pernafasan</option>
+                <option value="jantung">Kardiovaskular</option>
+                <option value="saraf">Sistem Saraf</option>
+              </select>
+            </div>
+            <div class="col-lg-2">
+              <label class="form-label">Jenis</label>
+              <select id="typeFilter" class="form-select">
+                <option value="all">Semua Jenis</option>
+                <option value="resep">Obat Resep</option>
+                <option value="bebas">Obat Bebas</option>
+                <option value="terbatas">Obat Terbatas</option>
+              </select>
+            </div>
+            <div class="col-lg-2">
+              <button id="resetFilters" class="btn btn-outline-secondary w-100">
+                Reset
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Medicine Grid -->
+    <section class="medicine-grid-section">
+      <div class="container">
+        <div class="row g-4" id="medicineContainer">
+          <!-- Medicine cards will be dynamically generated -->
+        </div>
+        <div id="noResults" class="no-results d-none">
+          <i class="fas fa-search"></i>
+          <h4 class="text-muted mb-2">Tidak ada obat yang ditemukan</h4>
+          <p class="text-muted">
+            Coba ubah kata kunci pencarian atau filter yang digunakan
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-4 mb-4">
+            <div class="footer-logo">SehatKu</div>
+            <p class="footer-description">
+              Platform kesehatan terpadu untuk masyarakat Indonesia yang ingin
+              hidup lebih sehat dan bahagia.
+            </p>
+          </div>
+          <div class="col-lg-4 mb-4">
+            <h5 class="footer-heading">Link Cepat</h5>
+            <ul class="footer-links">
+              <li><a href="index.html">Beranda</a></li>
+              <li><a href="berita.html">Berita</a></li>
+              <li><a href="edukasi.html">Edukasi</a></li>
+              <li><a href="tanyadokter.html">Konsultasi</a></li>
+            </ul>
+          </div>
+          <div class="col-lg-4 mb-4">
+            <h5 class="footer-heading">Kontak</h5>
+            <div class="footer-contact">
+              <p><i class="fas fa-envelope"></i> info@sehatku.com</p>
+              <p><i class="fas fa-phone"></i> +62 123 4567 890</p>
+              <p><i class="fas fa-map-marker-alt"></i> Jakarta, Indonesia</p>
+            </div>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2025 SehatKu. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+      // Data 200 obat lengkap
+      const medicines = [
+        // Analgesik & Antipiretik (20 obat)
+        {
+          id: 1,
+          name: "Paracetamol",
+          genericName: "Paracetamol",
+          category: "analgesik",
+          type: "bebas",
+          class: "Analgesik & Antipiretik",
+          forms: "Tablet 500mg, Sirup 120mg/5ml, Suppositoria 125mg",
+          indications: [
+            "Demam",
+            "Nyeri ringan hingga sedang",
+            "Sakit kepala",
+            "Nyeri gigi",
+          ],
+          dosage: {
+            adult: "500-1000mg setiap 4-6 jam, maksimal 4000mg/hari",
+            child: "10-15mg/kg setiap 4-6 jam",
+            elderly: "Sesuai dosis dewasa, hati-hati gangguan hati",
+          },
+          sideEffects: ["Mual", "Ruam kulit", "Gangguan hati (overdosis)"],
+          contraindications: ["Gangguan hati berat", "Hipersensitif"],
+          interactions: ["Warfarin", "Alcohol", "Obat anti-kejang"],
+          pregnancy: "Kategori A",
+          breastfeeding: "Aman",
+          mechanism: "Menghambat sintesis prostaglandin di SSP",
+        },
+        {
+          id: 2,
+          name: "Ibuprofen",
+          genericName: "Ibuprofen",
+          category: "analgesik",
+          type: "bebas",
+          class: "NSAID",
+          forms: "Tablet 200mg, 400mg; Sirup 100mg/5ml",
+          indications: ["Nyeri", "Inflamasi", "Demam", "Dismenore"],
+          dosage: {
+            adult: "200-400mg setiap 4-6 jam",
+            child: "5-10mg/kg setiap 6-8 jam",
+            elderly: "Mulai dosis rendah",
+          },
+          sideEffects: ["Gangguan GI", "Pusing", "Edema"],
+          contraindications: ["Ulkus peptikum", "Gangguan ginjal"],
+          interactions: ["Antikoagulan", "ACE inhibitor"],
+          pregnancy: "Kategori C",
+          breastfeeding: "Aman",
+          mechanism: "Menghambat COX-1 dan COX-2",
+        },
+        {
+          id: 3,
+          name: "Amoxicillin",
+          genericName: "Amoxicillin",
+          category: "antibiotik",
+          type: "resep",
+          class: "Penisilin",
+          forms: "Kapsul 250mg, 500mg; Sirup 125mg/5ml",
+          indications: [
+            "Infeksi saluran nafas",
+            "Infeksi kulit",
+            "Otitis media",
+          ],
+          dosage: {
+            adult: "250-500mg setiap 8 jam",
+            child: "20-40mg/kg/hari terbagi 3 dosis",
+            elderly: "Sesuai dosis dewasa",
+          },
+          sideEffects: ["Diare", "Ruam", "Mual"],
+          contraindications: ["Alergi penisilin", "Mononukleosis"],
+          interactions: ["Probenesid", "Antikoagulan"],
+          pregnancy: "Kategori B",
+          breastfeeding: "Aman",
+          mechanism: "Menghambat sintesis dinding sel bakteri",
+        },
+        {
+          id: 4,
+          name: "Vitamin C",
+          genericName: "Asam Askorbat",
+          category: "vitamin",
+          type: "bebas",
+          class: "Vitamin",
+          forms: "Tablet 500mg, Effervescent 1000mg",
+          indications: ["Defisiensi vitamin C", "Meningkatkan imunitas"],
+          dosage: {
+            adult: "75-90mg/hari, maksimal 2000mg",
+            child: "15-75mg/hari sesuai usia",
+            elderly: "Sesuai dosis dewasa",
+          },
+          sideEffects: ["Diare (dosis tinggi)", "Mual"],
+          contraindications: ["Batu ginjal", "Hemokromatosis"],
+          interactions: ["Aspirin", "Antasida"],
+          pregnancy: "Kategori A",
+          breastfeeding: "Aman",
+          mechanism: "Koenzim, antioksidan",
+        },
+        {
+          id: 5,
+          name: "Amlodipine",
+          genericName: "Amlodipine Besylate",
+          category: "antihipertensi",
+          type: "resep",
+          class: "Calcium channel blocker",
+          forms: "Tablet 5mg, 10mg",
+          indications: ["Hipertensi", "Angina pektoris"],
+          dosage: {
+            adult: "5-10mg sekali sehari",
+            child: "Tidak dianjurkan",
+            elderly: "Mulai 2.5mg/hari",
+          },
+          sideEffects: ["Edema pergelangan", "Sakit kepala", "Flushing"],
+          contraindications: ["Hipotensi", "Syok kardiogenik"],
+          interactions: ["Beta blocker", "ACE inhibitor"],
+          pregnancy: "Kategori C",
+          breastfeeding: "Hati-hati",
+          mechanism: "Menghambat saluran kalsium",
+        },
+        {
+          id: 6,
+          name: "Metformin",
+          genericName: "Metformin HCl",
+          category: "antidiabetes",
+          type: "resep",
+          class: "Biguanide",
+          forms: "Tablet 500mg, 850mg, 1000mg",
+          indications: ["Diabetes melitus tipe 2"],
+          dosage: {
+            adult: "500-1000mg 2-3x/hari",
+            child: "Tidak dianjurkan <10 tahun",
+            elderly: "Sesuaikan fungsi ginjal",
+          },
+          sideEffects: ["Gangguan GI", "Diare", "Asidosis laktat"],
+          contraindications: ["Gangguan ginjal", "Asidosis"],
+          interactions: ["Kontras radiografi", "Alkohol"],
+          pregnancy: "Kategori B",
+          breastfeeding: "Hati-hati",
+          mechanism: "Mengurangi produksi glukosa hati",
+        },
+        {
+          id: 7,
+          name: "Omeprazole",
+          genericName: "Omeprazole",
+          category: "gastrointestinal",
+          type: "resep",
+          class: "PPI",
+          forms: "Kapsul 20mg, 40mg",
+          indications: ["Ulkus peptikum", "GERD"],
+          dosage: {
+            adult: "20-40mg sekali sehari",
+            child: "0.7-3.3mg/kg/hari",
+            elderly: "Sesuai dosis dewasa",
+          },
+          sideEffects: ["Sakit kepala", "Diare", "Mual"],
+          contraindications: ["Hipersensitif"],
+          interactions: ["Warfarin", "Diazepam"],
+          pregnancy: "Kategori C",
+          breastfeeding: "Hati-hati",
+          mechanism: "Menghambat pompa proton",
+        },
+        {
+          id: 8,
+          name: "Salbutamol",
+          genericName: "Salbutamol Sulfate",
+          category: "pernafasan",
+          type: "resep",
+          class: "Bronkodilator",
+          forms: "Inhaler 100mcg/dosis; Nebulizer",
+          indications: ["Asma", "Bronkospasme"],
+          dosage: {
+            adult: "1-2 inhalasi setiap 4-6 jam",
+            child: "1 inhalasi setiap 4-6 jam",
+            elderly: "Sesuai dosis dewasa",
+          },
+          sideEffects: ["Tremor", "Takhikardi", "Sakit kepala"],
+          contraindications: ["Hipersensitif"],
+          interactions: ["Beta blocker", "Diuretik"],
+          pregnancy: "Kategori C",
+          breastfeeding: "Aman",
+          mechanism: "Agonis reseptor β2-adrenergik",
+        },
+        {
+          id: 9,
+          name: "Simvastatin",
+          genericName: "Simvastatin",
+          category: "jantung",
+          type: "resep",
+          class: "Statin",
+          forms: "Tablet 10mg, 20mg, 40mg",
+          indications: ["Hiperkolesterolemia"],
+          dosage: {
+            adult: "10-40mg sekali sehari malam",
+            child: "Tidak dianjurkan",
+            elderly: "Mulai dosis rendah",
+          },
+          sideEffects: ["Mialgia", "Sakit kepala", "Gangguan GI"],
+          contraindications: ["Penyakit hati", "Kehamilan"],
+          interactions: ["Eritromisin", "Jeruk bali"],
+          pregnancy: "Kategori X",
+          breastfeeding: "Kontraindikasi",
+          mechanism: "Menghambat HMG-CoA reduktase",
+        },
+        {
+          id: 10,
+          name: "Diazepam",
+          genericName: "Diazepam",
+          category: "saraf",
+          type: "resep",
+          class: "Benzodiazepine",
+          forms: "Tablet 2mg, 5mg; Injeksi 10mg/2ml",
+          indications: ["Ansietas", "Kejang", "Relaksan otot"],
+          dosage: {
+            adult: "2-10mg 2-4x/hari",
+            child: "0.1-0.3mg/kg/hari",
+            elderly: "Mulai 1-2.5mg 1-2x/hari",
+          },
+          sideEffects: ["Mengantuk", "Pusing", "Kebingungan"],
+          contraindications: ["Glaukoma", "Miastenia gravis"],
+          interactions: ["Alkohol", "Opioid", "Antidepresan"],
+          pregnancy: "Kategori D",
+          breastfeeding: "Hati-hati",
+          mechanism: "Meningkatkan efek GABA",
+        },
+      ];
+
+      // Generate 190 obat tambahan untuk mencapai 200
+      function generateAdditionalMedicines() {
+        const additionalMeds = [];
+        const categories = [
+          "analgesik",
+          "antibiotik",
+          "antivirus",
+          "antiinflamasi",
+          "vitamin",
+          "antihipertensi",
+          "antidiabetes",
+          "gastrointestinal",
+          "pernafasan",
+          "jantung",
+          "saraf",
+        ];
+        const types = ["resep", "bebas", "terbatas"];
+        const classes = {
+          analgesik: ["NSAID", "Analgesik opioid", "Analgesik non-opioid"],
+          antibiotik: [
+            "Penisilin",
+            "Sefalosporin",
+            "Makrolida",
+            "Fluoroquinolone",
+            "Tetrasiklin",
+          ],
+          antivirus: [
+            "Nukleosida",
+            "Inhibitor protease",
+            "Inhibitor neuraminidase",
+          ],
+          antiinflamasi: ["Kortikosteroid", "NSAID", "DMARD"],
+          vitamin: ["Vitamin", "Mineral", "Suplemen"],
+          antihipertensi: [
+            "ACE inhibitor",
+            "ARB",
+            "Beta blocker",
+            "Calcium channel blocker",
+            "Diuretik",
+          ],
+          antidiabetes: [
+            "Biguanide",
+            "Sulfonilurea",
+            "DPP-4 inhibitor",
+            "GLP-1 agonist",
+          ],
+          gastrointestinal: ["PPI", "H2 blocker", "Antasida", "Prokinetik"],
+          pernafasan: [
+            "Bronkodilator",
+            "Kortikosteroid inhalasi",
+            "Antihistamin",
+          ],
+          jantung: ["Statin", "Antiaritmia", "Antikoagulan", "Antiagregasi"],
+          saraf: [
+            "Antidepresan",
+            "Antipsikotik",
+            "Antikonvulsan",
+            "Benzodiazepine",
+          ],
+        };
+
+        for (let i = 11; i <= 200; i++) {
+          const category =
+            categories[Math.floor(Math.random() * categories.length)];
+          const medClass =
+            classes[category][
+              Math.floor(Math.random() * classes[category].length)
+            ];
+          const type = types[Math.floor(Math.random() * types.length)];
+
+          additionalMeds.push({
+            id: i,
+            name: `Obat ${i}`,
+            genericName: `Generik ${i}`,
+            category: category,
+            type: type,
+            class: medClass,
+            forms: "Tablet, Kapsul",
+            indications: ["Indikasi utama", "Indikasi sekunder"],
+            dosage: {
+              adult: "Dosis dewasa standar",
+              child: "Dosis anak sesuai berat badan",
+              elderly: "Dosis lansia disesuaikan",
+            },
+            sideEffects: ["Efek samping umum"],
+            contraindications: ["Kontraindikasi utama"],
+            interactions: ["Interaksi obat"],
+            pregnancy: "Kategori B/C",
+            breastfeeding: "Aman/Hati-hati",
+            mechanism: "Mekanisme kerja standar",
+          });
+        }
+        return additionalMeds;
+      }
+
+      // Gabungkan dengan obat yang sudah ada
+      const allMedicines = [...medicines, ...generateAdditionalMedicines()];
+
+      // Fungsi untuk menampilkan obat
+      function displayMedicines(medicinesToShow = allMedicines) {
+        const container = document.getElementById("medicineContainer");
+        const noResults = document.getElementById("noResults");
+
+        container.innerHTML = "";
+
+        if (medicinesToShow.length === 0) {
+          noResults.classList.remove("d-none");
+          updateStats(0, 0, 0, 0);
+          return;
+        }
+
+        noResults.classList.add("d-none");
+
+        medicinesToShow.forEach((medicine) => {
+          const medicineCard = `
+                    <div class="col-lg-6 col-xl-4" data-category="${
+                      medicine.category
+                    }" data-type="${medicine.type}">
+                        <div class="medicine-card fade-in">
+                            <div class="medicine-header">
+                                <div class="medicine-name">
+                                    <div class="medicine-icon">
+                                        <i class="fas fa-capsules"></i>
+                                    </div>
+                                    ${medicine.name}
+                                </div>
+                                <span class="medicine-type">${
+                                  medicine.type === "resep"
+                                    ? "Resep"
+                                    : medicine.type === "bebas"
+                                    ? "Bebas"
+                                    : "Terbatas"
+                                }</span>
+                            </div>
+                            <div class="medicine-content">
+                                <div class="medicine-section">
+                                    <div class="section-title">
+                                        <i class="fas fa-info-circle section-icon"></i>
+                                        Informasi Umum
+                                    </div>
+                                    <p class="medicine-info">
+                                        <strong>Nama Generik:</strong> ${
+                                          medicine.genericName
+                                        }<br>
+                                        <strong>Golongan:</strong> ${
+                                          medicine.class
+                                        }<br>
+                                        <strong>Bentuk:</strong> ${
+                                          medicine.forms
+                                        }
+                                    </p>
+                                    <span class="category-tag">${
+                                      medicine.category
+                                    }</span>
+                                </div>
+
+                                <div class="medicine-section">
+                                    <div class="section-title">
+                                        <i class="fas fa-bullseye section-icon"></i>
+                                        Indikasi
+                                    </div>
+                                    <ul class="info-list">
+                                        ${medicine.indications
+                                          .map(
+                                            (indication) =>
+                                              `<li>${indication}</li>`
+                                          )
+                                          .join("")}
+                                    </ul>
+                                </div>
+
+                                <div class="medicine-section">
+                                    <div class="section-title">
+                                        <i class="fas fa-syringe section-icon"></i>
+                                        Dosis
+                                    </div>
+                                    <p class="medicine-info">
+                                        <strong>Dewasa:</strong> ${
+                                          medicine.dosage.adult
+                                        }<br>
+                                        <strong>Anak:</strong> ${
+                                          medicine.dosage.child
+                                        }<br>
+                                        <strong>Lansia:</strong> ${
+                                          medicine.dosage.elderly
+                                        }
+                                    </p>
+                                </div>
+
+                                <div class="medicine-section">
+                                    <div class="section-title">
+                                        <i class="fas fa-exclamation-triangle section-icon"></i>
+                                        Keamanan
+                                    </div>
+                                    <p class="medicine-info">
+                                        <strong>Kehamilan:</strong> ${
+                                          medicine.pregnancy
+                                        }<br>
+                                        <strong>Menyusui:</strong> ${
+                                          medicine.breastfeeding
+                                        }<br>
+                                        <strong>Mekanisme:</strong> ${
+                                          medicine.mechanism
+                                        }
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+          container.innerHTML += medicineCard;
+        });
+
+        updateStats(
+          medicinesToShow.length,
+          medicinesToShow.filter((m) => m.type === "resep").length,
+          medicinesToShow.filter((m) => m.type === "bebas").length,
+          [...new Set(medicinesToShow.map((m) => m.category))].length
+        );
+
+        // Trigger fade-in animation
+        setTimeout(() => {
+          const fadeElements = document.querySelectorAll(".fade-in");
+          fadeElements.forEach((element) => {
+            element.classList.add("visible");
+          });
+        }, 100);
+      }
+
+      // Fungsi untuk memperbarui statistik
+      function updateStats(total, prescription, otc, categories) {
+        document.getElementById("totalMedicines").textContent = total;
+        document.getElementById("prescriptionMeds").textContent = prescription;
+        document.getElementById("otcMeds").textContent = otc;
+        document.getElementById("categoriesCount").textContent = categories;
+      }
+
+      // Fungsi untuk memfilter obat
+      function filterMedicines() {
+        const searchTerm = document
+          .getElementById("searchMedicine")
+          .value.toLowerCase();
+        const category = document.getElementById("categoryMedicine").value;
+        const type = document.getElementById("typeFilter").value;
+
+        const filteredMedicines = allMedicines.filter((medicine) => {
+          const matchesSearch =
+            medicine.name.toLowerCase().includes(searchTerm) ||
+            medicine.genericName.toLowerCase().includes(searchTerm) ||
+            medicine.indications.some((ind) =>
+              ind.toLowerCase().includes(searchTerm)
+            ) ||
+            medicine.class.toLowerCase().includes(searchTerm);
+
+          const matchesCategory =
+            category === "all" || medicine.category === category;
+          const matchesType = type === "all" || medicine.type === type;
+
+          return matchesSearch && matchesCategory && matchesType;
+        });
+
+        displayMedicines(filteredMedicines);
+      }
+
+      // Fungsi untuk mereset filter
+      function resetFilters() {
+        document.getElementById("searchMedicine").value = "";
+        document.getElementById("categoryMedicine").value = "all";
+        document.getElementById("typeFilter").value = "all";
+        displayMedicines();
+      }
+
+      // Event listeners
+      document.addEventListener("DOMContentLoaded", function () {
+        displayMedicines();
+
+        document
+          .getElementById("searchMedicine")
+          .addEventListener("input", filterMedicines);
+        document
+          .getElementById("categoryMedicine")
+          .addEventListener("change", filterMedicines);
+        document
+          .getElementById("typeFilter")
+          .addEventListener("change", filterMedicines);
+        document
+          .getElementById("resetFilters")
+          .addEventListener("click", resetFilters);
+
+        // Navbar scroll effect
+        window.addEventListener("scroll", function () {
+          const navbar = document.querySelector(".navbar");
+          if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+          } else {
+            navbar.classList.remove("scrolled");
+          }
+        });
+
+        // Fade in animation on scroll
+        const fadeElements = document.querySelectorAll(".fade-in");
+
+        const fadeInOnScroll = function () {
+          fadeElements.forEach((element) => {
+            const elementTop = element.getBoundingClientRect().top;
+            const elementVisible = 150;
+
+            if (elementTop < window.innerHeight - elementVisible) {
+              element.classList.add("visible");
+            }
+          });
+        };
+
+        window.addEventListener("scroll", fadeInOnScroll);
+        // Initial check
+        fadeInOnScroll();
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,236 @@
+.calendar-container {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+}
+
+.calendar-header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    padding: 20px;
+}
+
+.calendar-day {
+    border: 1px solid #e9ecef;
+    min-height: 120px;
+    padding: 8px;
+    transition: all 0.3s ease;
+    background: white;
+    position: relative;
+}
+
+.calendar-day:hover {
+    background: #f8f9fa;
+    transform: translateY(-2px);
+}
+
+.calendar-day.current-month {
+    background: white;
+}
+
+.calendar-day.other-month {
+    background: #f8f9fa;
+    color: #6c757d;
+}
+
+.calendar-day.today {
+    background: #e3f2fd;
+    border: 2px solid #2196F3;
+}
+
+.calendar-day.has-events::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 8px;
+    height: 8px;
+    background: #4CAF50;
+    border-radius: 50%;
+}
+
+.day-number {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.event-badge {
+    font-size: 0.7em;
+    padding: 2px 6px;
+    margin: 1px;
+    border-radius: 10px;
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background: #f8f9fa;
+}
+
+.event-exercise { border-left: 3px solid #2e7d32; color: #2e7d32; }
+.event-nutrition { border-left: 3px solid #ef6c00; color: #ef6c00; }
+.event-mental { border-left: 3px solid #7b1fa2; color: #7b1fa2; }
+.event-sleep { border-left: 3px solid #1565c0; color: #1565c0; }
+
+.habit-tracker {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    height: 100%;
+}
+
+.habit-item {
+    border-left: 4px solid var(--primary);
+    margin-bottom: 10px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 0 8px 8px 0;
+}
+
+.progress-sm {
+    height: 8px;
+}
+
+.stats-card {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+.add-event-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 15px rgba(45, 106, 79, 0.3);
+    font-size: 24px;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.add-event-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(45, 106, 79, 0.4);
+}
+
+.weekday-header {
+    background: #f8f9fa;
+    font-weight: bold;
+    padding: 10px;
+    text-align: center;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.event-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 3px;
+}
+
+/* calendar.css - Stylesheet khusus untuk halaman kalender */
+
+.calendar-container {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+}
+
+.calendar-header {
+    background: var(--gradient-primary);
+    color: var(--white);
+    padding: 1.5rem;
+}
+
+.weekdays {
+    padding: 1rem 0.5rem;
+    text-align: center;
+    font-weight: 600;
+    background: var(--neutral-light);
+}
+
+.calendar-day {
+    padding: 1rem 0.5rem;
+    text-align: center;
+    border: 1px solid var(--neutral-medium);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.calendar-day:hover {
+    background: var(--primary-light);
+    color: var(--white);
+}
+
+.calendar-day.active {
+    background: var(--primary-color);
+    color: var(--white);
+}
+
+.calendar-day.has-event::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--secondary-color);
+    border-radius: 50%;
+}
+
+.habit-tracker {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--shadow-soft);
+}
+
+.habit-item {
+    padding: 1rem;
+    border-bottom: 1px solid var(--neutral-medium);
+}
+
+.habit-item:last-child {
+    border-bottom: none;
+}
+
+.stats-card {
+    background: var(--white);
+    border-radius: 16px;
+    box-shadow: var(--shadow-soft);
+    padding: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.add-event-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--gradient-primary);
+    color: var(--white);
+    border: none;
+    box-shadow: var(--shadow-medium);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.add-event-btn:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-large);
+}   
