@@ -1,369 +1,396 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tes Psikologi - SehatKu</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        :root {
-            --primary-color: #4A90E2;
-            --secondary-color: #7ED321;
-            --accent-color: #50E3C2;
-            --neutral-light: #F8F9FA;
-            --neutral-medium: #E9ECEF;
-            --neutral-dark: #343A40;
-            --text-primary: #212529;
-            --text-secondary: #6C757D;
-            --white: #FFFFFF;
-            --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.05);
-            --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.08);
-        }
+      :root {
+        --primary-color: #4a90e2;
+        --secondary-color: #7ed321;
+        --accent-color: #50e3c2;
+        --neutral-light: #f8f9fa;
+        --neutral-medium: #e9ecef;
+        --neutral-dark: #343a40;
+        --text-primary: #212529;
+        --text-secondary: #6c757d;
+        --white: #ffffff;
+        --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.05);
+        --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.08);
+      }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-            color: var(--text-primary);
-            line-height: 1.6;
-            background-color: var(--neutral-light);
-        }
+      body {
+        font-family: "Poppins", sans-serif;
+        color: var(--text-primary);
+        line-height: 1.6;
+        background-color: var(--neutral-light);
+      }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-        }
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Playfair Display", serif;
+        font-weight: 600;
+      }
 
-        /* Header */
-        .navbar {
-            padding: 1.5rem 0;
-            transition: all 0.3s ease;
-            background-color: rgba(255, 255, 255, 0.95) !important;
-            backdrop-filter: blur(10px);
-        }
+      /* Header */
+      .navbar {
+        padding: 1.5rem 0;
+        transition: all 0.3s ease;
+        background-color: rgba(255, 255, 255, 0.95) !important;
+        backdrop-filter: blur(10px);
+      }
 
-        .navbar.scrolled {
-            padding: 1rem 0;
-            box-shadow: var(--shadow-soft);
-        }
+      .navbar.scrolled {
+        padding: 1rem 0;
+        box-shadow: var(--shadow-soft);
+      }
 
-        .navbar-brand {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--primary-color) !important;
-        }
+      .navbar-brand {
+        font-family: "Playfair Display", serif;
+        font-size: 1.8rem;
+        font-weight: 700;
+        color: var(--primary-color) !important;
+      }
 
-        .nav-link {
-            font-weight: 500;
-            margin: 0 0.5rem;
-            position: relative;
-            color: var(--text-primary) !important;
-        }
+      .nav-link {
+        font-weight: 500;
+        margin: 0 0.5rem;
+        position: relative;
+        color: var(--text-primary) !important;
+      }
 
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--primary-color);
-            transition: width 0.3s ease;
-        }
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: var(--primary-color);
+        transition: width 0.3s ease;
+      }
 
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 100%;
-        }
+      .nav-link:hover::after,
+      .nav-link.active::after {
+        width: 100%;
+      }
 
-        /* Page Header */
-        .page-header {
-            padding: 8rem 0 4rem;
-            background: linear-gradient(135deg, rgba(74, 144, 226, 0.9) 0%, rgba(58, 123, 200, 0.9) 100%), 
-                        url('https://images.unsplash.com/photo-1593811167562-9cef47bfa24c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
-            background-size: cover;
-            background-position: center;
-            margin-top: 76px;
-            position: relative;
-            overflow: hidden;
-        }
+      /* Page Header */
+      .page-header {
+        padding: 8rem 0 4rem;
+        background: linear-gradient(
+            135deg,
+            rgba(74, 144, 226, 0.9) 0%,
+            rgba(58, 123, 200, 0.9) 100%
+          ),
+          url("https://images.unsplash.com/photo-1593811167562-9cef47bfa24c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80");
+        background-size: cover;
+        background-position: center;
+        margin-top: 76px;
+        position: relative;
+        overflow: hidden;
+      }
 
+      .page-header h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Test Cards */
+      .test-card {
+        background-color: var(--white);
+        border-radius: 16px;
+        padding: 2.5rem 2rem;
+        box-shadow: var(--shadow-soft);
+        height: 100%;
+        border: 1px solid var(--neutral-medium);
+        transition: all 0.3s ease;
+        text-align: center;
+      }
+
+      .test-card:hover {
+        transform: translateY(-5px);
+        box-shadow: var(--shadow-medium);
+      }
+
+      .test-icon {
+        font-size: 4rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .test-info {
+        display: flex;
+        justify-content: space-between;
+        margin: 1.5rem 0;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+      }
+
+      /* Buttons */
+      .btn {
+        border-radius: 50px;
+        padding: 0.75rem 1.5rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+      }
+
+      .btn-primary {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+      }
+
+      .btn-primary:hover {
+        background-color: #3a7bc8;
+        border-color: #3a7bc8;
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-medium);
+      }
+
+      .btn-secondary {
+        background-color: var(--secondary-color);
+        border-color: var(--secondary-color);
+      }
+
+      .btn-secondary:hover {
+        background-color: #6bbd1d;
+        border-color: #6bbd1d;
+        transform: translateY(-2px);
+        box-shadow: var(--shadow-medium);
+      }
+
+      /* Test Progress */
+      .test-progress-bar {
+        width: 100%;
+        height: 8px;
+        background: var(--neutral-medium);
+        border-radius: 4px;
+        margin-bottom: 2rem;
+        overflow: hidden;
+      }
+
+      .progress-fill {
+        height: 100%;
+        background: var(--primary-color);
+        transition: width 0.3s ease;
+        width: 0%;
+      }
+
+      /* Question Card */
+      .question-card {
+        background-color: var(--white);
+        padding: 2.5rem;
+        border-radius: 16px;
+        box-shadow: var(--shadow-soft);
+        margin-bottom: 2rem;
+        border: 1px solid var(--neutral-medium);
+      }
+
+      .question-text {
+        margin-bottom: 2rem;
+        color: var(--text-primary);
+        font-size: 1.25rem;
+        line-height: 1.6;
+      }
+
+      .answer-options .form-check {
+        padding: 1rem 1.5rem;
+        border: 2px solid var(--neutral-medium);
+        border-radius: 12px;
+        margin-bottom: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .answer-options .form-check:hover {
+        background: var(--neutral-light);
+        border-color: var(--primary-color);
+      }
+
+      .answer-options .form-check-input:checked + .form-check-label {
+        color: var(--primary-color);
+        font-weight: 600;
+      }
+
+      .answer-options .form-check-input:checked {
+        background-color: var(--primary-color);
+        border-color: var(--primary-color);
+      }
+
+      /* Results Card */
+      .results-card {
+        background-color: var(--white);
+        padding: 3rem;
+        border-radius: 16px;
+        box-shadow: var(--shadow-soft);
+        border: 1px solid var(--neutral-medium);
+      }
+
+      .result-icon {
+        font-size: 5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .score-circle {
+        display: inline-block;
+        width: 140px;
+        height: 140px;
+        border-radius: 50%;
+        background: linear-gradient(
+          135deg,
+          var(--primary-color) 0%,
+          #3a7bc8 100%
+        );
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 1.5rem 0;
+      }
+
+      .score-number {
+        font-size: 2.5rem;
+        font-weight: bold;
+      }
+
+      .score-label {
+        font-size: 0.9rem;
+      }
+
+      .severity-indicator {
+        margin: 1.5rem 0;
+      }
+
+      .result-description {
+        color: var(--text-secondary);
+        margin-bottom: 2rem;
+        line-height: 1.8;
+      }
+
+      .recommendations {
+        background: var(--neutral-light);
+        padding: 2rem;
+        border-radius: 12px;
+        margin: 2rem 0;
+      }
+
+      /* Disclaimer Box */
+      .disclaimer-box {
+        background: #fff3cd;
+        border: 1px solid #ffeaa7;
+        border-radius: 12px;
+        padding: 2rem;
+        margin-top: 3rem;
+      }
+
+      .disclaimer-box ul {
+        margin-bottom: 0;
+      }
+
+      .disclaimer-box li {
+        margin-bottom: 0.75rem;
+        color: #856404;
+      }
+
+      /* Section Title */
+      .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
+        position: relative;
+        display: inline-block;
+      }
+
+      .section-title::after {
+        content: "";
+        position: absolute;
+        width: 60px;
+        height: 3px;
+        background-color: var(--primary-color);
+        bottom: -10px;
+        left: 0;
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--neutral-dark);
+        color: var(--white);
+        padding: 2rem 0;
+        margin-top: 4rem;
+      }
+
+      /* Animations */
+      .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: all 0.6s ease;
+      }
+
+      .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
         .page-header h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+          font-size: 2.5rem;
         }
 
-        /* Test Cards */
+        .section-title {
+          font-size: 2rem;
+        }
+
         .test-card {
-            background-color: var(--white);
-            border-radius: 16px;
-            padding: 2.5rem 2rem;
-            box-shadow: var(--shadow-soft);
-            height: 100%;
-            border: 1px solid var(--neutral-medium);
-            transition: all 0.3s ease;
-            text-align: center;
+          margin-bottom: 1.5rem;
+          padding: 2rem 1.5rem;
         }
 
-        .test-card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .test-icon {
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .test-info {
-            display: flex;
-            justify-content: space-between;
-            margin: 1.5rem 0;
-            font-size: 0.9rem;
-            color: var(--text-secondary);
-        }
-
-        /* Buttons */
-        .btn {
-            border-radius: 50px;
-            padding: 0.75rem 1.5rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-        }
-
-        .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-        }
-
-        .btn-primary:hover {
-            background-color: #3a7bc8;
-            border-color: #3a7bc8;
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        .btn-secondary {
-            background-color: var(--secondary-color);
-            border-color: var(--secondary-color);
-        }
-
-        .btn-secondary:hover {
-            background-color: #6bbd1d;
-            border-color: #6bbd1d;
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-medium);
-        }
-
-        /* Test Progress */
-        .test-progress-bar {
-            width: 100%;
-            height: 8px;
-            background: var(--neutral-medium);
-            border-radius: 4px;
-            margin-bottom: 2rem;
-            overflow: hidden;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: var(--primary-color);
-            transition: width 0.3s ease;
-            width: 0%;
-        }
-
-        /* Question Card */
         .question-card {
-            background-color: var(--white);
-            padding: 2.5rem;
-            border-radius: 16px;
-            box-shadow: var(--shadow-soft);
-            margin-bottom: 2rem;
-            border: 1px solid var(--neutral-medium);
+          padding: 1.5rem;
         }
 
-        .question-text {
-            margin-bottom: 2rem;
-            color: var(--text-primary);
-            font-size: 1.25rem;
-            line-height: 1.6;
-        }
-
-        .answer-options .form-check {
-            padding: 1rem 1.5rem;
-            border: 2px solid var(--neutral-medium);
-            border-radius: 12px;
-            margin-bottom: 1rem;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .answer-options .form-check:hover {
-            background: var(--neutral-light);
-            border-color: var(--primary-color);
-        }
-
-        .answer-options .form-check-input:checked + .form-check-label {
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-
-        .answer-options .form-check-input:checked {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-        }
-
-        /* Results Card */
         .results-card {
-            background-color: var(--white);
-            padding: 3rem;
-            border-radius: 16px;
-            box-shadow: var(--shadow-soft);
-            border: 1px solid var(--neutral-medium);
-        }
-
-        .result-icon {
-            font-size: 5rem;
-            margin-bottom: 1.5rem;
+          padding: 2rem;
         }
 
         .score-circle {
-            display: inline-block;
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-color) 0%, #3a7bc8 100%);
-            color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin: 1.5rem 0;
+          width: 120px;
+          height: 120px;
         }
-
-        .score-number {
-            font-size: 2.5rem;
-            font-weight: bold;
-        }
-
-        .score-label {
-            font-size: 0.9rem;
-        }
-
-        .severity-indicator {
-            margin: 1.5rem 0;
-        }
-
-        .result-description {
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            line-height: 1.8;
-        }
-
-        .recommendations {
-            background: var(--neutral-light);
-            padding: 2rem;
-            border-radius: 12px;
-            margin: 2rem 0;
-        }
-
-        /* Disclaimer Box */
-        .disclaimer-box {
-            background: #fff3cd;
-            border: 1px solid #ffeaa7;
-            border-radius: 12px;
-            padding: 2rem;
-            margin-top: 3rem;
-        }
-
-        .disclaimer-box ul {
-            margin-bottom: 0;
-        }
-
-        .disclaimer-box li {
-            margin-bottom: 0.75rem;
-            color: #856404;
-        }
-
-        /* Section Title */
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            width: 60px;
-            height: 3px;
-            background-color: var(--primary-color);
-            bottom: -10px;
-            left: 0;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--neutral-dark);
-            color: var(--white);
-            padding: 2rem 0;
-            margin-top: 4rem;
-        }
-
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
-        }
-
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .page-header h1 {
-                font-size: 2.5rem;
-            }
-            
-            .section-title {
-                font-size: 2rem;
-            }
-            
-            .test-card {
-                margin-bottom: 1.5rem;
-                padding: 2rem 1.5rem;
-            }
-            
-            .question-card {
-                padding: 1.5rem;
-            }
-            
-            .results-card {
-                padding: 2rem;
-            }
-            
-            .score-circle {
-                width: 120px;
-                height: 120px;
-            }
-        }
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Header/Navigasi -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <i class="fas fa-heartbeat me-2"></i>SehatKu
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-             <span class="navbar-toggler-icon"></span>
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <i class="fas fa-heartbeat me-2"></i>SehatKu
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
@@ -383,7 +410,9 @@
               <a class="nav-link active" href="bankobat.html">Bank Obat</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="tespsikologi.html">Tes Psikologi</a>
+              <a class="nav-link active" href="tespsikologi.html"
+                >Tes Psikologi</a
+              >
             </li>
             <li class="nav-item">
               <a class="nav-link" href="calculator.html">Kalkulator</a>
@@ -393,427 +422,487 @@
       </div>
     </nav>
 
-   
-
     <!-- Page Header -->
     <section class="page-header text-white">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 mx-auto text-center">
-                    <h1 class="display-4 fw-bold">Tes Psikologi Online</h1>
-                    <p class="lead">Evaluasi kesehatan mental dan psikologis Anda dengan tes terstandar</p>
-                </div>
-            </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 mx-auto text-center">
+            <h1 class="display-4 fw-bold">Tes Psikologi Online</h1>
+            <p class="lead">
+              Evaluasi kesehatan mental dan psikologis Anda dengan tes
+              terstandar
+            </p>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Test Content -->
     <section class="py-5">
-        <div class="container">
-            <!-- Test Selection -->
-            <div id="testSelection" class="test-selection">
-                <h2 class="section-title text-center mb-5">Pilih Jenis Tes</h2>
-                <div class="row g-4">
-                    <div class="col-md-4 fade-in">
-                        <div class="test-card">
-                            <div class="test-icon">😰</div>
-                            <h3>Tes Kecemasan (GAD-7)</h3>
-                            <p>Menilai tingkat kecemasan umum dengan 7 pertanyaan terstandar</p>
-                            <div class="test-info">
-                                <span>⏱️ 3-5 menit</span>
-                                <span>📋 7 pertanyaan</span>
-                            </div>
-                            <button class="btn btn-primary w-100" onclick="startTest('anxiety')">
-                                Mulai Tes
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 fade-in">
-                        <div class="test-card">
-                            <div class="test-icon">😔</div>
-                            <h3>Tes Depresi (PHQ-9)</h3>
-                            <p>Skrining depresi menggunakan Patient Health Questionnaire-9</p>
-                            <div class="test-info">
-                                <span>⏱️ 5-7 menit</span>
-                                <span>📋 9 pertanyaan</span>
-                            </div>
-                            <button class="btn btn-primary w-100" onclick="startTest('depression')">
-                                Mulai Tes
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 fade-in">
-                        <div class="test-card">
-                            <div class="test-icon">😴</div>
-                            <h3>Tes Kualitas Tidur</h3>
-                            <p>Evaluasi gangguan tidur dan kualitas istirahat Anda</p>
-                            <div class="test-info">
-                                <span>⏱️ 4-6 menit</span>
-                                <span>📋 8 pertanyaan</span>
-                            </div>
-                            <button class="btn btn-primary w-100" onclick="startTest('sleep')">
-                                Mulai Tes
-                            </button>
-                        </div>
-                    </div>
+      <div class="container">
+        <!-- Test Selection -->
+        <div id="testSelection" class="test-selection">
+          <h2 class="section-title text-center mb-5">Pilih Jenis Tes</h2>
+          <div class="row g-4">
+            <div class="col-md-4 fade-in">
+              <div class="test-card">
+                <div class="test-icon">😰</div>
+                <h3>Tes Kecemasan (GAD-7)</h3>
+                <p>
+                  Menilai tingkat kecemasan umum dengan 7 pertanyaan terstandar
+                </p>
+                <div class="test-info">
+                  <span>⏱️ 3-5 menit</span>
+                  <span>📋 7 pertanyaan</span>
                 </div>
-
-                <div class="disclaimer-box fade-in">
-                    <h3>⚠️ Disclaimer Penting</h3>
-                    <ul>
-                        <li>Tes ini adalah alat skrining awal, bukan diagnosis klinis</li>
-                        <li>Hasil tes bersifat indikatif dan memerlukan konfirmasi profesional</li>
-                        <li>Jika hasil menunjukkan masalah serius, konsultasikan dengan psikolog/psikiater</li>
-                        <li>Data Anda dijamin kerahasiaannya</li>
-                        <li>Tes tidak menggantikan konsultasi langsung dengan tenaga profesional</li>
-                    </ul>
-                </div>
+                <button
+                  class="btn btn-primary w-100"
+                  onclick="startTest('anxiety')"
+                >
+                  Mulai Tes
+                </button>
+              </div>
             </div>
 
-            <!-- Test Container -->
-            <div id="testContainer" class="test-container" style="display: none">
-                <div class="test-progress-bar">
-                    <div class="progress-fill" id="progressBar"></div>
+            <div class="col-md-4 fade-in">
+              <div class="test-card">
+                <div class="test-icon">😔</div>
+                <h3>Tes Depresi (PHQ-9)</h3>
+                <p>
+                  Skrining depresi menggunakan Patient Health Questionnaire-9
+                </p>
+                <div class="test-info">
+                  <span>⏱️ 5-7 menit</span>
+                  <span>📋 9 pertanyaan</span>
                 </div>
-                <div class="test-header text-center mb-4">
-                    <h2 id="testTitle"></h2>
-                    <p id="testDescription"></p>
-                    <div class="question-counter">
-                        Pertanyaan <span id="currentQuestion">1</span> dari
-                        <span id="totalQuestions">7</span>
-                    </div>
-                </div>
-
-                <div class="question-card fade-in">
-                    <h3 class="question-text" id="questionText"></h3>
-                    <div class="answer-options" id="answerOptions"></div>
-                </div>
-
-                <div class="test-navigation text-center mt-4">
-                    <button class="btn btn-secondary me-2" onclick="previousQuestion()" id="prevBtn" disabled>
-                        ← Sebelumnya
-                    </button>
-                    <button class="btn btn-primary" onclick="nextQuestion()" id="nextBtn">
-                        Selanjutnya →
-                    </button>
-                </div>
+                <button
+                  class="btn btn-primary w-100"
+                  onclick="startTest('depression')"
+                >
+                  Mulai Tes
+                </button>
+              </div>
             </div>
 
-            <!-- Results Container -->
-            <div id="resultsContainer" class="results-container" style="display: none">
-                <div class="results-card text-center fade-in">
-                    <div class="result-icon" id="resultIcon"></div>
-                    <h2 id="resultTitle"></h2>
-                    <div class="score-display">
-                        <div class="score-circle">
-                            <span class="score-number" id="scoreNumber">0</span>
-                            <span class="score-label">Skor</span>
-                        </div>
-                    </div>
-                    <div class="severity-indicator" id="severityIndicator"></div>
-                    <div class="result-description" id="resultDescription"></div>
-
-                    <div class="recommendations">
-                        <h3>💡 Rekomendasi</h3>
-                        <div id="recommendationsList"></div>
-                    </div>
-
-                    <div class="result-actions mt-4">
-                        <button class="btn btn-primary me-2" onclick="resetTest()">
-                            Tes Lainnya
-                        </button>
-                        <button class="btn btn-secondary me-2" onclick="downloadResult()">
-                            📥 Unduh Hasil
-                        </button>
-                        <a href="tanyadokter.html" class="btn btn-success">
-                            Konsultasi Profesional
-                        </a>
-                    </div>
-
-                    <div class="result-disclaimer mt-4">
-                        <p>
-                            <strong>Catatan:</strong> Hasil ini adalah indikasi awal.
-                            Untuk diagnosis dan penanganan yang tepat, silakan konsultasi
-                            dengan psikolog atau psikiater profesional.
-                        </p>
-                    </div>
+            <div class="col-md-4 fade-in">
+              <div class="test-card">
+                <div class="test-icon">😴</div>
+                <h3>Tes Kualitas Tidur</h3>
+                <p>Evaluasi gangguan tidur dan kualitas istirahat Anda</p>
+                <div class="test-info">
+                  <span>⏱️ 4-6 menit</span>
+                  <span>📋 8 pertanyaan</span>
                 </div>
+                <button
+                  class="btn btn-primary w-100"
+                  onclick="startTest('sleep')"
+                >
+                  Mulai Tes
+                </button>
+              </div>
             </div>
+          </div>
+
+          <div class="disclaimer-box fade-in">
+            <h3>⚠️ Disclaimer Penting</h3>
+            <ul>
+              <li>Tes ini adalah alat skrining awal, bukan diagnosis klinis</li>
+              <li>
+                Hasil tes bersifat indikatif dan memerlukan konfirmasi
+                profesional
+              </li>
+              <li>
+                Jika hasil menunjukkan masalah serius, konsultasikan dengan
+                psikolog/psikiater
+              </li>
+              <li>Data Anda dijamin kerahasiaannya</li>
+              <li>
+                Tes tidak menggantikan konsultasi langsung dengan tenaga
+                profesional
+              </li>
+            </ul>
+          </div>
         </div>
+
+        <!-- Test Container -->
+        <div id="testContainer" class="test-container" style="display: none">
+          <div class="test-progress-bar">
+            <div class="progress-fill" id="progressBar"></div>
+          </div>
+          <div class="test-header text-center mb-4">
+            <h2 id="testTitle"></h2>
+            <p id="testDescription"></p>
+            <div class="question-counter">
+              Pertanyaan <span id="currentQuestion">1</span> dari
+              <span id="totalQuestions">7</span>
+            </div>
+          </div>
+
+          <div class="question-card fade-in">
+            <h3 class="question-text" id="questionText"></h3>
+            <div class="answer-options" id="answerOptions"></div>
+          </div>
+
+          <div class="test-navigation text-center mt-4">
+            <button
+              class="btn btn-secondary me-2"
+              onclick="previousQuestion()"
+              id="prevBtn"
+              disabled
+            >
+              ← Sebelumnya
+            </button>
+            <button
+              class="btn btn-primary"
+              onclick="nextQuestion()"
+              id="nextBtn"
+            >
+              Selanjutnya →
+            </button>
+          </div>
+        </div>
+
+        <!-- Results Container -->
+        <div
+          id="resultsContainer"
+          class="results-container"
+          style="display: none"
+        >
+          <div class="results-card text-center fade-in">
+            <div class="result-icon" id="resultIcon"></div>
+            <h2 id="resultTitle"></h2>
+            <div class="score-display">
+              <div class="score-circle">
+                <span class="score-number" id="scoreNumber">0</span>
+                <span class="score-label">Skor</span>
+              </div>
+            </div>
+            <div class="severity-indicator" id="severityIndicator"></div>
+            <div class="result-description" id="resultDescription"></div>
+
+            <div class="recommendations">
+              <h3>💡 Rekomendasi</h3>
+              <div id="recommendationsList"></div>
+            </div>
+
+            <div class="result-actions mt-4">
+              <button class="btn btn-primary me-2" onclick="resetTest()">
+                Tes Lainnya
+              </button>
+              <button class="btn btn-secondary me-2" onclick="downloadResult()">
+                📥 Unduh Hasil
+              </button>
+              <a href="tanyadokter.html" class="btn btn-success">
+                Konsultasi Profesional
+              </a>
+            </div>
+
+            <div class="result-disclaimer mt-4">
+              <p>
+                <strong>Catatan:</strong> Hasil ini adalah indikasi awal. Untuk
+                diagnosis dan penanganan yang tepat, silakan konsultasi dengan
+                psikolog atau psikiater profesional.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
 
     <footer class="bg-dark text-white py-4">
-        <div class="container text-center">
-            <p>&copy; 2025 SehatKu. All rights reserved.</p>
-        </div>
+      <div class="container text-center">
+        <p>&copy; 2025 SehatKu. All rights reserved.</p>
+      </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Navbar scroll effect
-        window.addEventListener('scroll', function() {
-            const navbar = document.querySelector('.navbar');
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Fade in animation on scroll
-        const fadeElements = document.querySelectorAll('.fade-in');
-        
-        const fadeInOnScroll = function() {
-            fadeElements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.classList.add('visible');
-                }
-            });
-        };
-        
-        window.addEventListener('scroll', fadeInOnScroll);
-        // Initial check
-        fadeInOnScroll();
-
-        // Test data and functionality
-        let currentTest = null;
-        let currentQuestionIndex = 0;
-        let answers = [];
-
-        const tests = {
-            anxiety: {
-                title: "Tes Kecemasan (GAD-7)",
-                description: "Jawab setiap pertanyaan berdasarkan kondisi Anda dalam 2 minggu terakhir",
-                questions: [
-                    "Merasa gugup, cemas, atau gelisah",
-                    "Tidak dapat menghentikan atau mengendalikan kekhawatiran",
-                    "Terlalu banyak khawatir tentang berbagai hal",
-                    "Kesulitan untuk rileks",
-                    "Sangat gelisah sehingga sulit untuk duduk diam",
-                    "Mudah terganggu atau mudah marah",
-                    "Merasa takut seolah-olah sesuatu yang buruk akan terjadi",
-                ],
-                options: [
-                    { text: "Tidak sama sekali", value: 0 },
-                    { text: "Beberapa hari", value: 1 },
-                    { text: "Lebih dari setengah waktu", value: 2 },
-                    { text: "Hampir setiap hari", value: 3 },
-                ],
-            },
-            depression: {
-                title: "Tes Depresi (PHQ-9)",
-                description: "Seberapa sering Anda terganggu oleh masalah berikut dalam 2 minggu terakhir?",
-                questions: [
-                    "Sedikit minat atau kesenangan dalam melakukan sesuatu",
-                    "Merasa sedih, tertekan, atau putus asa",
-                    "Kesulitan tidur atau terlalu banyak tidur",
-                    "Merasa lelah atau memiliki sedikit energi",
-                    "Nafsu makan berkurang atau makan berlebihan",
-                    "Merasa buruk tentang diri sendiri atau merasa gagal",
-                    "Kesulitan berkonsentrasi pada hal-hal seperti membaca",
-                    "Bergerak atau berbicara sangat lambat atau sebaliknya sangat gelisah",
-                    "Pikiran bahwa Anda lebih baik mati atau menyakiti diri sendiri",
-                ],
-                options: [
-                    { text: "Tidak sama sekali", value: 0 },
-                    { text: "Beberapa hari", value: 1 },
-                    { text: "Lebih dari setengah waktu", value: 2 },
-                    { text: "Hampir setiap hari", value: 3 },
-                ],
-            },
-            sleep: {
-                title: "Tes Kualitas Tidur",
-                description: "Jawab pertanyaan tentang pola tidur Anda dalam 1 bulan terakhir",
-                questions: [
-                    "Berapa lama Anda biasanya butuh untuk tertidur?",
-                    "Seberapa sering Anda terbangun di malam hari?",
-                    "Apakah Anda merasa segar saat bangun tidur?",
-                    "Apakah Anda sering merasa mengantuk di siang hari?",
-                    "Seberapa puas Anda dengan kualitas tidur Anda?",
-                    "Apakah masalah tidur mengganggu aktivitas harian Anda?",
-                    "Apakah Anda menggunakan obat tidur?",
-                    "Berapa jam rata-rata Anda tidur per malam?",
-                ],
-                options: [
-                    { text: "Tidak pernah/sangat baik", value: 0 },
-                    { text: "Kadang-kadang", value: 1 },
-                    { text: "Sering", value: 2 },
-                    { text: "Selalu/sangat buruk", value: 3 },
-                ],
-            }
-        };
-
-        function startTest(testType) {
-            currentTest = tests[testType];
-            currentQuestionIndex = 0;
-            answers = new Array(currentTest.questions.length).fill(null);
-
-            document.getElementById("testSelection").style.display = "none";
-            document.getElementById("testContainer").style.display = "block";
-            document.getElementById("testTitle").textContent = currentTest.title;
-            document.getElementById("testDescription").textContent = currentTest.description;
-            document.getElementById("totalQuestions").textContent = currentTest.questions.length;
-
-            showQuestion();
+      // Navbar scroll effect
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.classList.add("scrolled");
+        } else {
+          navbar.classList.remove("scrolled");
         }
+      });
 
-        function showQuestion() {
-            const question = currentTest.questions[currentQuestionIndex];
-            document.getElementById("currentQuestion").textContent = currentQuestionIndex + 1;
-            document.getElementById("questionText").textContent = question;
+      // Fade in animation on scroll
+      const fadeElements = document.querySelectorAll(".fade-in");
 
-            const optionsContainer = document.getElementById("answerOptions");
-            optionsContainer.innerHTML = "";
+      const fadeInOnScroll = function () {
+        fadeElements.forEach((element) => {
+          const elementTop = element.getBoundingClientRect().top;
+          const elementVisible = 150;
 
-            currentTest.options.forEach((option, index) => {
-                const optionDiv = document.createElement("div");
-                optionDiv.className = "form-check";
-                optionDiv.innerHTML = `
+          if (elementTop < window.innerHeight - elementVisible) {
+            element.classList.add("visible");
+          }
+        });
+      };
+
+      window.addEventListener("scroll", fadeInOnScroll);
+      // Initial check
+      fadeInOnScroll();
+
+      // Test data and functionality
+      let currentTest = null;
+      let currentQuestionIndex = 0;
+      let answers = [];
+
+      const tests = {
+        anxiety: {
+          title: "Tes Kecemasan (GAD-7)",
+          description:
+            "Jawab setiap pertanyaan berdasarkan kondisi Anda dalam 2 minggu terakhir",
+          questions: [
+            "Merasa gugup, cemas, atau gelisah",
+            "Tidak dapat menghentikan atau mengendalikan kekhawatiran",
+            "Terlalu banyak khawatir tentang berbagai hal",
+            "Kesulitan untuk rileks",
+            "Sangat gelisah sehingga sulit untuk duduk diam",
+            "Mudah terganggu atau mudah marah",
+            "Merasa takut seolah-olah sesuatu yang buruk akan terjadi",
+          ],
+          options: [
+            { text: "Tidak sama sekali", value: 0 },
+            { text: "Beberapa hari", value: 1 },
+            { text: "Lebih dari setengah waktu", value: 2 },
+            { text: "Hampir setiap hari", value: 3 },
+          ],
+        },
+        depression: {
+          title: "Tes Depresi (PHQ-9)",
+          description:
+            "Seberapa sering Anda terganggu oleh masalah berikut dalam 2 minggu terakhir?",
+          questions: [
+            "Sedikit minat atau kesenangan dalam melakukan sesuatu",
+            "Merasa sedih, tertekan, atau putus asa",
+            "Kesulitan tidur atau terlalu banyak tidur",
+            "Merasa lelah atau memiliki sedikit energi",
+            "Nafsu makan berkurang atau makan berlebihan",
+            "Merasa buruk tentang diri sendiri atau merasa gagal",
+            "Kesulitan berkonsentrasi pada hal-hal seperti membaca",
+            "Bergerak atau berbicara sangat lambat atau sebaliknya sangat gelisah",
+            "Pikiran bahwa Anda lebih baik mati atau menyakiti diri sendiri",
+          ],
+          options: [
+            { text: "Tidak sama sekali", value: 0 },
+            { text: "Beberapa hari", value: 1 },
+            { text: "Lebih dari setengah waktu", value: 2 },
+            { text: "Hampir setiap hari", value: 3 },
+          ],
+        },
+        sleep: {
+          title: "Tes Kualitas Tidur",
+          description:
+            "Jawab pertanyaan tentang pola tidur Anda dalam 1 bulan terakhir",
+          questions: [
+            "Berapa lama Anda biasanya butuh untuk tertidur?",
+            "Seberapa sering Anda terbangun di malam hari?",
+            "Apakah Anda merasa segar saat bangun tidur?",
+            "Apakah Anda sering merasa mengantuk di siang hari?",
+            "Seberapa puas Anda dengan kualitas tidur Anda?",
+            "Apakah masalah tidur mengganggu aktivitas harian Anda?",
+            "Apakah Anda menggunakan obat tidur?",
+            "Berapa jam rata-rata Anda tidur per malam?",
+          ],
+          options: [
+            { text: "Tidak pernah/sangat baik", value: 0 },
+            { text: "Kadang-kadang", value: 1 },
+            { text: "Sering", value: 2 },
+            { text: "Selalu/sangat buruk", value: 3 },
+          ],
+        },
+      };
+
+      function startTest(testType) {
+        currentTest = tests[testType];
+        currentQuestionIndex = 0;
+        answers = new Array(currentTest.questions.length).fill(null);
+
+        document.getElementById("testSelection").style.display = "none";
+        document.getElementById("testContainer").style.display = "block";
+        document.getElementById("testTitle").textContent = currentTest.title;
+        document.getElementById("testDescription").textContent =
+          currentTest.description;
+        document.getElementById("totalQuestions").textContent =
+          currentTest.questions.length;
+
+        showQuestion();
+      }
+
+      function showQuestion() {
+        const question = currentTest.questions[currentQuestionIndex];
+        document.getElementById("currentQuestion").textContent =
+          currentQuestionIndex + 1;
+        document.getElementById("questionText").textContent = question;
+
+        const optionsContainer = document.getElementById("answerOptions");
+        optionsContainer.innerHTML = "";
+
+        currentTest.options.forEach((option, index) => {
+          const optionDiv = document.createElement("div");
+          optionDiv.className = "form-check";
+          optionDiv.innerHTML = `
                     <input class="form-check-input" type="radio" name="answer" id="option${index}" value="${option.value}">
                     <label class="form-check-label" for="option${index}">${option.text}</label>
                 `;
-                optionDiv.onclick = () => selectAnswer(option.value);
-                optionsContainer.appendChild(optionDiv);
-            });
+          optionDiv.onclick = () => selectAnswer(option.value);
+          optionsContainer.appendChild(optionDiv);
+        });
 
-            updateProgress();
-            updateNavigation();
+        updateProgress();
+        updateNavigation();
+      }
+
+      function selectAnswer(value) {
+        answers[currentQuestionIndex] = value;
+        document.getElementById("nextBtn").disabled = false;
+      }
+
+      function nextQuestion() {
+        if (answers[currentQuestionIndex] === null) {
+          alert("Silakan pilih jawaban terlebih dahulu");
+          return;
         }
 
-        function selectAnswer(value) {
-            answers[currentQuestionIndex] = value;
-            document.getElementById("nextBtn").disabled = false;
+        if (currentQuestionIndex < currentTest.questions.length - 1) {
+          currentQuestionIndex++;
+          showQuestion();
+        } else {
+          calculateResults();
+        }
+      }
+
+      function previousQuestion() {
+        if (currentQuestionIndex > 0) {
+          currentQuestionIndex--;
+          showQuestion();
+        }
+      }
+
+      function updateProgress() {
+        const progress =
+          ((currentQuestionIndex + 1) / currentTest.questions.length) * 100;
+        document.getElementById("progressBar").style.width = progress + "%";
+      }
+
+      function updateNavigation() {
+        document.getElementById("prevBtn").disabled =
+          currentQuestionIndex === 0;
+        const nextBtn = document.getElementById("nextBtn");
+
+        if (currentQuestionIndex === currentTest.questions.length - 1) {
+          nextBtn.textContent = "Lihat Hasil →";
+        } else {
+          nextBtn.textContent = "Selanjutnya →";
         }
 
-        function nextQuestion() {
-            if (answers[currentQuestionIndex] === null) {
-                alert("Silakan pilih jawaban terlebih dahulu");
-                return;
-            }
+        nextBtn.disabled = answers[currentQuestionIndex] === null;
+      }
 
-            if (currentQuestionIndex < currentTest.questions.length - 1) {
-                currentQuestionIndex++;
-                showQuestion();
-            } else {
-                calculateResults();
-            }
+      function calculateResults() {
+        const totalScore = answers.reduce((sum, val) => sum + val, 0);
+        const maxScore =
+          currentTest.questions.length * (currentTest.options.length - 1);
+        const percentage = (totalScore / maxScore) * 100;
+
+        let severity, icon, description, recommendations;
+
+        if (percentage < 25) {
+          severity = "Minimal";
+          icon = "😊";
+          description =
+            "Hasil menunjukkan tingkat yang minimal. Kondisi psikologis Anda dalam keadaan baik.";
+          recommendations = [
+            "Pertahankan pola hidup sehat",
+            "Lanjutkan aktivitas yang membuat Anda bahagia",
+            "Jaga keseimbangan work-life balance",
+            "Tetap terhubung dengan orang-orang terdekat",
+          ];
+        } else if (percentage < 50) {
+          severity = "Ringan";
+          icon = "😐";
+          description =
+            "Hasil menunjukkan tingkat ringan. Ada beberapa aspek yang perlu diperhatikan.";
+          recommendations = [
+            "Identifikasi sumber stres dan coba kurangi",
+            "Tingkatkan aktivitas relaksasi",
+            "Olahraga teratur minimal 30 menit/hari",
+            "Pertimbangkan konseling jika kondisi tidak membaik",
+          ];
+        } else if (percentage < 75) {
+          severity = "Sedang";
+          icon = "😟";
+          description =
+            "Hasil menunjukkan tingkat sedang. Disarankan untuk berkonsultasi dengan profesional.";
+          recommendations = [
+            "Segera konsultasi dengan psikolog",
+            "Hindari alkohol dan kafein berlebihan",
+            "Tidur yang cukup (7-8 jam)",
+            "Bicarakan dengan orang terdekat",
+          ];
+        } else {
+          severity = "Berat";
+          icon = "😰";
+          description =
+            "Hasil menunjukkan tingkat yang memerlukan perhatian serius. Sangat disarankan untuk segera konsultasi dengan profesional kesehatan mental.";
+          recommendations = [
+            "⚠️ SEGERA konsultasi dengan psikolog/psikiater",
+            "Pertimbangkan terapi profesional",
+            "Jangan ragu mencari bantuan darurat jika diperlukan",
+            "Informasikan kondisi Anda ke keluarga terdekat",
+          ];
         }
 
-        function previousQuestion() {
-            if (currentQuestionIndex > 0) {
-                currentQuestionIndex--;
-                showQuestion();
-            }
-        }
+        document.getElementById("testContainer").style.display = "none";
+        document.getElementById("resultsContainer").style.display = "block";
 
-        function updateProgress() {
-            const progress = ((currentQuestionIndex + 1) / currentTest.questions.length) * 100;
-            document.getElementById("progressBar").style.width = progress + "%";
-        }
-
-        function updateNavigation() {
-            document.getElementById("prevBtn").disabled = currentQuestionIndex === 0;
-            const nextBtn = document.getElementById("nextBtn");
-
-            if (currentQuestionIndex === currentTest.questions.length - 1) {
-                nextBtn.textContent = "Lihat Hasil →";
-            } else {
-                nextBtn.textContent = "Selanjutnya →";
-            }
-
-            nextBtn.disabled = answers[currentQuestionIndex] === null;
-        }
-
-        function calculateResults() {
-            const totalScore = answers.reduce((sum, val) => sum + val, 0);
-            const maxScore = currentTest.questions.length * (currentTest.options.length - 1);
-            const percentage = (totalScore / maxScore) * 100;
-
-            let severity, icon, description, recommendations;
-
-            if (percentage < 25) {
-                severity = "Minimal";
-                icon = "😊";
-                description = "Hasil menunjukkan tingkat yang minimal. Kondisi psikologis Anda dalam keadaan baik.";
-                recommendations = [
-                    "Pertahankan pola hidup sehat",
-                    "Lanjutkan aktivitas yang membuat Anda bahagia",
-                    "Jaga keseimbangan work-life balance",
-                    "Tetap terhubung dengan orang-orang terdekat",
-                ];
-            } else if (percentage < 50) {
-                severity = "Ringan";
-                icon = "😐";
-                description = "Hasil menunjukkan tingkat ringan. Ada beberapa aspek yang perlu diperhatikan.";
-                recommendations = [
-                    "Identifikasi sumber stres dan coba kurangi",
-                    "Tingkatkan aktivitas relaksasi",
-                    "Olahraga teratur minimal 30 menit/hari",
-                    "Pertimbangkan konseling jika kondisi tidak membaik",
-                ];
-            } else if (percentage < 75) {
-                severity = "Sedang";
-                icon = "😟";
-                description = "Hasil menunjukkan tingkat sedang. Disarankan untuk berkonsultasi dengan profesional.";
-                recommendations = [
-                    "Segera konsultasi dengan psikolog",
-                    "Hindari alkohol dan kafein berlebihan",
-                    "Tidur yang cukup (7-8 jam)",
-                    "Bicarakan dengan orang terdekat",
-                ];
-            } else {
-                severity = "Berat";
-                icon = "😰";
-                description = "Hasil menunjukkan tingkat yang memerlukan perhatian serius. Sangat disarankan untuk segera konsultasi dengan profesional kesehatan mental.";
-                recommendations = [
-                    "⚠️ SEGERA konsultasi dengan psikolog/psikiater",
-                    "Pertimbangkan terapi profesional",
-                    "Jangan ragu mencari bantuan darurat jika diperlukan",
-                    "Informasikan kondisi Anda ke keluarga terdekat",
-                ];
-            }
-
-            document.getElementById("testContainer").style.display = "none";
-            document.getElementById("resultsContainer").style.display = "block";
-
-            document.getElementById("resultIcon").textContent = icon;
-            document.getElementById("resultTitle").textContent = `Hasil ${currentTest.title}`;
-            document.getElementById("scoreNumber").textContent = totalScore;
-            document.getElementById("severityIndicator").innerHTML = `
-                <span class="badge bg-${getSeverityColor(severity)}">${severity}</span>
+        document.getElementById("resultIcon").textContent = icon;
+        document.getElementById(
+          "resultTitle"
+        ).textContent = `Hasil ${currentTest.title}`;
+        document.getElementById("scoreNumber").textContent = totalScore;
+        document.getElementById("severityIndicator").innerHTML = `
+                <span class="badge bg-${getSeverityColor(
+                  severity
+                )}">${severity}</span>
             `;
-            document.getElementById("resultDescription").innerHTML = `<p>${description}</p>`;
+        document.getElementById(
+          "resultDescription"
+        ).innerHTML = `<p>${description}</p>`;
 
-            const recList = document.getElementById("recommendationsList");
-            recList.innerHTML = "<ul>" + recommendations.map((rec) => `<li>${rec}</li>`).join("") + "</ul>";
-        }
+        const recList = document.getElementById("recommendationsList");
+        recList.innerHTML =
+          "<ul>" +
+          recommendations.map((rec) => `<li>${rec}</li>`).join("") +
+          "</ul>";
+      }
 
-        function getSeverityColor(severity) {
-            const colors = {
-                "Minimal": "success",
-                "Ringan": "warning",
-                "Sedang": "warning",
-                "Berat": "danger"
-            };
-            return colors[severity] || "secondary";
-        }
+      function getSeverityColor(severity) {
+        const colors = {
+          Minimal: "success",
+          Ringan: "warning",
+          Sedang: "warning",
+          Berat: "danger",
+        };
+        return colors[severity] || "secondary";
+      }
 
-        function resetTest() {
-            document.getElementById("resultsContainer").style.display = "none";
-            document.getElementById("testSelection").style.display = "block";
-            currentTest = null;
-            currentQuestionIndex = 0;
-            answers = [];
-        }
+      function resetTest() {
+        document.getElementById("resultsContainer").style.display = "none";
+        document.getElementById("testSelection").style.display = "block";
+        currentTest = null;
+        currentQuestionIndex = 0;
+        answers = [];
+      }
 
-        function downloadResult() {
-            alert("Fungsi unduh hasil akan segera tersedia! Anda akan dapat mengunduh hasil tes dalam format PDF.");
-        }
+      function downloadResult() {
+        alert(
+          "Fungsi unduh hasil akan segera tersedia! Anda akan dapat mengunduh hasil tes dalam format PDF."
+        );
+      }
     </script>
-</body>
+  </body>
 </html>
