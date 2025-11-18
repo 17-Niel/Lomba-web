@@ -18,7 +18,7 @@
     />
     <style>
       /* ========================================= */
-      /* ==    PALET MEWAH & ELEGAN BARU    == */
+      /* ==    PALET SIMPLE & MEWAH BARU    == */
       /* ========================================= */
       :root {
         /* Primary: Deep, calming teal */
@@ -29,20 +29,20 @@
         --accent-color: #1e8a86;
 
         /* Neutrals: Warm and sophisticated */
-        --neutral-light: #fdfbf5; /* Was F8F9FA (cool) -> (warm ivory) */
-        --neutral-medium: #eae6da; /* Was E9ECEF (cool) -> (warm beige) */
-        --neutral-dark: #2c3333; /* Was 343A40 (dark grey) -> (darker, softer) */
+        --neutral-light: #fdfbf5; /* Ivory (untuk body) */
+        --neutral-medium: #eae6da; /* Beige (untuk border) */
+        --neutral-dark: #2c3333;
+        --white: #ffffff; /* Putih bersih (untuk kartu) */
 
         /* Text */
         --text-primary: #2c3333;
         --text-secondary: #5a5a5a;
-        --white: #ffffff;
 
-        /* Shadows: Softer and more diffused */
-        --shadow-soft: 0 5px 20px rgba(0, 0, 0, 0.05);
+        /* Shadows: Jauh lebih lembut */
+        --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.06);
         --shadow-medium: 0 10px 40px rgba(0, 0, 0, 0.07);
 
-        /* Semantic colors (dipertahankan untuk JS) */
+        /* Semantic (dipertahankan untuk JS) */
         --success-color: #28a745;
         --warning-color: #ffc107;
         --danger-color: #dc3545;
@@ -51,7 +51,7 @@
       body {
         font-family: "Poppins", sans-serif;
         color: var(--text-primary);
-        line-height: 1.7; /* Sedikit lebih lega */
+        line-height: 1.7;
         background-color: var(--neutral-light); /* Latar belakang Ivory */
       }
 
@@ -61,7 +61,6 @@
       h4,
       h5,
       h6 {
-        /* Judul besar pakai Playfair, judul UI pakai Poppins */
         font-family: "Poppins", sans-serif;
         font-weight: 600;
       }
@@ -70,9 +69,8 @@
       .navbar {
         padding: 1.5rem 0;
         transition: all 0.3s ease;
-        /* Latar belakang Ivory transparan */
         background-color: rgba(253, 251, 245, 0.9) !important;
-        backdrop-filter: blur(12px); /* Blur lebih kuat */
+        backdrop-filter: blur(12px);
       }
 
       .navbar.scrolled {
@@ -85,7 +83,7 @@
         font-family: "Playfair Display", serif;
         font-size: 1.8rem;
         font-weight: 700;
-        color: var(--primary-color) !important; /* Warna Teal Tua */
+        color: var(--primary-color) !important;
       }
 
       .nav-link {
@@ -103,7 +101,7 @@
         bottom: 0;
         left: 50%;
         transform: translateX(-50%);
-        background-color: var(--secondary-color); /* Aksen Emas */
+        background-color: var(--secondary-color);
         transition: width 0.3s ease;
       }
 
@@ -112,51 +110,71 @@
         width: 70%;
       }
 
-      /* == Page Header == */
+      /* ========================================
+        ==  PERUBAHAN BESAR 1: Page Header  ==
+        ========================================
+        Header dibuat bersih, simpel, dan elegan.
+        Menghilangkan gradient dan gambar latar.
+      */
       .page-header {
-        padding: 8rem 0 4rem;
-        /* Gradient baru menggunakan Teal Tua, lebih gelap & mewah */
-        background: linear-gradient(
-            135deg,
-            rgba(10, 92, 90, 0.85) 0%,
-            rgba(5, 40, 39, 0.95) 100%
-          ),
-          url("https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80");
-        background-size: cover;
-        background-position: center;
+        padding: 6rem 0 4rem;
         margin-top: 76px;
-        position: relative;
-        overflow: hidden;
+        color: var(--text-primary); /* Override text-white dari HTML */
+        background-color: transparent; /* Hapus latar belakang gelap */
       }
 
       .page-header h1 {
-        font-family: "Playfair Display", serif; /* Font branding utama */
-        font-size: 3rem;
-        margin-bottom: 1rem;
-        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        font-family: "Playfair Display", serif; /* Font "mewah" */
+        font-size: 3.5rem;
+        color: var(--text-primary);
+        position: relative;
+        display: inline-block;
+        margin-bottom: 2rem;
+        font-weight: 700;
       }
 
-      /* == Calculator Cards (DESAIN ULANG BESAR) == */
-      .calculator-card {
+      /* Garis emas di bawah judul utama */
+      .page-header h1::after {
+        content: "";
+        position: absolute;
+        width: 80px;
+        height: 3px;
+        background-color: var(--secondary-color); /* Aksen Emas */
+        bottom: -15px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+      /* ========================================
+        ==  AKHIR PERUBAHAN BESAR 1 ==
+        ======================================== */
+
+      /* ========================================
+        ==  PERUBAHAN BESAR 2: Desain Kartu  ==
+        ========================================
+        Dibuat lebih lega, bersih, dan lembut.
+      */
+      .calculator-card,
+      .info-card {
         background-color: var(--white); /* Putih bersih, kontras dgn body */
-        border-radius: 20px; /* Radius lebih besar & lembut */
+        border-radius: 24px; /* Lebih lembut */
         overflow: hidden;
-        box-shadow: var(--shadow-medium); /* Bayangan lebih premium */
+        box-shadow: var(--shadow-soft); /* Bayangan lebih lembut */
         transition: all 0.3s ease;
         margin-bottom: 2rem;
-        border: none; /* Hilangkan border */
+        border: none;
+        height: 100%; /* Menyamakan tinggi info-card */
       }
 
-      .calculator-card:hover {
+      .calculator-card:hover,
+      .info-card:hover {
         transform: translateY(-5px);
-        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
+        box-shadow: var(--shadow-medium);
       }
 
-      /* Header kartu didesain ulang total */
       .calculator-header {
-        padding: 2rem 2rem 0.5rem 2rem;
+        padding: 2.5rem 2.5rem 0.5rem 2.5rem; /* Padding lebih besar */
         color: var(--text-primary);
-        background-color: transparent !important; /* Hapus warna bg solid */
+        background-color: transparent !important;
       }
 
       .calculator-header h4 {
@@ -168,26 +186,26 @@
         align-items: center;
       }
 
-      /* Beri warna pada Ikon, bukan background */
       .calculator-header.bg-primary h4 i {
-        color: var(--primary-color); /* Teal */
+        color: var(--primary-color);
         width: 30px;
       }
       .calculator-header.bg-success h4 i {
-        color: var(--secondary-color); /* Emas */
+        color: var(--secondary-color);
         width: 30px;
       }
 
       .calculator-body {
-        padding: 0.5rem 2rem 2rem 2rem; /* Sesuaikan padding */
+        padding: 1rem 2.5rem 2.5rem 2.5rem; /* Padding lebih besar & lega */
       }
 
+      .info-card {
+        padding: 2.5rem; /* Padding lebih besar */
+      }
       /* ========================================
-        ==  PERBAIKAN: GANTI NAMA CLASS DI SINI ==
-        ========================================
-        Saya ganti ".input-group" menjadi ".form-group-stacked"
-        agar tidak bentrok dengan class default Bootstrap.
-      */
+        ==  AKHIR PERUBAHAN BESAR 2 ==
+        ======================================== */
+
       .form-group-stacked {
         margin-bottom: 1.5rem;
       }
@@ -198,40 +216,46 @@
         color: var(--text-primary);
       }
 
+      /* ========================================
+        ==  PERUBAHAN BESAR 3: Input Form  ==
+        ========================================
+      */
       .form-control,
       .form-select {
-        border-radius: 12px; /* Radius lebih lembut */
-        padding: 0.85rem 1rem; /* Input lebih tinggi & lega */
+        border-radius: 12px;
+        padding: 0.85rem 1rem;
         border: 1px solid var(--neutral-medium);
-        background-color: var(--neutral-light); /* Samakan dgn body */
+        background-color: var(--white); /* Latar belakang putih bersih */
         transition: all 0.3s ease;
-        width: 100%; /* Pastikan lebar penuh */
+        width: 100%;
       }
 
+      /* Aksen Emas saat di-klik (focus) */
       .form-control:focus,
       .form-select:focus {
-        border-color: var(--primary-color);
+        border-color: var(--secondary-color); /* Border Emas */
         background-color: var(--white);
-        box-shadow: 0 0 0 3px rgba(10, 92, 90, 0.15); /* Glow Teal */
+        box-shadow: 0 0 0 3px rgba(198, 168, 117, 0.25); /* Glow Emas tipis */
       }
+      /* ========================================
+        ==  AKHIR PERUBAHAN BESAR 3 ==
+        ======================================== */
 
-      /* Teks petunjuk di bawah input (INI SOLUSINYA) */
       .form-text {
         font-size: 0.85rem;
         color: var(--text-secondary);
-        margin-top: 0.5rem; /* Beri jarak dari input */
+        margin-top: 0.5rem;
       }
 
       /* == Buttons == */
       .btn {
-        border-radius: 50px; /* Bentuk pill */
-        padding: 0.85rem 2rem; /* Sedikit lebih besar */
+        border-radius: 50px;
+        padding: 0.85rem 2rem;
         font-weight: 600;
         transition: all 0.3s ease;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
       }
 
-      /* Tombol Primer (Teal) */
       .btn-primary {
         background-color: var(--primary-color);
         border-color: var(--primary-color);
@@ -245,11 +269,10 @@
         box-shadow: 0 6px 20px rgba(10, 92, 90, 0.3);
       }
 
-      /* Tombol Success (di-override jadi Emas) */
       .btn-success {
         background-color: var(--secondary-color);
         border-color: var(--secondary-color);
-        color: #4f4020; /* Warna teks gelap agar kontras di Emas */
+        color: #4f4020;
         box-shadow: 0 4px 15px rgba(198, 168, 117, 0.25);
       }
 
@@ -268,7 +291,7 @@
         padding: 2rem;
         margin-top: 1.5rem;
         border: 1px solid var(--neutral-medium);
-        border-left: 5px solid var(--secondary-color); /* Aksen Emas */
+        border-left: 5px solid var(--secondary-color);
         display: none;
         box-shadow: var(--shadow-soft);
       }
@@ -276,13 +299,13 @@
       .result-value {
         font-size: 2.5rem;
         font-weight: 700;
-        color: var(--primary-color); /* Teal */
+        color: var(--primary-color);
         margin: 0.5rem 0;
       }
 
       .result-category {
-        font-size: 1.1rem; /* Sedikit lebih kecil */
-        font-weight: 500; /* Tidak terlalu tebal */
+        font-size: 1.1rem;
+        font-weight: 500;
         margin-bottom: 1rem;
         padding: 0.5rem 1rem;
         border-radius: 50px;
@@ -302,26 +325,10 @@
       }
 
       /* == Info Cards == */
-      .info-card {
-        background-color: var(--white);
-        border-radius: 20px;
-        padding: 2rem;
-        box-shadow: var(--shadow-soft);
-        height: 100%;
-        border: none;
-        transition: all 0.3s ease;
-      }
-
-      .info-card:hover {
-        transform: translateY(-3px);
-        box-shadow: var(--shadow-medium);
-      }
-
       .info-card h5 {
         margin-bottom: 1.5rem;
         color: var(--text-primary);
       }
-      /* Ganti warna ikon jadi Emas */
       .info-card h5 i {
         color: var(--secondary-color);
       }
@@ -331,10 +338,21 @@
         border-top: none;
       }
 
+      /* ========================================
+        ==  PERUBAHAN BESAR 4: Konsistensi Warna ==
+        ======================================== */
+      /* Ikon centang diubah jadi Teal (primary) */
+      .info-card .fa-check {
+        color: var(--primary-color);
+      }
+      /* ========================================
+        ==  AKHIR PERUBAHAN BESAR 4 ==
+        ======================================== */
+
       /* == Footer == */
       footer {
         background-color: var(--neutral-dark);
-        color: var(--neutral-medium); /* Kontras lebih lembut */
+        color: var(--neutral-medium);
         padding: 3rem 0;
         margin-top: 4rem;
       }
@@ -356,13 +374,12 @@
         transform: translateY(0);
       }
 
-      /* == Section Title == */
       .section-title {
         font-size: 2.5rem;
         margin-bottom: 1rem;
         position: relative;
         display: inline-block;
-        font-family: "Playfair Display", serif; /* Pakai font branding */
+        font-family: "Playfair Display", serif;
       }
 
       .section-title::after {
@@ -370,7 +387,7 @@
         position: absolute;
         width: 60px;
         height: 3px;
-        background-color: var(--secondary-color); /* Aksen Emas */
+        background-color: var(--secondary-color);
         bottom: -10px;
         left: 0;
       }
@@ -381,8 +398,9 @@
           font-size: 2.5rem;
         }
 
-        .calculator-body {
-          padding: 1.5rem;
+        .calculator-body,
+        .info-card {
+          padding: 1.5rem; /* Padding lebih kecil di mobile */
         }
 
         .result-value {
@@ -433,7 +451,7 @@
       </div>
     </nav>
 
-    <section class="page-header text-white">
+    <section class="page-header">
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto text-center">
@@ -661,22 +679,22 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <tr class="table-warning">
+                    <tr>
                       <td>Kurus</td>
                       <td>&lt; 18.5</td>
                       <td>Perlu menambah berat badan</td>
                     </tr>
-                    <tr class="table-success">
+                    <tr>
                       <td>Normal</td>
                       <td>18.5 - 24.9</td>
                       <td>Berat badan ideal</td>
                     </tr>
-                    <tr class="table-warning">
+                    <tr>
                       <td>Gemuk</td>
                       <td>25 - 29.9</td>
                       <td>Perlu menurunkan berat badan</td>
                     </tr>
-                    <tr class="table-danger">
+                    <tr>
                       <td>Obesitas</td>
                       <td>&gt;= 30</td>
                       <td>Perlu penanganan serius</td>
@@ -691,24 +709,21 @@
               <h5><i class="fas fa-lightbulb me-2"></i>Tips Kalori Sehat</h5>
               <ul class="list-unstyled">
                 <li class="mb-2">
-                  <i class="fas fa-check text-success me-2"></i>Konsumsi makanan
-                  bergizi seimbang
+                  <i class="fas fa-check me-2"></i>Konsumsi makanan bergizi
+                  seimbang
                 </li>
                 <li class="mb-2">
-                  <i class="fas fa-check text-success me-2"></i>Perbanyak
-                  protein dan serat
+                  <i class="fas fa-check me-2"></i>Perbanyak protein dan serat
                 </li>
                 <li class="mb-2">
-                  <i class="fas fa-check text-success me-2"></i>Batasi gula dan
-                  lemak jenuh
+                  <i class="fas fa-check me-2"></i>Batasi gula dan lemak jenuh
                 </li>
                 <li class="mb-2">
-                  <i class="fas fa-check text-success me-2"></i>Minum air putih
-                  yang cukup
+                  <i class="fas fa-check me-2"></i>Minum air putih yang cukup
                 </li>
                 <li class="mb-2">
-                  <i class="fas fa-check text-success me-2"></i>Kombinasikan
-                  dengan olahraga teratur
+                  <i class="fas fa-check me-2"></i>Kombinasikan dengan olahraga
+                  teratur
                 </li>
               </ul>
             </div>
