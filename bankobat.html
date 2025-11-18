@@ -532,6 +532,64 @@
         margin: 0.2rem;
       }
 
+      /* Pagination Styles */
+      .pagination-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 3rem;
+        padding: 1rem;
+      }
+
+      .pagination {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+      }
+
+      .page-item {
+        margin: 0;
+      }
+
+      .page-link {
+        border: 2px solid var(--neutral-medium);
+        border-radius: 12px;
+        padding: 0.5rem 1rem;
+        color: var(--text-primary);
+        font-weight: 500;
+        transition: all 0.3s ease;
+        background: var(--white);
+        min-width: 45px;
+        text-align: center;
+      }
+
+      .page-link:hover {
+        background: var(--primary-color);
+        color: var(--white);
+        border-color: var(--primary-color);
+        transform: translateY(-2px);
+      }
+
+      .page-item.active .page-link {
+        background: var(--gradient-primary);
+        color: var(--white);
+        border-color: var(--primary-color);
+      }
+
+      .page-item.disabled .page-link {
+        background: var(--neutral-light);
+        color: var(--text-secondary);
+        border-color: var(--neutral-medium);
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      .pagination-info {
+        margin-left: 1rem;
+        color: var(--text-secondary);
+        font-size: 0.9rem;
+      }
+
       /* Footer */
       footer {
         background-color: var(--neutral-dark);
@@ -655,6 +713,18 @@
           margin-left: 0;
           margin-top: 0.5rem;
         }
+
+        .pagination {
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .pagination-info {
+          margin-top: 1rem;
+          margin-left: 0;
+          text-align: center;
+          width: 100%;
+        }
       }
 
       /* Animations */
@@ -731,7 +801,7 @@
           <div class="col-lg-8 mx-auto text-center">
             <h1 class="display-4 fw-bold">Database Obat Premium</h1>
             <p class="lead">
-              Akses lengkap ke informasi 1000+ obat dengan detail komprehensif
+              Akses lengkap ke informasi 500+ obat dengan detail komprehensif
               dan referensi medis terpercaya
             </p>
           </div>
@@ -745,19 +815,19 @@
         <div class="row g-4">
           <div class="col-md-3">
             <div class="stats-card fade-in">
-              <div class="stats-number" id="totalMedicines">1000</div>
+              <div class="stats-number" id="totalMedicines">500</div>
               <div class="stats-label">Total Obat</div>
             </div>
           </div>
           <div class="col-md-3">
             <div class="stats-card fade-in">
-              <div class="stats-number" id="prescriptionMeds">650</div>
+              <div class="stats-number" id="prescriptionMeds">325</div>
               <div class="stats-label">Obat Resep</div>
             </div>
           </div>
           <div class="col-md-3">
             <div class="stats-card fade-in">
-              <div class="stats-number" id="otcMeds">250</div>
+              <div class="stats-number" id="otcMeds">125</div>
               <div class="stats-label">Obat Bebas</div>
             </div>
           </div>
@@ -903,6 +973,18 @@
             Coba ubah kata kunci pencarian atau filter yang digunakan
           </p>
         </div>
+        
+        <!-- Pagination -->
+        <div class="pagination-container">
+          <nav>
+            <ul class="pagination" id="pagination">
+              <!-- Pagination will be dynamically generated -->
+            </ul>
+          </nav>
+          <div class="pagination-info" id="paginationInfo">
+            Menampilkan 0 dari 0 obat
+          </div>
+        </div>
       </div>
     </section>
 
@@ -949,227 +1031,63 @@
 
         // Komponen nama obat yang realistis
         const prefixes = [
-          "Asam",
-          "Beta",
-          "Dex",
-          "Hydro",
-          "Methyl",
-          "Para",
-          "Chloro",
-          "Fluoro",
-          "Iso",
-          "Methoxy",
-          "Nitro",
-          "Oxo",
-          "Phenyl",
-          "Sulfa",
-          "Tetra",
-          "Tri",
-          "Ultra",
-          "Vita",
-          "Xylo",
-          "Zinc",
+          "Asam", "Beta", "Dex", "Hydro", "Methyl", "Para", "Chloro", "Fluoro", 
+          "Iso", "Methoxy", "Nitro", "Oxo", "Phenyl", "Sulfa", "Tetra", "Tri", 
+          "Ultra", "Vita", "Xylo", "Zinc"
         ];
 
         const middleParts = [
-          "cetamol",
-          "profen",
-          "cillin",
-          "mycin",
-          "cycline",
-          "zole",
-          "dipine",
-          "formin",
-          "prazole",
-          "butamol",
-          "vastatin",
-          "zepam",
-          "oxetine",
-          "idone",
-          "farin",
-          "semide",
-          "thyroxine",
-          "tirizine",
-          "conazole",
-          "pril",
-          "sartan",
-          "gliflozin",
-          "glutide",
-          "lukast",
-          "triptan",
-          "tidine",
-          "setron",
-          "dronate",
-          "calciferol",
-          "caine",
-          "pramine",
+          "cetamol", "profen", "cillin", "mycin", "cycline", "zole", "dipine", 
+          "formin", "prazole", "butamol", "vastatin", "zepam", "oxetine", 
+          "idone", "farin", "semide", "thyroxine", "tirizine", "conazole", 
+          "pril", "sartan", "gliflozin", "glutide", "lukast", "triptan", 
+          "tidine", "setron", "dronate", "calciferol", "caine", "pramine"
         ];
 
         const suffixes = [
-          "Tablet",
-          "Kapsul",
-          "Sirup",
-          "Injeksi",
-          "Krim",
-          "Salep",
-          "Drop",
-          "Spray",
-          "Suppositoria",
-          "Patch",
-          "Gel",
-          "Lotion",
-          "Inhaler",
-          "Granul",
-          "Suspensi",
+          "Tablet", "Kapsul", "Sirup", "Injeksi", "Krim", "Salep", "Drop", 
+          "Spray", "Suppositoria", "Patch", "Gel", "Lotion", "Inhaler", 
+          "Granul", "Suspensi"
         ];
 
         const categories = [
-          "analgesik",
-          "antibiotik",
-          "antivirus",
-          "antiinflamasi",
-          "vitamin",
-          "antihipertensi",
-          "antidiabetes",
-          "gastrointestinal",
-          "pernafasan",
-          "jantung",
-          "saraf",
-          "antidepresan",
-          "antipsikotik",
-          "antikoagulan",
-          "diuretik",
-          "hormon",
-          "antialergi",
-          "antijamur",
-          "antiasma",
-          "antiemetik",
-          "laksatif",
-          "muskuloskeletal",
-          "dermatologis",
-          "mata",
-          "telinga",
+          "analgesik", "antibiotik", "antivirus", "antiinflamasi", "vitamin",
+          "antihipertensi", "antidiabetes", "gastrointestinal", "pernafasan", 
+          "jantung", "saraf", "antidepresan", "antipsikotik", "antikoagulan", 
+          "diuretik", "hormon", "antialergi", "antijamur", "antiasma", 
+          "antiemetik", "laksatif", "muskuloskeletal", "dermatologis", "mata", 
+          "telinga"
         ];
 
         const types = ["resep", "bebas", "terbatas"];
 
         // Template untuk indikasi berdasarkan kategori
         const indicationTemplates = {
-          analgesik: [
-            "Nyeri ringan hingga sedang",
-            "Demam",
-            "Sakit kepala",
-            "Nyeri otot",
-          ],
-          antibiotik: [
-            "Infeksi bakteri",
-            "Sepsis",
-            "Infeksi saluran nafas",
-            "Infeksi kulit",
-          ],
-          antivirus: [
-            "Infeksi virus",
-            "Herpes",
-            "Influenza",
-            "Hepatitis viral",
-          ],
-          antiinflamasi: [
-            "Peradangan",
-            "Artritis",
-            "Autoimun",
-            "Inflamasi akut",
-          ],
-          vitamin: [
-            "Defisiensi vitamin",
-            "Suplementasi",
-            "Imunitas",
-            "Antioksidan",
-          ],
-          antihipertensi: [
-            "Hipertensi",
-            "Gagal jantung",
-            "Proteksi ginjal",
-            "Pencegahan stroke",
-          ],
-          antidiabetes: [
-            "Diabetes melitus",
-            "Hiperglikemia",
-            "Sindrom metabolik",
-            "Resistensi insulin",
-          ],
-          gastrointestinal: [
-            "GERD",
-            "Ulkus peptikum",
-            "Dispepsia",
-            "Gastritis",
-          ],
+          analgesik: ["Nyeri ringan hingga sedang", "Demam", "Sakit kepala", "Nyeri otot"],
+          antibiotik: ["Infeksi bakteri", "Sepsis", "Infeksi saluran nafas", "Infeksi kulit"],
+          antivirus: ["Infeksi virus", "Herpes", "Influenza", "Hepatitis viral"],
+          antiinflamasi: ["Peradangan", "Artritis", "Autoimun", "Inflamasi akut"],
+          vitamin: ["Defisiensi vitamin", "Suplementasi", "Imunitas", "Antioksidan"],
+          antihipertensi: ["Hipertensi", "Gagal jantung", "Proteksi ginjal", "Pencegahan stroke"],
+          antidiabetes: ["Diabetes melitus", "Hiperglikemia", "Sindrom metabolik", "Resistensi insulin"],
+          gastrointestinal: ["GERD", "Ulkus peptikum", "Dispepsia", "Gastritis"],
           pernafasan: ["Asma", "Bronkitis", "PPOK", "Rinitis alergi"],
-          jantung: [
-            "Hiperkolesterolemia",
-            "Aritmia",
-            "Gagal jantung",
-            "Pencegahan infark",
-          ],
+          jantung: ["Hiperkolesterolemia", "Aritmia", "Gagal jantung", "Pencegahan infark"],
           saraf: ["Ansietas", "Depresi", "Epilepsi", "Migrain"],
-          antidepresan: [
-            "Depresi mayor",
-            "Gangguan kecemasan",
-            "OCD",
-            "Gangguan panik",
-          ],
-          antipsikotik: [
-            "Skizofrenia",
-            "Gangguan bipolar",
-            "Psikosis",
-            "Agitasi",
-          ],
-          antikoagulan: [
-            "Trombosis",
-            "Emboli",
-            "Fibrilasi atrium",
-            "Pencegahan stroke",
-          ],
-          diuretik: [
-            "Edema",
-            "Hipertensi",
-            "Gagal jantung",
-            "Sindrom nefrotik",
-          ],
-          hormon: [
-            "Hipotiroidisme",
-            "Diabetes insipidus",
-            "Kontrasepsi",
-            "Terapi pengganti",
-          ],
-          antialergi: [
-            "Rinitis alergi",
-            "Urtikaria",
-            "Konjungtivitis alergi",
-            "Dermatitis",
-          ],
-          antijamur: [
-            "Kandidiasis",
-            "Dermatofitosis",
-            "Pitiriasis versikolor",
-            "Onychomycosis",
-          ],
+          antidepresan: ["Depresi mayor", "Gangguan kecemasan", "OCD", "Gangguan panik"],
+          antipsikotik: ["Skizofrenia", "Gangguan bipolar", "Psikosis", "Agitasi"],
+          antikoagulan: ["Trombosis", "Emboli", "Fibrilasi atrium", "Pencegahan stroke"],
+          diuretik: ["Edema", "Hipertensi", "Gagal jantung", "Sindrom nefrotik"],
+          hormon: ["Hipotiroidisme", "Diabetes insipidus", "Kontrasepsi", "Terapi pengganti"],
+          antialergi: ["Rinitis alergi", "Urtikaria", "Konjungtivitis alergi", "Dermatitis"],
+          antijamur: ["Kandidiasis", "Dermatofitosis", "Pitiriasis versikolor", "Onychomycosis"],
           antiasma: ["Asma bronkial", "Bronkospasme", "PPOK", "Rinitis"],
           antiemetik: ["Mual", "Muntah", "Vertigo", "Kemoterapi-induced"],
-          laksatif: [
-            "Konstipasi",
-            "Bowel prep",
-            "Iritasi usus",
-            "Post-operatif",
-          ],
-          muskuloskeletal: [
-            "Nyeri otot",
-            "Artritis",
-            "Spondilitis",
-            "Osteoporosis",
-          ],
+          laksatif: ["Konstipasi", "Bowel prep", "Iritasi usus", "Post-operatif"],
+          muskuloskeletal: ["Nyeri otot", "Artritis", "Spondilitis", "Osteoporosis"],
           dermatologis: ["Dermatitis", "Psoriasis", "Infeksi kulit", "Jerawat"],
           mata: ["Konjungtivitis", "Glaukoma", "Uveitis", "Dry eye"],
-          telinga: ["Otitis", "Vertigo", "Tinnitus", "Infeksi telinga"],
+          telinga: ["Otitis", "Vertigo", "Tinnitus", "Infeksi telinga"]
         };
 
         // Template untuk efek samping
@@ -1190,12 +1108,9 @@
           antiinflamasi: "Menghambat jalur inflamasi dan sitokin pro-inflamasi",
           vitamin: "Berperan sebagai koenzim dan antioksidan dalam metabolisme",
           antihipertensi: "Memodulasi sistem renin-angiotensin-aldosteron",
-          antidiabetes:
-            "Meningkatkan sensitivitas insulin atau sekresi insulin",
-          gastrointestinal:
-            "Menghambat sekresi asam atau meningkatkan motilitas",
-          pernafasan:
-            "Melebarkan bronkus atau mengurangi inflamasi saluran nafas",
+          antidiabetes: "Meningkatkan sensitivitas insulin atau sekresi insulin",
+          gastrointestinal: "Menghambat sekresi asam atau meningkatkan motilitas",
+          pernafasan: "Melebarkan bronkus atau mengurangi inflamasi saluran nafas",
           jantung: "Menurunkan kolesterol atau mengatur irama jantung",
           saraf: "Memodulasi neurotransmiter di sistem saraf pusat",
           antidepresan: "Menghambat reuptake neurotransmiter monoamin",
@@ -1214,97 +1129,48 @@
           telinga: "Antiinflamasi atau modulasi sistem vestibular",
         };
 
-        // Generate 1000 obat dengan nama yang realistis
-        for (let i = 1; i <= 1000; i++) {
+        // Generate 500 obat dengan nama yang realistis
+        for (let i = 1; i <= 500; i++) {
           const prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
-          const middle =
-            middleParts[Math.floor(Math.random() * middleParts.length)];
+          const middle = middleParts[Math.floor(Math.random() * middleParts.length)];
           const suffix = suffixes[Math.floor(Math.random() * suffixes.length)];
 
           // Buat nama obat yang unik
           const name = `${prefix}${middle}`;
           const genericName = `Generik ${name}`;
-          const category =
-            categories[Math.floor(Math.random() * categories.length)];
+          const category = categories[Math.floor(Math.random() * categories.length)];
           const type = types[Math.floor(Math.random() * types.length)];
 
           // Pilih kelas berdasarkan kategori
           const classes = {
             analgesik: ["NSAID", "Analgesik opioid", "Analgesik non-opioid"],
-            antibiotik: [
-              "Penisilin",
-              "Sefalosporin",
-              "Makrolida",
-              "Fluoroquinolone",
-            ],
-            antivirus: [
-              "Nukleosida",
-              "Inhibitor protease",
-              "Inhibitor neuraminidase",
-            ],
+            antibiotik: ["Penisilin", "Sefalosporin", "Makrolida", "Fluoroquinolone"],
+            antivirus: ["Nukleosida", "Inhibitor protease", "Inhibitor neuraminidase"],
             antiinflamasi: ["Kortikosteroid", "NSAID", "DMARD"],
             vitamin: ["Vitamin", "Mineral", "Suplemen"],
-            antihipertensi: [
-              "ACE inhibitor",
-              "ARB",
-              "Beta blocker",
-              "Calcium channel blocker",
-            ],
-            antidiabetes: [
-              "Biguanide",
-              "Sulfonilurea",
-              "DPP-4 inhibitor",
-              "GLP-1 agonist",
-            ],
+            antihipertensi: ["ACE inhibitor", "ARB", "Beta blocker", "Calcium channel blocker"],
+            antidiabetes: ["Biguanide", "Sulfonilurea", "DPP-4 inhibitor", "GLP-1 agonist"],
             gastrointestinal: ["PPI", "H2 blocker", "Antasida", "Prokinetik"],
-            pernafasan: [
-              "Bronkodilator",
-              "Kortikosteroid inhalasi",
-              "Antihistamin",
-            ],
+            pernafasan: ["Bronkodilator", "Kortikosteroid inhalasi", "Antihistamin"],
             jantung: ["Statin", "Antiaritmia", "Antikoagulan", "Antiagregasi"],
-            saraf: [
-              "Antidepresan",
-              "Antipsikotik",
-              "Antikonvulsan",
-              "Benzodiazepine",
-            ],
+            saraf: ["Antidepresan", "Antipsikotik", "Antikonvulsan", "Benzodiazepine"],
             antidepresan: ["SSRI", "SNRI", "Trisiklik", "MAOI"],
             antipsikotik: ["Antipsikotik atipikal", "Antipsikotik tipikal"],
             antikoagulan: ["Antikoagulan oral", "Antikoagulan parenteral"],
-            diuretik: [
-              "Diuretik loop",
-              "Diuretik tiazid",
-              "Diuretik hemat kalium",
-            ],
+            diuretik: ["Diuretik loop", "Diuretik tiazid", "Diuretik hemat kalium"],
             hormon: ["Hormon tiroid", "Hormon steroid", "Hormon seks"],
-            antialergi: [
-              "Antihistamin",
-              "Kortikosteroid",
-              "Stabilisator sel mast",
-            ],
+            antialergi: ["Antihistamin", "Kortikosteroid", "Stabilisator sel mast"],
             antijamur: ["Azol", "Alilamin", "Polien"],
             antiasma: ["Bronkodilator", "Kortikosteroid", "Antileukotrien"],
-            antiemetik: [
-              "Antagonis 5-HT3",
-              "Antagonis dopamin",
-              "Antihistamin",
-            ],
+            antiemetik: ["Antagonis 5-HT3", "Antagonis dopamin", "Antihistamin"],
             laksatif: ["Osmotik", "Pembentuk massa", "Stimulan"],
             muskuloskeletal: ["Relaksan otot", "Antiinflamasi", "Analgesik"],
-            dermatologis: [
-              "Kortikosteroid topikal",
-              "Antibiotik topikal",
-              "Antijamur topikal",
-            ],
+            dermatologis: ["Kortikosteroid topikal", "Antibiotik topikal", "Antijamur topikal"],
             mata: ["Antibiotik", "Antiinflamasi", "Antiglaukoma"],
             telinga: ["Antibiotik", "Antiinflamasi", "Serumenolitik"],
           };
 
-          const medClass =
-            classes[category][
-              Math.floor(Math.random() * classes[category].length)
-            ];
+          const medClass = classes[category][Math.floor(Math.random() * classes[category].length)];
 
           // Generate indikasi berdasarkan kategori
           const indications = indicationTemplates[category];
@@ -1318,10 +1184,7 @@
           }
 
           // Generate efek samping
-          const sideEffectTemplate =
-            sideEffectTemplates[
-              Math.floor(Math.random() * sideEffectTemplates.length)
-            ];
+          const sideEffectTemplate = sideEffectTemplates[Math.floor(Math.random() * sideEffectTemplates.length)];
           const sideEffects = [...sideEffectTemplate];
 
           // Data tambahan yang realistis
@@ -1339,30 +1202,15 @@
             forms: forms,
             indications: selectedIndications,
             dosage: {
-              adult: `${Math.floor(Math.random() * 500) + 50}mg setiap ${
-                Math.floor(Math.random() * 8) + 4
-              } jam`,
-              child: `${Math.floor(Math.random() * 10) + 5}mg/kg setiap ${
-                Math.floor(Math.random() * 8) + 4
-              } jam`,
+              adult: `${Math.floor(Math.random() * 500) + 50}mg setiap ${Math.floor(Math.random() * 8) + 4} jam`,
+              child: `${Math.floor(Math.random() * 10) + 5}mg/kg setiap ${Math.floor(Math.random() * 8) + 4} jam`,
               elderly: "Dosis disesuaikan dengan fungsi ginjal dan hati",
             },
             sideEffects: sideEffects,
-            contraindications: [
-              "Hipersensitif",
-              "Gangguan hati berat",
-              "Gangguan ginjal berat",
-            ],
+            contraindications: ["Hipersensitif", "Gangguan hati berat", "Gangguan ginjal berat"],
             interactions: ["Antikoagulan", "Antikonvulsan", "Antidepresan"],
-            pregnancy: `Kategori ${
-              pregnancyCategories[
-                Math.floor(Math.random() * pregnancyCategories.length)
-              ]
-            }`,
-            breastfeeding:
-              breastfeedingOptions[
-                Math.floor(Math.random() * breastfeedingOptions.length)
-              ],
+            pregnancy: `Kategori ${pregnancyCategories[Math.floor(Math.random() * pregnancyCategories.length)]}`,
+            breastfeeding: breastfeedingOptions[Math.floor(Math.random() * breastfeedingOptions.length)],
             mechanism: mechanismTemplates[category],
           });
         }
@@ -1370,122 +1218,126 @@
         return medicines;
       }
 
-      // Data 1000 obat dengan nama realistis
+      // Data 500 obat dengan nama realistis
       const allMedicines = generateRealisticMedicines();
 
-      // Fungsi untuk menampilkan obat
-      function displayMedicines(medicinesToShow = allMedicines) {
+      // Konfigurasi pagination
+      const ITEMS_PER_PAGE = 9;
+      let currentPage = 1;
+      let currentMedicines = allMedicines;
+
+      // Fungsi untuk menampilkan obat dengan pagination
+      function displayMedicines(medicinesToShow = allMedicines, page = 1) {
         const container = document.getElementById("medicineContainer");
         const noResults = document.getElementById("noResults");
+        const totalMedicines = medicinesToShow.length;
+        const totalPages = Math.ceil(totalMedicines / ITEMS_PER_PAGE);
+
+        // Validasi halaman
+        currentPage = Math.max(1, Math.min(page, totalPages));
+        currentMedicines = medicinesToShow;
 
         container.innerHTML = "";
 
-        if (medicinesToShow.length === 0) {
-          container.innerHTML = ""; // Bersihkan kontainer
+        if (totalMedicines === 0) {
           noResults.classList.remove("d-none");
           updateStats(0, 0, 0, 0);
+          updatePagination(0, 0);
           return;
         }
 
         noResults.classList.add("d-none");
 
-        const allCardsHTML = medicinesToShow
-          .map((medicine) => {
-            return `
-              <div class="col-lg-6 col-xl-4" data-category="${
-                medicine.category
-              }" data-type="${medicine.type}">
-                <div class="medicine-card fade-in">
-                  <div class="medicine-header d-flex justify-content-between align-items-start">
-                    <div class="medicine-name">
-                      <div class="medicine-icon">
-                        <i class="fas fa-capsules"></i>
-                      </div>
-                      <div>
-                        <div class="medicine-title">${medicine.name}</div>
-                        <div class="medicine-generic">${
-                          medicine.genericName
-                        }</div>
-                      </div>
+        // Hitung indeks mulai dan akhir
+        const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
+        const endIndex = Math.min(startIndex + ITEMS_PER_PAGE, totalMedicines);
+        const medicinesToDisplay = medicinesToShow.slice(startIndex, endIndex);
+
+        medicinesToDisplay.forEach((medicine) => {
+          const medicineCard = `
+            <div class="col-lg-6 col-xl-4" data-category="${medicine.category}" data-type="${medicine.type}">
+              <div class="medicine-card fade-in">
+                <div class="medicine-header d-flex justify-content-between align-items-start">
+                  <div class="medicine-name">
+                    <div class="medicine-icon">
+                      <i class="fas fa-capsules"></i>
                     </div>
-                    <span class="medicine-type">${
-                      medicine.type === "resep"
-                        ? "Resep"
-                        : medicine.type === "bebas"
-                        ? "Bebas"
-                        : "Terbatas"
-                    }</span>
+                    <div>
+                      <div class="medicine-title">${medicine.name}</div>
+                      <div class="medicine-generic">${medicine.genericName}</div>
+                    </div>
                   </div>
-                  <div class="medicine-content">
-                    <div class="medicine-section">
-                      <div class="section-title">
-                        <i class="fas fa-info-circle section-icon"></i>
-                        Informasi Umum
-                      </div>
-                      <p class="medicine-info">
-                        <strong>Golongan:</strong> ${medicine.class}<br>
-                        <strong>Bentuk Sediaan:</strong> ${medicine.forms}
-                      </p>
-                      <span class="category-tag">${medicine.category}</span>
+                  <span class="medicine-type">${medicine.type === "resep" ? "Resep" : medicine.type === "bebas" ? "Bebas" : "Terbatas"}</span>
+                </div>
+                <div class="medicine-content">
+                  <div class="medicine-section">
+                    <div class="section-title">
+                      <i class="fas fa-info-circle section-icon"></i>
+                      Informasi Umum
                     </div>
+                    <p class="medicine-info">
+                      <strong>Golongan:</strong> ${medicine.class}<br>
+                      <strong>Bentuk Sediaan:</strong> ${medicine.forms}
+                    </p>
+                    <span class="category-tag">${medicine.category}</span>
+                  </div>
 
-                    <div class="medicine-section">
-                      <div class="section-title">
-                        <i class="fas fa-bullseye section-icon"></i>
-                        Indikasi
-                      </div>
-                      <ul class="info-list">
-                        ${medicine.indications
-                          .map((indication) => `<li>${indication}</li>`)
-                          .join("")}
-                      </ul>
+                  <div class="medicine-section">
+                    <div class="section-title">
+                      <i class="fas fa-bullseye section-icon"></i>
+                      Indikasi
                     </div>
+                    <ul class="info-list">
+                      ${medicine.indications.map((indication) => `<li>${indication}</li>`).join("")}
+                    </ul>
+                  </div>
 
-                    <div class="medicine-section">
-                      <div class="section-title">
-                        <i class="fas fa-syringe section-icon"></i>
-                        Dosis
-                      </div>
-                      <p class="medicine-info">
-                        <strong>Dewasa:</strong> ${medicine.dosage.adult}<br>
-                        <strong>Anak:</strong> ${medicine.dosage.child}<br>
-                        <strong>Lansia:</strong> ${medicine.dosage.elderly}
-                      </p>
+                  <div class="medicine-section">
+                    <div class="section-title">
+                      <i class="fas fa-syringe section-icon"></i>
+                      Dosis
                     </div>
+                    <p class="medicine-info">
+                      <strong>Dewasa:</strong> ${medicine.dosage.adult}<br>
+                      <strong>Anak:</strong> ${medicine.dosage.child}<br>
+                      <strong>Lansia:</strong> ${medicine.dosage.elderly}
+                    </p>
+                  </div>
 
-                    <div class="medicine-section">
-                      <div class="section-title">
-                        <i class="fas fa-exclamation-triangle section-icon"></i>
-                        Keamanan
-                      </div>
-                      <p class="medicine-info">
-                        <strong>Kehamilan:</strong> ${medicine.pregnancy}<br>
-                        <strong>Menyusui:</strong> ${medicine.breastfeeding}
-                      </p>
+                  <div class="medicine-section">
+                    <div class="section-title">
+                      <i class="fas fa-exclamation-triangle section-icon"></i>
+                      Keamanan
                     </div>
-                    
-                    <div class="medicine-section">
-                      <div class="section-title">
-                        <i class="fas fa-cogs section-icon"></i>
-                        Mekanisme Kerja
-                      </div>
-                      <p class="medicine-info">${medicine.mechanism}</p>
+                    <p class="medicine-info">
+                      <strong>Kehamilan:</strong> ${medicine.pregnancy}<br>
+                      <strong>Menyusui:</strong> ${medicine.breastfeeding}
+                    </p>
+                  </div>
+                  
+                  <div class="medicine-section">
+                    <div class="section-title">
+                      <i class="fas fa-cogs section-icon"></i>
+                      Mekanisme Kerja
                     </div>
+                    <p class="medicine-info">${medicine.mechanism}</p>
                   </div>
                 </div>
               </div>
-            `;
-          })
-          .join("");
+            </div>
+          `;
 
-        container.innerHTML = allCardsHTML;
+          container.innerHTML += medicineCard;
+        });
 
         updateStats(
-          medicinesToShow.length,
+          totalMedicines,
           medicinesToShow.filter((m) => m.type === "resep").length,
           medicinesToShow.filter((m) => m.type === "bebas").length,
           [...new Set(medicinesToShow.map((m) => m.category))].length
         );
+
+        updatePagination(totalMedicines, totalPages);
 
         // Trigger fade-in animation
         setTimeout(() => {
@@ -1494,6 +1346,121 @@
             element.classList.add("visible");
           });
         }, 100);
+      }
+
+      // Fungsi untuk memperbarui pagination
+      function updatePagination(totalMedicines, totalPages) {
+        const pagination = document.getElementById("pagination");
+        const paginationInfo = document.getElementById("paginationInfo");
+
+        // Update info pagination
+        const startIndex = (currentPage - 1) * ITEMS_PER_PAGE + 1;
+        const endIndex = Math.min(currentPage * ITEMS_PER_PAGE, totalMedicines);
+        paginationInfo.textContent = `Menampilkan ${startIndex}-${endIndex} dari ${totalMedicines} obat`;
+
+        // Generate pagination buttons
+        let paginationHTML = '';
+
+        // Previous button
+        if (currentPage > 1) {
+          paginationHTML += `
+            <li class="page-item">
+              <a class="page-link" href="#" data-page="${currentPage - 1}">
+                <i class="fas fa-chevron-left"></i>
+              </a>
+            </li>
+          `;
+        } else {
+          paginationHTML += `
+            <li class="page-item disabled">
+              <span class="page-link">
+                <i class="fas fa-chevron-left"></i>
+              </span>
+            </li>
+          `;
+        }
+
+        // Page numbers
+        const maxVisiblePages = 5;
+        let startPage = Math.max(1, currentPage - Math.floor(maxVisiblePages / 2));
+        let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+
+        // Adjust if we're at the end
+        if (endPage - startPage + 1 < maxVisiblePages) {
+          startPage = Math.max(1, endPage - maxVisiblePages + 1);
+        }
+
+        // First page
+        if (startPage > 1) {
+          paginationHTML += `
+            <li class="page-item">
+              <a class="page-link" href="#" data-page="1">1</a>
+            </li>
+            ${startPage > 2 ? '<li class="page-item disabled"><span class="page-link">...</span></li>' : ''}
+          `;
+        }
+
+        // Page numbers
+        for (let i = startPage; i <= endPage; i++) {
+          if (i === currentPage) {
+            paginationHTML += `
+              <li class="page-item active">
+                <span class="page-link">${i}</span>
+              </li>
+            `;
+          } else {
+            paginationHTML += `
+              <li class="page-item">
+                <a class="page-link" href="#" data-page="${i}">${i}</a>
+              </li>
+            `;
+          }
+        }
+
+        // Last page
+        if (endPage < totalPages) {
+          paginationHTML += `
+            ${endPage < totalPages - 1 ? '<li class="page-item disabled"><span class="page-link">...</span></li>' : ''}
+            <li class="page-item">
+              <a class="page-link" href="#" data-page="${totalPages}">${totalPages}</a>
+            </li>
+          `;
+        }
+
+        // Next button
+        if (currentPage < totalPages) {
+          paginationHTML += `
+            <li class="page-item">
+              <a class="page-link" href="#" data-page="${currentPage + 1}">
+                <i class="fas fa-chevron-right"></i>
+              </a>
+            </li>
+          `;
+        } else {
+          paginationHTML += `
+            <li class="page-item disabled">
+              <span class="page-link">
+                <i class="fas fa-chevron-right"></i>
+              </span>
+            </li>
+          `;
+        }
+
+        pagination.innerHTML = paginationHTML;
+
+        // Add event listeners to pagination buttons
+        document.querySelectorAll('.page-link[data-page]').forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const page = parseInt(e.target.getAttribute('data-page'));
+            displayMedicines(currentMedicines, page);
+            // Scroll to top of medicine grid
+            document.querySelector('.medicine-grid-section').scrollIntoView({ 
+              behavior: 'smooth',
+              block: 'start'
+            });
+          });
+        });
       }
 
       // Fungsi untuk memperbarui statistik
@@ -1506,9 +1473,7 @@
 
       // Fungsi untuk memfilter obat
       function filterMedicines() {
-        const searchTerm = document
-          .getElementById("searchMedicine")
-          .value.toLowerCase();
+        const searchTerm = document.getElementById("searchMedicine").value.toLowerCase();
         const category = document.getElementById("categoryMedicine").value;
         const type = document.getElementById("typeFilter").value;
 
@@ -1516,19 +1481,16 @@
           const matchesSearch =
             medicine.name.toLowerCase().includes(searchTerm) ||
             medicine.genericName.toLowerCase().includes(searchTerm) ||
-            medicine.indications.some((ind) =>
-              ind.toLowerCase().includes(searchTerm)
-            ) ||
+            medicine.indications.some((ind) => ind.toLowerCase().includes(searchTerm)) ||
             medicine.class.toLowerCase().includes(searchTerm);
 
-          const matchesCategory =
-            category === "all" || medicine.category === category;
+          const matchesCategory = category === "all" || medicine.category === category;
           const matchesType = type === "all" || medicine.type === type;
 
           return matchesSearch && matchesCategory && matchesType;
         });
 
-        displayMedicines(filteredMedicines);
+        displayMedicines(filteredMedicines, 1);
       }
 
       // Fungsi untuk mereset filter
@@ -1536,25 +1498,17 @@
         document.getElementById("searchMedicine").value = "";
         document.getElementById("categoryMedicine").value = "all";
         document.getElementById("typeFilter").value = "all";
-        displayMedicines();
+        displayMedicines(allMedicines, 1);
       }
 
       // Event listeners
       document.addEventListener("DOMContentLoaded", function () {
-        displayMedicines();
+        displayMedicines(allMedicines, 1);
 
-        document
-          .getElementById("searchMedicine")
-          .addEventListener("input", filterMedicines);
-        document
-          .getElementById("categoryMedicine")
-          .addEventListener("change", filterMedicines);
-        document
-          .getElementById("typeFilter")
-          .addEventListener("change", filterMedicines);
-        document
-          .getElementById("resetFilters")
-          .addEventListener("click", resetFilters);
+        document.getElementById("searchMedicine").addEventListener("input", filterMedicines);
+        document.getElementById("categoryMedicine").addEventListener("change", filterMedicines);
+        document.getElementById("typeFilter").addEventListener("change", filterMedicines);
+        document.getElementById("resetFilters").addEventListener("click", resetFilters);
 
         // Navbar scroll effect
         window.addEventListener("scroll", function () {
